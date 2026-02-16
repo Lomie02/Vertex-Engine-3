@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Engine/">
+    <Project Path="Vertex Engine/Vertex Engine.vcxproj" />
+  </Folder>
+  <Folder Name="/Game/">
+    <Project Path="Sandbox/Sandbox.vcxproj" />
+  </Folder>
+</Solution>
