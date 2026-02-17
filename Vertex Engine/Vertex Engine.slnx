@@ -4,9 +4,9 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Engine/">
-    <Project Path="Vertex Engine/Vertex Engine.vcxproj" />
+    <Project Path="Vertex Engine/Vertex Engine.vcxproj" Id="b12bce69-d188-4d18-a7e5-8fa5648126cb" />
   </Folder>
   <Folder Name="/Game/">
-    <Project Path="Sandbox/Sandbox.vcxproj" />
+    <Project Path="Sandbox/Sandbox.vcxproj" Id="252a3810-8657-4e94-b07b-3f8e8b171052" />
   </Folder>
 </Solution>

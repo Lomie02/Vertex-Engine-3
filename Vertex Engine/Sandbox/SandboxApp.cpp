@@ -1,20 +1,26 @@
-#include "Application.h"
-#include <iostream>
-class SandboxApp : public VertexEngine::Application
-{
-public:
-	SandboxApp() {}
-	~SandboxApp() {}
+#include "SandboxApp.h"
 
-protected:
-	void OnUpdate() override {
-
-	}
-
-};
-
+// Required for the engine to link to the sandbox.
 VertexEngine::Application* CreateApp() {
 	
-	std::cout << "App Create called in sandbox" << std::endl;
 	return new SandboxApp();
+}
+
+// Sandbox Code 
+
+void SandboxApp::OnAwake()
+{
+	SetApplicationFullscreenMode(false);
+}
+
+void SandboxApp::OnStart()
+{
+	RenameApplication("My Game");
+
+}
+
+void SandboxApp::OnUpdate()
+{
+	m_Timer += GetDeltaTime();
+	std::cout << (int)m_Timer << std::endl;
 }

@@ -16,11 +16,14 @@
     <Filter Include="Core">
       <UniqueIdentifier>{9b45d3d9-a366-4074-a7a2-39cee866d856}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{01cd8ef9-acdc-4e10-a867-d3114beaae28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows">
+      <UniqueIdentifier>{78fcccdb-ea3d-4cd2-b8c0-937bf68db145}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,6 +36,18 @@
     <ClInclude Include="EntryPoint.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="GlWindow.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTime.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -42,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GlWindow.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTime.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
