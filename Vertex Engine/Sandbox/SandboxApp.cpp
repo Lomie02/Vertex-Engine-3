@@ -21,6 +21,6 @@ void SandboxApp::OnStart()
 
 void SandboxApp::OnUpdate()
 {
-	m_Timer += GetDeltaTime();
+	m_Timer += GetDelta();
 	std::cout << (int)m_Timer << std::endl;
 }
