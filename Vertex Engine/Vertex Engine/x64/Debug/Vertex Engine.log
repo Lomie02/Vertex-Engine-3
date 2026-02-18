@@ -1,10 +1,4 @@
 ﻿  Application.cpp
-  EngineTime.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(17,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/EngineTime.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(18,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/EngineTime.cpp')
-  
+  GameObject.cpp
   Generating Code...
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

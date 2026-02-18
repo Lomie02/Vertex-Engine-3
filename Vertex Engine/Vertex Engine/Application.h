@@ -5,7 +5,9 @@
 #include "Window.h"
 #include <iostream>
 #include "EngineTime.h"
+#include "RenderSystem.h"
 
+#include "EngineContex.h"
 namespace VertexEngine {
 
 	class Application
@@ -33,13 +35,16 @@ namespace VertexEngine {
 		// Engine Clock Wrappers
 		float GetDelta() const; // Get the current delta time in seconds
 		float GetFixedDelta() const; // Get the fixed delta
-
+		float GetFramesPerSecond() const;
 
 	private:
-		std::unique_ptr<VertexEngine::EngineTime> m_EngineClock;
+		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed
+		std::unique_ptr<RenderSystem> m_EngineRenderSystem; // Render objects in the active scene.
+		std::unique_ptr<Window> m_GameWindow; // The window the engine uses.
+
+		std::unique_ptr<EngineContext> m_EngineContext;
 		bool m_IsEngineRunning = false; // Determines of the engine is running
-		std::unique_ptr<Window> m_GameWindow;
-		void InitProps();
+		void InitProps(); // Create all the systems application owns.
 	};
 }
 

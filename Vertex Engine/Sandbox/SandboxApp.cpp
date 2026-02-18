@@ -21,6 +21,5 @@ void SandboxApp::OnStart()
 
 void SandboxApp::OnUpdate()
 {
-	m_Timer += GetDelta();
-	std::cout << (int)m_Timer << std::endl;
+	std::cout << (int)GetFramesPerSecond() << std::endl;
 }

@@ -1,4 +1,6 @@
-﻿  SandboxApp.cpp
+﻿  EntryPoint.cpp
+  SandboxApp.cpp
+  Generating Code...
   Sandbox.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Sandbox.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

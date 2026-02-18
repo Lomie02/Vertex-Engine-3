@@ -20,16 +20,24 @@ void VertexEngine::Application::Execute()
 	if (m_GameWindow)
 		while (!m_GameWindow->IsWindowClosed()) {
 
-			m_EngineClock->ConfigureDeltaTime();
+			// Update delta time 
+			if (m_EngineClock)
+				m_EngineClock->ConfigureDeltaTime();
 
 			OnUpdate();
 			OnLateUpdate();
 
-			while (m_EngineClock->GetFixedDeltaTime() >= m_EngineClock->GetTimeStep()) {
-				OnFixedUpdate();
-				m_EngineClock->ResetFixedDelta();
+			// calculate fixed delta & call fixed update loop
+			if (m_EngineClock) {
+				while (m_EngineClock->GetFixedDeltaTime() >= m_EngineClock->GetTimeStep()) {
+					OnFixedUpdate();
+					m_EngineClock->ResetFixedDelta();
+				}
 			}
 
+			// Render system begins the render process.
+			if (m_EngineRenderSystem)
+				m_EngineRenderSystem->OnUpdate();
 
 			// Update the window polling. This always should happen last.
 			if (m_GameWindow != nullptr)
@@ -40,7 +48,8 @@ void VertexEngine::Application::Execute()
 void VertexEngine::Application::Quit()
 {
 	m_IsEngineRunning = false;
-	m_GameWindow->CloseWindow();
+	if (m_GameWindow)
+		m_GameWindow->CloseWindow();
 }
 
 void VertexEngine::Application::RenameApplication(std::string _nameApp)
@@ -63,12 +72,26 @@ void VertexEngine::Application::SetVSync(bool _vSync)
 
 float VertexEngine::Application::GetDelta() const
 {
-	return m_EngineClock->GetDeltaTime();
+	if (m_EngineClock)
+		return m_EngineClock->GetDeltaTime();
+
+	return 0.0f;
 }
 
 float VertexEngine::Application::GetFixedDelta() const
 {
-	return m_EngineClock->GetFixedDeltaTime();
+	if (m_EngineClock)
+		return m_EngineClock->GetFixedDeltaTime();
+
+	return 0.0f;
+}
+  
+float VertexEngine::Application::GetFramesPerSecond() const
+{
+	if (m_EngineClock)
+		return m_EngineClock->GetAppFramesPerSecond();
+
+	return 0.0f;
 }
 
 void VertexEngine::Application::InitProps()
@@ -76,6 +99,7 @@ void VertexEngine::Application::InitProps()
 	// Create the window for application.
 	m_GameWindow = Window::Create();
 	m_EngineClock = std::make_unique<EngineTime>();
+	m_EngineRenderSystem = std::make_unique<RenderSystem>();
 
 	OnAwake();
 }

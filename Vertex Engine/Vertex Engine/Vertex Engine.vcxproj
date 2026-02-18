@@ -148,24 +148,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GlWindow.h" />
+    <ClInclude Include="InputAPI.h" />
+    <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="iRenderer.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="GlWindow.cpp" />
+    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="EngineTime.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

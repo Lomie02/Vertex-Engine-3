@@ -9,6 +9,7 @@ namespace VertexEngine {
 		m_UnscaledTime = 0;
 		m_fpsInterval = 0;
 		m_PrevTime = (float)glfwGetTime();
+		m_FramesPerSecond = 0;
 	}
 
 	void EngineTime::ConfigureDeltaTime()
@@ -21,6 +22,7 @@ namespace VertexEngine {
 		m_fpsInterval += m_UnscaledTime;
 
 		if (m_fpsInterval > 1.0f) {
+			m_FramesPerSecond = m_Frames;
 			m_Frames = 0;
 			m_fpsInterval -= 1.0f;
 		}
@@ -41,7 +43,7 @@ namespace VertexEngine {
 
 	void VertexEngine::EngineTime::SetTimeScale(float _scaleTime)
 	{
-		m_TimeScale = _scaleTime;
+		m_TimeScale = _scaleTime; 
 	}
 
 	float EngineTime::GetTimeStep()
@@ -52,6 +54,11 @@ namespace VertexEngine {
 	void EngineTime::ResetFixedDelta()
 	{
 		m_FixedDelta -= m_TimeStep;
+	}
+
+	float EngineTime::GetAppFramesPerSecond() const
+	{
+		return m_FramesPerSecond;
 	}
 
 }
