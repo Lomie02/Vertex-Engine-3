@@ -6,6 +6,7 @@
 #include <iostream>
 #include "EngineTime.h"
 #include "RenderSystem.h"
+#include "InputSystem.h"
 
 #include "EngineContex.h"
 namespace VertexEngine {
@@ -31,11 +32,15 @@ namespace VertexEngine {
 		void RenameApplication(std::string _nameApp); // Rename the window of the application.
 		void SetApplicationFullscreenMode(bool _fullscreenMode);
 		void SetVSync(bool _vSync);
+		bool IsWindowFullscreen();
 
 		// Engine Clock Wrappers
 		float GetDelta() const; // Get the current delta time in seconds
 		float GetFixedDelta() const; // Get the fixed delta
 		float GetFramesPerSecond() const;
+
+		// is only here for input testing until scene manager is added.
+		std::unique_ptr<InputSystem> m_EngineInputSystem;
 
 	private:
 		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed

@@ -2,12 +2,16 @@ c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x6
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\x64\debug\vertex engine.pdb
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\x64\debug\vertex engine.idb
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\pch.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\time.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\enginetime.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\test.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glwindow.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\enginetime.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\application.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\rendersystem.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\renderer.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\inputapi.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glfwinputsystem.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\x64\debug\vertex engine.lib
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\gameobject.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\vertex engine.tlog\cl.command.1.tlog
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\vertex engine.tlog\cl.items.tlog
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\vertex engine.tlog\cl.read.1.tlog

@@ -110,4 +110,22 @@ namespace VertexEngine {
 		if (m_WindowHandle)
 			glfwSetWindowShouldClose(m_WindowHandle, 1);
 	}
+
+	bool GlWindow::IsWindowFullscreen()
+	{
+		if (m_WindowHandle == nullptr) return false;
+
+		GLFWmonitor* monitor = glfwGetWindowMonitor(m_WindowHandle);
+
+		return (monitor) ? true : false;
+	}
+
+	GLFWwindow* GlWindow::GetWindowHandle() const
+	{
+		if (m_WindowHandle)
+			return m_WindowHandle;
+
+		return nullptr; // if the window handle doesnt exist dont return anything
+	}
+
 }

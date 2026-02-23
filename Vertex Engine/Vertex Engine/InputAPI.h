@@ -1,13 +1,26 @@
 #pragma once
+#include "InputSystem.h"
 namespace VertexEngine {
 
 	class InputAPI {
 	public:
-		virtual ~InputAPI() = default;
+		explicit InputAPI(InputSystem* _input);
 
-		virtual bool GetKeyDown(int _key) {};
-		virtual bool GetKeyUp(int _key) {};
-		virtual bool GetKey(int _key) {};
+		// Keyboard inputs
+		bool GetKeyDown(KeyCode _key) const;
+		bool GetKeyUp(KeyCode _key) const;
+		bool GetKey(KeyCode _key) const;
 
+		// Mouse Inputs
+		bool GetMouse(KeyCode _key) const;
+		bool GetMouseDown(KeyCode _key) const;
+		bool GetMouseUP(KeyCode _key) const;
+
+		// Gamepad Inputs
+		bool GetButton(KeyCode _key, int _joystick) const;
+		bool GetButtonDown(KeyCode _key, int _joystick) const;
+		bool GetButtonUp(KeyCode _key, int _joystick) const;
+	private:
+		InputSystem* m_EngineInput;
 	};
 }

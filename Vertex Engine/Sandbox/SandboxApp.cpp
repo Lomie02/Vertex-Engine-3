@@ -2,7 +2,7 @@
 
 // Required for the engine to link to the sandbox.
 VertexEngine::Application* CreateApp() {
-	
+
 	return new SandboxApp();
 }
 
@@ -21,5 +21,20 @@ void SandboxApp::OnStart()
 
 void SandboxApp::OnUpdate()
 {
-	std::cout << (int)GetFramesPerSecond() << std::endl;
+	if (m_EngineInputSystem->GetKeyDown(KeyCode::A)) {
+		std::cout << "Pressed A!" << std::endl;
+	}
+
+	if (m_EngineInputSystem->GetKeyDown(KeyCode::W)) {
+		std::cout << "Pressed W!" << std::endl;
+	}
+
+	if (m_EngineInputSystem->GetKeyDown(KeyCode::D)) {
+
+		SetApplicationFullscreenMode(!IsWindowFullscreen());
+	}
+
+	if (m_EngineInputSystem->GetKeyDown(KeyCode::Escape)) {
+		Quit();
+	}
 }

@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputAPI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\EntryPoint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineContex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -27,56 +19,76 @@
       "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\EngineTime.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputAPI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputAPI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|solutionrelative:Sandbox\\EntryPoint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\iRenderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\iRenderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Application.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|solutionrelative:Sandbox\\SandboxApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\GlfwInputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\GlWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|solutionrelative:Sandbox\\SandboxApp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\GlfwInputSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\GlWindow.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{252A3810-8657-4E94-B07B-3F8E8B171052}|Sandbox\\Sandbox.vcxproj|solutionrelative:Sandbox\\EntryPoint.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\KeyCode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\KeyCode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\iRenderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\iRenderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\RenderSystem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\RenderSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\InputSystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\Component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|solutionrelative:Vertex Engine\\EntryPoint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B12BCE69-D188-4D18-A7E5-8FA5648126CB}|Vertex Engine\\Vertex Engine.vcxproj|C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineTime.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -102,72 +114,111 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InputSystem.cpp",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.cpp",
-              "RelativeDocumentMoniker": "Vertex Engine\\InputSystem.cpp",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.cpp",
-              "RelativeToolTip": "Vertex Engine\\InputSystem.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-18T08:40:20.941Z",
+              "DocumentIndex": 6,
+              "Title": "GlfwInputSystem.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\GlfwInputSystem.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.h",
+              "RelativeToolTip": "Vertex Engine\\GlfwInputSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-23T03:48:31.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "InputSystem.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\InputSystem.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h",
-              "RelativeToolTip": "Vertex Engine\\InputSystem.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-18T08:36:36.259Z",
+              "DocumentIndex": 8,
+              "Title": "SandboxApp.cpp",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp",
+              "RelativeDocumentMoniker": "Sandbox\\SandboxApp.cpp",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp",
+              "RelativeToolTip": "Sandbox\\SandboxApp.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-16T07:01:00.155Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InputAPI.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\InputAPI.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h",
-              "RelativeToolTip": "Vertex Engine\\InputAPI.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-18T08:32:35.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Component.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\Component.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h",
-              "RelativeToolTip": "Vertex Engine\\Component.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-18T08:22:34.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Application.cpp",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.cpp",
               "RelativeDocumentMoniker": "Vertex Engine\\Application.cpp",
               "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.cpp",
               "RelativeToolTip": "Vertex Engine\\Application.cpp",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAAHcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-02-16T07:14:02.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Application.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\Application.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h",
+              "RelativeToolTip": "Vertex Engine\\Application.h",
+              "ViewState": "AgIAABEAAAAAAAAAAAAIwCoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-16T06:51:02.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GlWindow.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\GlWindow.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.h",
+              "RelativeToolTip": "Vertex Engine\\GlWindow.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-17T02:20:26.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GlWindow.cpp",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.cpp",
+              "RelativeDocumentMoniker": "Vertex Engine\\GlWindow.cpp",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.cpp",
+              "RelativeToolTip": "Vertex Engine\\GlWindow.cpp",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAAAHsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-17T02:28:52.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InputAPI.cpp",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.cpp",
+              "RelativeDocumentMoniker": "Vertex Engine\\InputAPI.cpp",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.cpp",
+              "RelativeToolTip": "Vertex Engine\\InputAPI.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-23T03:42:04.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "InputAPI.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\InputAPI.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputAPI.h",
+              "RelativeToolTip": "Vertex Engine\\InputAPI.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-18T08:32:35.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "EngineTime.cpp",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineTime.cpp",
               "RelativeDocumentMoniker": "Vertex Engine\\EngineTime.cpp",
@@ -180,46 +231,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "EngineContex.h",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineContex.h",
               "RelativeDocumentMoniker": "Vertex Engine\\EngineContex.h",
               "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineContex.h",
               "RelativeToolTip": "Vertex Engine\\EngineContex.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-02-18T06:27:38.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EntryPoint.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\EntryPoint.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h",
-              "RelativeToolTip": "Vertex Engine\\EntryPoint.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Window.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\Window.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h",
+              "RelativeToolTip": "Vertex Engine\\Window.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-16T06:57:40.065Z",
+              "WhenOpened": "2026-02-16T08:08:02.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EntryPoint.cpp",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp",
+              "RelativeDocumentMoniker": "Sandbox\\EntryPoint.cpp",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp",
+              "RelativeToolTip": "Sandbox\\EntryPoint.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-16T07:33:58.065Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "RenderSystem.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\RenderSystem.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h",
-              "RelativeToolTip": "Vertex Engine\\RenderSystem.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-18T04:14:50.262Z",
+              "Title": "GlfwInputSystem.cpp",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.cpp",
+              "RelativeDocumentMoniker": "Vertex Engine\\GlfwInputSystem.cpp",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlfwInputSystem.cpp",
+              "RelativeToolTip": "Vertex Engine\\GlfwInputSystem.cpp",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAAFwAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-23T03:48:52.829Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
+              "Title": "KeyCode.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\KeyCode.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\KeyCode.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\KeyCode.h",
+              "RelativeToolTip": "Vertex Engine\\KeyCode.h",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-23T06:51:10.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Renderer.cpp",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.cpp",
               "RelativeDocumentMoniker": "Vertex Engine\\Renderer.cpp",
@@ -233,45 +310,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "SandboxApp.cpp",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp",
-              "RelativeDocumentMoniker": "Sandbox\\SandboxApp.cpp",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.cpp",
-              "RelativeToolTip": "Sandbox\\SandboxApp.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-16T07:01:00.155Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Renderer.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\Renderer.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h",
-              "RelativeToolTip": "Vertex Engine\\Renderer.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-18T04:15:37.839Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EntryPoint.cpp",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp",
-              "RelativeDocumentMoniker": "Sandbox\\EntryPoint.cpp",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\EntryPoint.cpp",
-              "RelativeToolTip": "Sandbox\\EntryPoint.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-16T07:33:58.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "iRenderer.h",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\iRenderer.h",
               "RelativeDocumentMoniker": "Vertex Engine\\iRenderer.h",
@@ -284,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "RenderSystem.cpp",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.cpp",
               "RelativeDocumentMoniker": "Vertex Engine\\RenderSystem.cpp",
@@ -297,59 +335,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Window.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\Window.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Window.h",
-              "RelativeToolTip": "Vertex Engine\\Window.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-16T08:08:02.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "GlWindow.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\GlWindow.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.h",
-              "RelativeToolTip": "Vertex Engine\\GlWindow.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAALAAAAAAAAAA==",
+              "Title": "RenderSystem.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\RenderSystem.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\RenderSystem.h",
+              "RelativeToolTip": "Vertex Engine\\RenderSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-17T02:20:26.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Application.h",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h",
-              "RelativeDocumentMoniker": "Vertex Engine\\Application.h",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Application.h",
-              "RelativeToolTip": "Vertex Engine\\Application.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-02-16T06:51:02.721Z",
+              "WhenOpened": "2026-02-18T04:14:50.262Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "GlWindow.cpp",
-              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.cpp",
-              "RelativeDocumentMoniker": "Vertex Engine\\GlWindow.cpp",
-              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\GlWindow.cpp",
-              "RelativeToolTip": "Vertex Engine\\GlWindow.cpp",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAG0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-02-17T02:28:52.262Z",
+              "Title": "Renderer.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\Renderer.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Renderer.h",
+              "RelativeToolTip": "Vertex Engine\\Renderer.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-18T04:15:37.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "InputSystem.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\InputSystem.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\InputSystem.h",
+              "RelativeToolTip": "Vertex Engine\\InputSystem.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-18T08:36:36.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "EntryPoint.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\EntryPoint.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EntryPoint.h",
+              "RelativeToolTip": "Vertex Engine\\EntryPoint.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-16T06:57:40.065Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 20,
+              "Title": "Component.h",
+              "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h",
+              "RelativeDocumentMoniker": "Vertex Engine\\Component.h",
+              "ToolTip": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\Component.h",
+              "RelativeToolTip": "Vertex Engine\\Component.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-18T08:22:34.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "SandboxApp.h",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Sandbox\\SandboxApp.h",
               "RelativeDocumentMoniker": "Sandbox\\SandboxApp.h",
@@ -361,7 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "EngineTime.h",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\EngineTime.h",
               "RelativeDocumentMoniker": "Vertex Engine\\EngineTime.h",
@@ -373,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "pch.cpp",
               "DocumentMoniker": "C:\\Users\\dylan\\OneDrive\\Documents\\Vertex-Engine-3\\Vertex Engine\\Vertex Engine\\pch.cpp",
               "RelativeDocumentMoniker": "Vertex Engine\\pch.cpp",

@@ -18,6 +18,9 @@ namespace VertexEngine {
 		void SetVerticalSync(bool _vSync) override;
 		bool IsWindowClosed() override;
 		void CloseWindow() override;
+
+		bool IsWindowFullscreen() override;
+		GLFWwindow* GetWindowHandle() const;
 	private:
 		GLFWwindow* m_WindowHandle = nullptr;
 		std::string m_WindowName = "Vertex Engine 3";

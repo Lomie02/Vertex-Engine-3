@@ -18,6 +18,7 @@ namespace VertexEngine {
 		virtual void SetVerticalSync(bool _vSync) = 0;
 		virtual bool IsWindowClosed() = 0;
 		virtual void CloseWindow() = 0;
+		virtual bool IsWindowFullscreen() = 0;
 
 	private:
 		struct WindowDataProfile {

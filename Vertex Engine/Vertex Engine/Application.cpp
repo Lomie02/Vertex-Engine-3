@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "Application.h"
 #include "GlWindow.h"
-
+#include "GlfwInputSystem.h"
+#include <memory>
 VertexEngine::Application::Application()
 {
 	InitProps();// Initalize all systems & check that they actually are created.
@@ -23,6 +24,9 @@ void VertexEngine::Application::Execute()
 			// Update delta time 
 			if (m_EngineClock)
 				m_EngineClock->ConfigureDeltaTime();
+
+			if (m_EngineInputSystem)
+				m_EngineInputSystem->UpdateInputLogs();
 
 			OnUpdate();
 			OnLateUpdate();
@@ -70,6 +74,13 @@ void VertexEngine::Application::SetVSync(bool _vSync)
 		m_GameWindow->SetVerticalSync(_vSync);
 }
 
+bool VertexEngine::Application::IsWindowFullscreen()
+{
+	if (m_GameWindow)
+		return m_GameWindow->IsWindowFullscreen();
+	return false;
+}
+
 float VertexEngine::Application::GetDelta() const
 {
 	if (m_EngineClock)
@@ -85,7 +96,7 @@ float VertexEngine::Application::GetFixedDelta() const
 
 	return 0.0f;
 }
-  
+
 float VertexEngine::Application::GetFramesPerSecond() const
 {
 	if (m_EngineClock)
@@ -98,6 +109,9 @@ void VertexEngine::Application::InitProps()
 {
 	// Create the window for application.
 	m_GameWindow = Window::Create();
+	m_EngineInputSystem = std::make_unique<GlfwInputSystem>(static_cast<VertexEngine::GlWindow*>(m_GameWindow.get()));
+
+	// engine clock 
 	m_EngineClock = std::make_unique<EngineTime>();
 	m_EngineRenderSystem = std::make_unique<RenderSystem>();
 

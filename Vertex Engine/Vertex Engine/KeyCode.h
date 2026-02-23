@@ -1,0 +1,150 @@
+#pragma once
+
+enum class KeyCode {
+	Unknown = 0,
+	// Letters
+	W,
+	A, 
+	S, 
+	D,
+	Q,
+	E,
+	R,
+	T,
+	Y,
+	U,
+	I,
+	O,
+	P,
+	F,
+	G,
+	H,
+	J,
+	K,
+	L,
+	Z,
+	X,
+	C,
+	V,
+	B,
+	N,
+	M,
+	// Numbers
+	Num0,
+	Num1,
+	Num2,
+	Num3,
+	Num4,
+	Num5,
+	Num6,
+	Num7,
+	Num8,
+	Num9,
+	// Numpad
+	Numpad0,
+	Numpad1,
+	Numpad2,
+	Numpad3,
+	Numpad4,
+	Numpad5,
+	Numpad6,
+	Numpad7,
+	Numpad8,
+	Numpad9,
+	NumpadDecimal,
+	NumpadDivide,
+	NumpadMultiply,
+	NumpadSubtract,
+	NumpadAdd,
+	NumpadEnter,
+	NumpadEqual,
+	// System
+	Spacebar,
+	Enter,
+	Escape,
+	Tab,
+	Backspace,
+	Insert,
+	Delete,
+	Home,
+	End,
+	PageUp,
+	PageDown,
+	PrintScreen,
+	Pause,
+	// Arrows
+	ArrowUp,
+	ArrowDown,
+	ArrowLeft,
+	ArrowRight,
+	// Func Keys
+	F1,
+	F2,
+	F3,
+	F4,
+	F5,
+	F6,
+	F7,
+	F8,
+	F9,
+	F10,
+	F11,
+	F12,
+	F13,
+	F14,
+	// Modifiers
+	LeftShift,
+	RightShift,
+	LeftControl,
+	RightControl,
+	LeftAlt,
+	RightAlt,
+	LeftSuper,
+	RightSuper,
+	CapsLock,
+	NumLock,
+	ScrollLock,
+	// Symbols
+	Minus, // - _
+	GraceAccent, // `~
+	LeftBracket, //[ {
+	RightBracket, // ] }
+	Equal, // = +
+	Backslash,// \ |
+	Semicolon, // ; :
+	Apostraphe,// ' "
+	Comma, // , <
+	Period, // . >
+	Slash, // "/" ?
+	//Mouse
+	MouseLeft,
+	MouseRight,
+	MouseMiddle,
+	MouseButton4,
+	MouseButton5,
+	MouseButton6,
+	MouseButton7,
+	MouseButton8,
+	// Gamepad
+	GamepadA,
+	GamepadB,
+	GamepadX,
+	GamepadY,
+	// Gamepad Triggers & Bumpers.
+	GamepadLeftBumper,
+	GamepadRightBumper,
+	GamepadLeftTrigger,
+	GamepadRightTrigger,
+	// System Gamepad
+	GamepadBack,
+	GamepadStart,
+	GamepadGuide,
+	// Gamepad Stick Press
+	GamepadLeftStick,
+	GamepadRightStick,
+	// Gamepad D-pad
+	GamepadUp,
+	GamepadDown,
+	GamepadLeft,
+	GamepadRight,
+};
