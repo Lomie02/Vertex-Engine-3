@@ -3,6 +3,7 @@
 #include "GlWindow.h"
 #include "GlfwInputSystem.h"
 #include <memory>
+#include <iostream>
 VertexEngine::Application::Application()
 {
 	InitProps();// Initalize all systems & check that they actually are created.
@@ -47,6 +48,8 @@ void VertexEngine::Application::Execute()
 			if (m_GameWindow != nullptr)
 				m_GameWindow->OnUpdate();
 		}
+	else
+		std::cout << "Window & Input Failed!: Graphics API Does not exist. Falling Back to safe mode." << std::endl;
 }
 
 void VertexEngine::Application::Quit()
@@ -108,8 +111,15 @@ float VertexEngine::Application::GetFramesPerSecond() const
 void VertexEngine::Application::InitProps()
 {
 	// Create the window for application.
-	m_GameWindow = Window::Create();
-	m_EngineInputSystem = std::make_unique<GlfwInputSystem>(static_cast<VertexEngine::GlWindow*>(m_GameWindow.get()));
+	m_EngineGraphics = VertexEngine::GraphicsAPI::OpenGL;
+
+	m_GameWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
+
+	if (m_GameWindow)
+		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_GameWindow.get());
+	else
+		std::cout << "Window & Input Failed!: Graphics API Does not exist." << std::endl;
+
 
 	// engine clock 
 	m_EngineClock = std::make_unique<EngineTime>();

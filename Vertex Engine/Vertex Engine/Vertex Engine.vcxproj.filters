@@ -17,10 +17,6 @@
     <Filter Include="Componenets">
       <UniqueIdentifier>{db399259-a9b7-4866-a0e1-909f8ffeaa94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Core\Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -30,6 +26,10 @@
     </Filter>
     <Filter Include="Input">
       <UniqueIdentifier>{a548c2dc-6bce-4eba-877a-82db1fc90f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sandbox API\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,10 +79,16 @@
     <ClInclude Include="KeyCode.h">
       <Filter>Input</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsAPI.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BackendFactory.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Sandbox API\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Core</Filter>
@@ -99,11 +105,14 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="InputAPI.cpp">
-      <Filter>Sandbox API</Filter>
-    </ClCompile>
     <ClCompile Include="GlfwInputSystem.cpp">
       <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputAPI.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BackendFactory.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

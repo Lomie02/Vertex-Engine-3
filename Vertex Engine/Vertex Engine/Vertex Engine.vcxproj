@@ -148,12 +148,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BackendFactory.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GlfwInputSystem.h" />
     <ClInclude Include="GlWindow.h" />
+    <ClInclude Include="GraphicsAPI.h" />
     <ClInclude Include="InputAPI.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="iRenderer.h" />
@@ -166,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BackendFactory.cpp" />
     <ClCompile Include="GlfwInputSystem.cpp" />
     <ClCompile Include="GlWindow.cpp" />
     <ClCompile Include="InputAPI.cpp" />

@@ -7,8 +7,11 @@
 #include "EngineTime.h"
 #include "RenderSystem.h"
 #include "InputSystem.h"
-
 #include "EngineContex.h"
+
+#include "BackendFactory.h"
+#include "GraphicsAPI.h"
+#include "EngineMode.h"
 namespace VertexEngine {
 
 	class Application
@@ -43,11 +46,17 @@ namespace VertexEngine {
 		std::unique_ptr<InputSystem> m_EngineInputSystem;
 
 	private:
+		
+		//TODO: Implement engine health safemode fallback.
+		EngineMode m_EngineHealth; // The current health state of the engine. If everything is init correctly it shall run as normal. If something fails it enters safemode for debugging. 
+		GraphicsAPI m_EngineGraphics; // The graphics api the engine should be using for input/graphics
+		BackendFactory m_EngineBackend; // Backend to create systems based off given api setting.
+
 		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed
 		std::unique_ptr<RenderSystem> m_EngineRenderSystem; // Render objects in the active scene.
 		std::unique_ptr<Window> m_GameWindow; // The window the engine uses.
 
-		std::unique_ptr<EngineContext> m_EngineContext;
+		std::unique_ptr<EngineContext> m_EngineContext; // Engine Context holds core systems that the Sandbox should be allowed to use without giving full application permissions.
 		bool m_IsEngineRunning = false; // Determines of the engine is running
 		void InitProps(); // Create all the systems application owns.
 	};
