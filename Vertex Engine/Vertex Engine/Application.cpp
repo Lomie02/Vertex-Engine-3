@@ -4,6 +4,7 @@
 #include "GlfwInputSystem.h"
 #include <memory>
 #include <iostream>
+#include "Shader.h"
 VertexEngine::Application::Application()
 {
 	InitProps();// Initalize all systems & check that they actually are created.
@@ -15,12 +16,13 @@ VertexEngine::Application::~Application()
 
 void VertexEngine::Application::Execute()
 {
+	OnAwake();
 	OnStart();
 
 	m_IsEngineRunning = true;
 
-	if (m_GameWindow)
-		while (!m_GameWindow->IsWindowClosed()) {
+	if (m_EngineHealth == VertexEngine::EngineMode::NormalMode)
+		while (!m_EngineWindow->IsWindowClosed()) {
 
 			// Update delta time 
 			if (m_EngineClock)
@@ -45,43 +47,56 @@ void VertexEngine::Application::Execute()
 				m_EngineRenderSystem->OnUpdate();
 
 			// Update the window polling. This always should happen last.
-			if (m_GameWindow != nullptr)
-				m_GameWindow->OnUpdate();
+			if (m_EngineWindow != nullptr)
+				m_EngineWindow->OnUpdate();
+
+			if (m_EngineRenderSystem)
+				m_EngineRenderSystem->OnUpdate();
 		}
 	else
-		std::cout << "Window & Input Failed!: Graphics API Does not exist. Falling Back to safe mode." << std::endl;
+		while (m_IsEngineRunning) {
+			// Engine is still runing here but during safemode the engine will not update core systems. Only scenes.
+
+
+		}
 }
 
 void VertexEngine::Application::Quit()
 {
 	m_IsEngineRunning = false;
-	if (m_GameWindow)
-		m_GameWindow->CloseWindow();
+	if (m_EngineWindow)
+		m_EngineWindow->CloseWindow();
 }
 
 void VertexEngine::Application::RenameApplication(std::string _nameApp)
 {
-	if (m_GameWindow)
-		m_GameWindow->SetWindowName(_nameApp);
+	if (m_EngineWindow)
+		m_EngineWindow->SetWindowName(_nameApp);
 }
 
 void VertexEngine::Application::SetApplicationFullscreenMode(bool _fullscreenMode)
 {
-	if (m_GameWindow)
-		m_GameWindow->SetFullscreen(_fullscreenMode);
+	if (m_EngineWindow)
+		m_EngineWindow->SetFullscreen(_fullscreenMode);
 }
 
 void VertexEngine::Application::SetVSync(bool _vSync)
 {
-	if (m_GameWindow)
-		m_GameWindow->SetVerticalSync(_vSync);
+	if (m_EngineWindow)
+		m_EngineWindow->SetVerticalSync(_vSync);
 }
 
 bool VertexEngine::Application::IsWindowFullscreen()
 {
-	if (m_GameWindow)
-		return m_GameWindow->IsWindowFullscreen();
+	if (m_EngineWindow)
+		return m_EngineWindow->IsWindowFullscreen();
 	return false;
+}
+
+void VertexEngine::Application::SetEngineAPI(VertexEngine::GraphicsAPI _api)
+{
+	//TODO: Allow for API to switch at runtime.
+	m_EngineGraphics = _api;
 }
 
 float VertexEngine::Application::GetDelta() const
@@ -110,20 +125,39 @@ float VertexEngine::Application::GetFramesPerSecond() const
 
 void VertexEngine::Application::InitProps()
 {
-	// Create the window for application.
-	m_EngineGraphics = VertexEngine::GraphicsAPI::OpenGL;
+	// Create the Window
+	SetEngineAPI(VertexEngine::GraphicsAPI::OpenGL);
 
-	m_GameWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
+	m_EngineAssetManager = std::make_unique<AssetManager>();
+	std::string name = "Assets";
 
-	if (m_GameWindow)
-		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_GameWindow.get());
-	else
-		std::cout << "Window & Input Failed!: Graphics API Does not exist." << std::endl;
+	if (m_EngineAssetManager)
+		m_EngineAssetManager->AutoLoadAll(name);
 
+	try
+	{
+		// Create core systems based on selected API
+		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
+		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
+		m_EngineRenderer = m_EngineBackend.CreateRenderer(m_EngineGraphics, m_EngineWindow.get(), m_EngineAssetManager.get());
 
+		// Create the render system & assigned the created renderer.
+		m_EngineRenderSystem = std::make_unique<RenderSystem>(m_EngineRenderer.get());
+
+	}
+	catch (const std::exception& e) // If core systems fail to be created, enter safemode to allow the engine to continue to run scenes. Core systems will not be updated.
+	{
+		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
+		std::cout << "VERTEX ERROR: Core Systems failed: " << e.what() << " Entering SafeMode." << std::endl;
+
+		// Reset ptrs
+		m_EngineWindow.reset();
+		m_EngineInputSystem.reset();
+		m_EngineRenderer.reset();
+		m_EngineRenderSystem.reset();
+	}
+
+	// Create the asset manager.
 	// engine clock 
 	m_EngineClock = std::make_unique<EngineTime>();
-	m_EngineRenderSystem = std::make_unique<RenderSystem>();
-
-	OnAwake();
 }

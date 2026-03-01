@@ -1,9 +1,13 @@
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Externals\GLFW\glad.c;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\glad.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Application.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\Application.obj
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssetManager.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\AssetManager.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\BackendFactory.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\BackendFactory.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\GlfwInputSystem.obj
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\GLRenderer.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlWindow.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\GlWindow.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\InputAPI.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\InputAPI.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\pch.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\pch.obj
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Renderer.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\Renderer.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\RenderSystem.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\RenderSystem.obj
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\EngineTime.obj
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Shader.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\Shader.obj
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Texture.cpp;C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\x64\Debug\Texture.obj

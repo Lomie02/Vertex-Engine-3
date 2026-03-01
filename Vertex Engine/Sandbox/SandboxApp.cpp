@@ -1,4 +1,5 @@
 #include "SandboxApp.h"
+#include "Texture.h"
 
 // Required for the engine to link to the sandbox.
 VertexEngine::Application* CreateApp() {
@@ -16,6 +17,13 @@ void SandboxApp::OnAwake()
 void SandboxApp::OnStart()
 {
 	RenameApplication("My Game");
+
+	if (m_EngineAssetManager->Get<VertexEngine::Shader>("gl_default_shader_vertex")) {
+		std::cout << "Loaded Shader!" << std::endl;
+	}
+	else {
+		std::cout << "No Shader!" << std::endl;
+	}
 
 }
 

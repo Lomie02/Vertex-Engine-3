@@ -31,6 +31,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="GLAD">
+      <UniqueIdentifier>{2933d57c-82bf-4045-a7af-38fca3f20268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Asset">
+      <UniqueIdentifier>{e6f98153-fee7-4dc0-ab60-05c4bb73d5db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -55,9 +61,6 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="iRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="framework.h" />
@@ -85,6 +88,42 @@
     <ClInclude Include="BackendFactory.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Renderable.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GLRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFWgraphics.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Externals\GLFW\glad.h">
+      <Filter>GLAD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Externals\GLFW\khrplatform.h">
+      <Filter>GLAD</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetEntry.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Externals\stb\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableType.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -102,9 +141,6 @@
     <ClCompile Include="RenderSystem.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="GlfwInputSystem.cpp">
       <Filter>Input</Filter>
     </ClCompile>
@@ -113,6 +149,21 @@
     </ClCompile>
     <ClCompile Include="BackendFactory.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Externals\GLFW\glad.c">
+      <Filter>GLAD</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Asset</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,12 +5,12 @@ namespace VertexEngine {
 	class RenderSystem
 	{
 	public:
-		RenderSystem();
+		RenderSystem(Renderer* _renderAPI);
 
 		void OnUpdate();
 	private:
 		void InitProps();
-		std::unique_ptr<Renderer> m_MainlineRenderer;
+		Renderer* m_MainlineRenderer;
 	};
 }
 

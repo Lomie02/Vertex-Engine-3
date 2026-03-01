@@ -147,29 +147,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Externals\GLFW\glad.h" />
+    <ClInclude Include="..\Externals\GLFW\khrplatform.h" />
+    <ClInclude Include="..\Externals\stb\stb_image.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetEntry.h" />
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BackendFactory.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GLFWgraphics.h" />
     <ClInclude Include="GlfwInputSystem.h" />
+    <ClInclude Include="GLRenderer.h" />
     <ClInclude Include="GlWindow.h" />
     <ClInclude Include="GraphicsAPI.h" />
     <ClInclude Include="InputAPI.h" />
     <ClInclude Include="InputSystem.h" />
-    <ClInclude Include="iRenderer.h" />
     <ClInclude Include="KeyCode.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Renderable.h" />
+    <ClInclude Include="RenderableType.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="EngineTime.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Externals\GLFW\glad.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BackendFactory.cpp" />
     <ClCompile Include="GlfwInputSystem.cpp" />
+    <ClCompile Include="GLRenderer.cpp" />
     <ClCompile Include="GlWindow.cpp" />
     <ClCompile Include="InputAPI.cpp" />
     <ClCompile Include="pch.cpp">
@@ -178,9 +195,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="EngineTime.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

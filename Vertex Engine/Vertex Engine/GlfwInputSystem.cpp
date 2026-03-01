@@ -62,6 +62,8 @@ bool VertexEngine::GlfwInputSystem::IsGamepad(int _joystick)
 
 void VertexEngine::GlfwInputSystem::UpdateInputLogs()
 {
+	glfwPollEvents();
+
 	if (m_GameWindow == nullptr) return; // Do not update unless window handle has been asighned.
 
 	// Update & poll keyboard inputs

@@ -12,6 +12,8 @@
 #include "BackendFactory.h"
 #include "GraphicsAPI.h"
 #include "EngineMode.h"
+#include "AssetManager.h"
+
 namespace VertexEngine {
 
 	class Application
@@ -33,9 +35,10 @@ namespace VertexEngine {
 
 		// Window Wrappers for Sandbox interactions.
 		void RenameApplication(std::string _nameApp); // Rename the window of the application.
-		void SetApplicationFullscreenMode(bool _fullscreenMode);
-		void SetVSync(bool _vSync);
-		bool IsWindowFullscreen();
+		void SetApplicationFullscreenMode(bool _fullscreenMode); // change the windows fullscreen
+		void SetVSync(bool _vSync); // Set windows Vsync state
+		bool IsWindowFullscreen(); // Is the screen fullscreen
+		void SetEngineAPI(VertexEngine::GraphicsAPI _api); // Set the engines graphics API.
 
 		// Engine Clock Wrappers
 		float GetDelta() const; // Get the current delta time in seconds
@@ -44,6 +47,7 @@ namespace VertexEngine {
 
 		// is only here for input testing until scene manager is added.
 		std::unique_ptr<InputSystem> m_EngineInputSystem;
+		std::unique_ptr<AssetManager> m_EngineAssetManager;
 
 	private:
 		
@@ -53,8 +57,9 @@ namespace VertexEngine {
 		BackendFactory m_EngineBackend; // Backend to create systems based off given api setting.
 
 		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed
-		std::unique_ptr<RenderSystem> m_EngineRenderSystem; // Render objects in the active scene.
-		std::unique_ptr<Window> m_GameWindow; // The window the engine uses.
+		std::unique_ptr<Window> m_EngineWindow; // The window the engine uses.
+		std::unique_ptr<RenderSystem> m_EngineRenderSystem; // The window the engine uses.
+		std::unique_ptr<Renderer> m_EngineRenderer;
 
 		std::unique_ptr<EngineContext> m_EngineContext; // Engine Context holds core systems that the Sandbox should be allowed to use without giving full application permissions.
 		bool m_IsEngineRunning = false; // Determines of the engine is running
