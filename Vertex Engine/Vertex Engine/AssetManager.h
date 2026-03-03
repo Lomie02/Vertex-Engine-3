@@ -1,10 +1,14 @@
 #pragma once
 #include "AssetEntry.h"
+#include <vector>
+#include <string>
+#include "AssetType.h"
 namespace VertexEngine {
 
 	class AssetManager
 	{
 	public:
+		AssetManager();
 
 		// Automatically load all assets in the given path.
 		void AutoLoadAll(std::string& _rootpath);
@@ -38,8 +42,18 @@ namespace VertexEngine {
 			return std::dynamic_pointer_cast<T>(ent.m_Instance);
 		}
 
+		void RegisterFileType(std::string _newFileType,  VertexEngine::AssetType _type); // Add custom or more file types.
+
 	private:
+
+
 		std::unordered_map<std::string, AssetEntry> m_AssetList; // all assets are not loaded unless theyred needed. Only references are saved.
+		std::vector<std::string> m_ImageTypeFilter; // All supported file types that the engine should filter.
+		std::vector<std::string> m_MeshTypeFilter; // All supported file types that the engine should filter.
+		std::vector<std::string> m_AudioTypeFilter; // All supported file types that the engine should filter.
+		std::vector<std::string> m_ShaderTypeFilter; // All supported file types that the engine should filter.
+
+		bool m_HasStarted = false;
 	};
 }
 

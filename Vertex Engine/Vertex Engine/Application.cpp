@@ -31,6 +31,10 @@ void VertexEngine::Application::Execute()
 			if (m_EngineInputSystem)
 				m_EngineInputSystem->UpdateInputLogs();
 
+			if (m_EngineSceneManager)
+				m_EngineSceneManager->OnUpdate();
+
+			// Sandbox update functions.
 			OnUpdate();
 			OnLateUpdate();
 
@@ -39,8 +43,16 @@ void VertexEngine::Application::Execute()
 				while (m_EngineClock->GetFixedDeltaTime() >= m_EngineClock->GetTimeStep()) {
 					OnFixedUpdate();
 					m_EngineClock->ResetFixedDelta();
+
+					// Update scene manager
+					if (m_EngineSceneManager)
+						m_EngineSceneManager->OnFixedUpdate();
 				}
 			}
+
+			// Tell the scene manager to make scenes delete any gameobjects waiting to be deleted by user.
+			if (m_EngineSceneManager)
+				m_EngineSceneManager->ProcessCleanUp();
 
 			// Render system begins the render process.
 			if (m_EngineRenderSystem)
@@ -50,6 +62,7 @@ void VertexEngine::Application::Execute()
 			if (m_EngineWindow != nullptr)
 				m_EngineWindow->OnUpdate();
 
+			// Render system begins the render process.
 			if (m_EngineRenderSystem)
 				m_EngineRenderSystem->OnUpdate();
 		}
@@ -134,6 +147,9 @@ void VertexEngine::Application::InitProps()
 	if (m_EngineAssetManager)
 		m_EngineAssetManager->AutoLoadAll(name);
 
+	// Create the Context menu.
+	m_EngineContext = std::make_unique<EngineContext>();
+
 	try
 	{
 		// Create core systems based on selected API
@@ -143,6 +159,7 @@ void VertexEngine::Application::InitProps()
 
 		// Create the render system & assigned the created renderer.
 		m_EngineRenderSystem = std::make_unique<RenderSystem>(m_EngineRenderer.get());
+		m_EngineSceneManager = std::make_unique<SceneManager>(m_EngineContext.get());
 
 	}
 	catch (const std::exception& e) // If core systems fail to be created, enter safemode to allow the engine to continue to run scenes. Core systems will not be updated.
@@ -155,9 +172,16 @@ void VertexEngine::Application::InitProps()
 		m_EngineInputSystem.reset();
 		m_EngineRenderer.reset();
 		m_EngineRenderSystem.reset();
+		m_EngineSceneManager.reset();
 	}
 
-	// Create the asset manager.
+
 	// engine clock 
 	m_EngineClock = std::make_unique<EngineTime>();
+
+	// Create & link Context APIS
+	m_EngineContext->Input = std::make_unique<InputAPI>(m_EngineInputSystem.get()); // Assign the input to the context menu.
+	m_EngineContext->Window = std::make_unique<WindowAPI>(m_EngineWindow.get()); // Assign the Window to the context menu.
+	m_EngineContext->Time = std::make_unique<TimeAPI>(m_EngineClock.get()); // Assign the Time class to the context menu.
+
 }

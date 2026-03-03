@@ -13,7 +13,7 @@
 #include "GraphicsAPI.h"
 #include "EngineMode.h"
 #include "AssetManager.h"
-
+#include "SceneManager.h"
 namespace VertexEngine {
 
 	class Application
@@ -46,8 +46,8 @@ namespace VertexEngine {
 		float GetFramesPerSecond() const;
 
 		// is only here for input testing until scene manager is added.
-		std::unique_ptr<InputSystem> m_EngineInputSystem;
 		std::unique_ptr<AssetManager> m_EngineAssetManager;
+		std::unique_ptr<SceneManager> m_EngineSceneManager; // Manages all scenes in the engine.
 
 	private:
 		
@@ -59,7 +59,8 @@ namespace VertexEngine {
 		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed
 		std::unique_ptr<Window> m_EngineWindow; // The window the engine uses.
 		std::unique_ptr<RenderSystem> m_EngineRenderSystem; // The window the engine uses.
-		std::unique_ptr<Renderer> m_EngineRenderer;
+		std::unique_ptr<Renderer> m_EngineRenderer; // Renderer used by the engine
+		std::unique_ptr<InputSystem> m_EngineInputSystem;
 
 		std::unique_ptr<EngineContext> m_EngineContext; // Engine Context holds core systems that the Sandbox should be allowed to use without giving full application permissions.
 		bool m_IsEngineRunning = false; // Determines of the engine is running

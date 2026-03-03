@@ -10,7 +10,9 @@ namespace VertexEngine {
 
 		float GetDeltaTime(); // Return the current delta time
 		float GetFixedDeltaTime(); // Return the current fixed delta
+
 		void SetTimeScale(float _scaleTime); // Set the speed that time passes
+		float GetTimeScale(); // Get the current time scale
 
 		float GetTimeStep(); // Get the current time step
 		void ResetFixedDelta(); // Reset fixed delta for next caclulation loop.

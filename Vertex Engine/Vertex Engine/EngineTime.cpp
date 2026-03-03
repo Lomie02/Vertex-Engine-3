@@ -46,6 +46,11 @@ namespace VertexEngine {
 		m_TimeScale = _scaleTime; 
 	}
 
+	float EngineTime::GetTimeScale()
+	{
+		return m_TimeScale;
+	}
+
 	float EngineTime::GetTimeStep()
 	{
 		return m_TimeStep;

@@ -154,11 +154,13 @@
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEntry.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AssetType.h" />
     <ClInclude Include="BackendFactory.h" />
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="Componenet.h" />
     <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GLFWgraphics.h" />
     <ClInclude Include="GlfwInputSystem.h" />
     <ClInclude Include="GLRenderer.h" />
@@ -173,9 +175,15 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="EngineTime.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TimeAPI.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="VertexBehaviour.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Externals\GLFW\glad.c">
@@ -197,8 +205,13 @@
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="EngineTime.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimeAPI.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="WindowAPI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
