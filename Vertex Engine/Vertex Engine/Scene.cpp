@@ -16,7 +16,7 @@ void VertexEngine::Scene::Init(VertexEngine::EngineContext* _ctx)
 
 		if (!ent->IsActive()) continue; // Only update componets if gameobject is active
 
-		for (auto& comp : ent->GetComponenets()) // Update all context into components
+		for (auto& comp : ent->GetComponents()) // Update all context into components
 			comp->OnAwake(*m_Context);
 	}
 }
@@ -31,7 +31,7 @@ void VertexEngine::Scene::OnUpdate()
 
 			if (!ent->IsActive()) continue; // Only update componets if gameobject is active
 
-			for (auto& comp : ent->GetComponenets()) // Update all context into components
+			for (auto& comp : ent->GetComponents()) // Update all context into components
 			{
 				if (!comp->IsEnabled()) continue;
 				comp->OnStart(*m_Context);
@@ -45,7 +45,7 @@ void VertexEngine::Scene::OnUpdate()
 
 		if (!ent->IsActive()) continue; // Only update componets if gameobject is active
 
-		for (auto& comp : ent->GetComponenets()) // Update all context into components
+		for (auto& comp : ent->GetComponents()) // Update all context into components
 		{
 			if (!comp->IsEnabled()) continue;
 			comp->OnUpdate(*m_Context);
@@ -57,7 +57,7 @@ void VertexEngine::Scene::OnUpdate()
 
 		if (!ent->IsActive()) continue; // Only update componets if gameobject is active
 
-		for (auto& comp : ent->GetComponenets()) // Update all context into components
+		for (auto& comp : ent->GetComponents()) // Update all context into components
 		{
 			if (!comp->IsEnabled()) continue;
 			comp->OnFixedUpdate(*m_Context);
@@ -73,7 +73,7 @@ void VertexEngine::Scene::OnFixedUpdate()
 
 		if (!ent->IsActive()) continue; // Only update componets if gameobject is active
 
-		for (auto& comp : ent->GetComponenets()) // Update all context into components
+		for (auto& comp : ent->GetComponents()) // Update all context into components
 		{
 			if (!comp->IsEnabled()) continue;
 			comp->OnFixedUpdate(*m_Context);
@@ -99,11 +99,22 @@ void VertexEngine::Scene::DestroyGameObject(std::weak_ptr<GameObject> _obj)
 		m_PendingDeletion.push_back(ptr);
 }
 
+std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithTag(std::string _tag)
+{
+	// Go through all gameobjects & find the one with matching tag.
+	for (auto& ent : m_GameObjects) {
+		if (ent->GetTag() == _tag)
+			return ent;
+	}
+
+	return std::weak_ptr<GameObject>(); // if no gameobject was found return an empty weak ptr
+}
+
 void VertexEngine::Scene::DeletePendingObjects()
 {
 	for (auto& ent : m_PendingDeletion) {
 
-		for (auto& comp : ent->GetComponenets()) // Call on destroy hook for all comps
+		for (auto& comp : ent->GetComponents()) // Call on destroy hook for all comps
 			comp->OnDestroy();
 
 		// Remove & delete the gameobject from the scene.

@@ -3,6 +3,7 @@
 namespace VertexEngine {
 	class TimeAPI {
 	public:
+		explicit TimeAPI() {};
 		explicit TimeAPI(VertexEngine::EngineTime* _time);
 		float GetDeltaTime(); // Get the delta time
 		float GetFixedDeltaTime(); // Get delta in fixed intervals, used for fixed update

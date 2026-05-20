@@ -20,6 +20,12 @@ namespace VertexEngine {
 		// Get the name of the gameobject.
 		std::string& GetName() { return m_Name; }
 
+		// Set the gameobjects tag
+		void SetTag(std::string _tag) { m_ObjectTag = _tag; }
+
+		// Get the gameobjects tag
+		std::string GetTag() { return m_ObjectTag; }
+
 		// Get the gameobjects current id.
 		unsigned int GetID() { return m_Id; }
 
@@ -41,7 +47,6 @@ namespace VertexEngine {
 			T* raw = comp.get();
 			m_Componenets.push_back(std::move(comp));
 
-			std::cout << "Component has been added" << std::endl;
 			return raw;
 		}
 
@@ -61,7 +66,7 @@ namespace VertexEngine {
 		}
 
 		// Returns a list of all the componenets on the gameobject.
-		const std::vector<std::shared_ptr<VertexEngine::Component>>& GetComponenets() const {
+		const std::vector<std::shared_ptr<VertexEngine::Component>>& GetComponents() const {
 			return m_Componenets;
 		}
 
@@ -86,6 +91,8 @@ namespace VertexEngine {
 
 	private:
 		std::string m_Name = "Gameobject"; // Gameobjects name
+		std::string m_ObjectTag = "untagged"; // Gameobjects tag
+
 		unsigned int m_Id = 0; // Gameobjects Id;
 		bool m_IsActive = true; // Active State of gameobject.
 		VertexEngine::Scene* m_Scene = nullptr; // The scene the gameobject is apart of.

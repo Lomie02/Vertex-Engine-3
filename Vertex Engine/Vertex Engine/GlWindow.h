@@ -12,6 +12,7 @@ namespace VertexEngine {
 		void SetWindowName(std::string _appName) override;
 		void SetFullscreen(bool _fullscreenWindow) override;
 		void OnUpdate() override;
+		std::string GetWindowName() override;
 
 		unsigned int GetHeight() const override;
 		unsigned int GetWidth() const override;

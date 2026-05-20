@@ -28,8 +28,9 @@ void VertexEngine::SceneManager::OnUpdate()
 		m_ActiveScene = m_QueuedScene;
 		m_QueuedScene.reset();
 
-		if (m_ActiveScene)
+		if (m_ActiveScene) {
 			m_ActiveScene->Init(m_Context);
+		}
 	}
 
 	if (m_ActiveScene)

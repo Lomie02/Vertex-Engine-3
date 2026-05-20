@@ -12,6 +12,7 @@ namespace VertexEngine {
 
 		// Automatically load all assets in the given path.
 		void AutoLoadAll(std::string& _rootpath);
+		void HotReload(); // Reloads the asset database.
 
 		// Register a asset manually.
 		template<typename T>
@@ -43,6 +44,7 @@ namespace VertexEngine {
 		}
 
 		void RegisterFileType(std::string _newFileType,  VertexEngine::AssetType _type); // Add custom or more file types.
+		void SetRootPath(std::string _filePath, bool _reloadData = false); // Set the file path the engine should load assets from.
 
 	private:
 
@@ -52,6 +54,7 @@ namespace VertexEngine {
 		std::vector<std::string> m_MeshTypeFilter; // All supported file types that the engine should filter.
 		std::vector<std::string> m_AudioTypeFilter; // All supported file types that the engine should filter.
 		std::vector<std::string> m_ShaderTypeFilter; // All supported file types that the engine should filter.
+		std::string m_AssetRootPath = "asset"; // The file path the engine should use
 
 		bool m_HasStarted = false;
 	};

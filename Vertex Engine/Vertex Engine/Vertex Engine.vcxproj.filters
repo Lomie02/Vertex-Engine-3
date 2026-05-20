@@ -31,11 +31,11 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="GLAD">
-      <UniqueIdentifier>{2933d57c-82bf-4045-a7af-38fca3f20268}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Asset">
       <UniqueIdentifier>{e6f98153-fee7-4dc0-ab60-05c4bb73d5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\GLAD">
+      <UniqueIdentifier>{2933d57c-82bf-4045-a7af-38fca3f20268}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -95,10 +95,10 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Externals\GLFW\glad.h">
-      <Filter>GLAD</Filter>
+      <Filter>Core\GLAD</Filter>
     </ClInclude>
     <ClInclude Include="..\Externals\GLFW\khrplatform.h">
-      <Filter>GLAD</Filter>
+      <Filter>Core\GLAD</Filter>
     </ClInclude>
     <ClInclude Include="Asset.h">
       <Filter>Asset</Filter>
@@ -175,7 +175,7 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\Externals\GLFW\glad.c">
-      <Filter>GLAD</Filter>
+      <Filter>Core\GLAD</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
       <Filter>Core</Filter>

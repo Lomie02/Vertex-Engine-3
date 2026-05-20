@@ -4,6 +4,9 @@
 VertexEngine::InputAPI::InputAPI(InputSystem* _input)
 {
 	m_EngineInput = _input;
+
+	if (!m_EngineInput)
+		throw std::runtime_error("Vertex Error: Input API failed! Input System was bad!");
 }
 
 bool VertexEngine::InputAPI::GetKeyDown(KeyCode _key) const
