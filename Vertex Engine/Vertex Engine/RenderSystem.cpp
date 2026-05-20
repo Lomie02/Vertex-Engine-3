@@ -10,12 +10,12 @@ VertexEngine::RenderSystem::RenderSystem(VertexEngine::Renderer* _renderAPI)
 
 void VertexEngine::RenderSystem::OnUpdate()
 {
+	if (m_MainlineRenderer)
+		m_MainlineRenderer->ClearFrame();
 	// Starting a new frame
 	if (m_MainlineRenderer)
 		m_MainlineRenderer->BeginFrame();
 
-	if (m_MainlineRenderer)
-		m_MainlineRenderer->ClearFrame();
 
 	// Get ready for render submissions
 

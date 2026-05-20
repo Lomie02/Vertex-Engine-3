@@ -64,6 +64,11 @@ void VertexEngine::AssetManager::AutoLoadAll(std::string& _rootpath)
 	}
 }
 
+void VertexEngine::AssetManager::HotReload()
+{
+	//TODO: Implement hot reload 
+}
+
 void VertexEngine::AssetManager::RegisterFileType(std::string _newFileType, VertexEngine::AssetType _type)
 {
 	switch (_type) {
@@ -80,4 +85,13 @@ void VertexEngine::AssetManager::RegisterFileType(std::string _newFileType, Vert
 		m_AudioTypeFilter.push_back(_newFileType);
 		break;
 	}
+}
+
+void VertexEngine::AssetManager::SetRootPath(std::string _filePath, bool _reloadData)
+{
+	// Set the file path string
+	m_AssetRootPath = _filePath;
+
+	// If true reload the asset files
+	if (_reloadData) AutoLoadAll(m_AssetRootPath); 
 }

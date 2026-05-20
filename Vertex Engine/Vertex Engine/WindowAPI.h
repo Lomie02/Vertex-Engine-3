@@ -3,6 +3,7 @@
 namespace VertexEngine {
 	class WindowAPI {
 	public:
+		explicit WindowAPI() {};
 		explicit WindowAPI(VertexEngine::Window* _window);
 		void SetFullscreen(bool _state); // Toggle the window to fullscreen or windowed
 		bool IsFullscreen(); // Is the window fullscreen

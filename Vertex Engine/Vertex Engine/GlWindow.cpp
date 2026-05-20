@@ -85,6 +85,10 @@ namespace VertexEngine {
 		glfwSwapBuffers(m_WindowHandle);
 		glfwPollEvents();
 	}
+	std::string GlWindow::GetWindowName()
+	{
+		return m_WindowName;
+	}
 	unsigned int GlWindow::GetHeight() const
 	{
 		return m_WindowData.Height;

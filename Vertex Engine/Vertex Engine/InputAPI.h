@@ -4,6 +4,7 @@ namespace VertexEngine {
 
 	class InputAPI {
 	public:
+		explicit InputAPI() {};
 		explicit InputAPI(InputSystem* _input);
 
 		// Keyboard inputs

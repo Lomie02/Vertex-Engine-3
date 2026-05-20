@@ -22,6 +22,7 @@ namespace VertexEngine {
 
 		void DestroyGameObject(std::weak_ptr<GameObject> _obj); // Destroy the given gameobject, return if successful.
 
+		// Returns the first loaded gameobject of type.
 		template<typename T>
 		T* FindComponetOfType(bool IncludeInActive = false) {
 
@@ -31,7 +32,7 @@ namespace VertexEngine {
 
 				if (!ent->IsActive() && !IncludeInActive) continue;
 
-				for (auto& comp : ent->GetComponenets()) {
+				for (auto& comp : ent->GetComponents()) {
 
 					if (auto cast = dynamic_cast<T*>(comp.get())) {
 						return cast;
@@ -41,6 +42,9 @@ namespace VertexEngine {
 
 			return nullptr;
 		}
+
+		std::weak_ptr<GameObject> FindGameObjectWithTag(std::string _tag); // Returns the first gameobject loaded with matching tag.
+
 
 	private:
 		void DeletePendingObjects(); // Deletes all objects after the update loop has been processed.

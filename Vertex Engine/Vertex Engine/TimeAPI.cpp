@@ -1,9 +1,13 @@
 #include "pch.h"
 #include "TimeAPI.h"
+#include <iostream>
 
 VertexEngine::TimeAPI::TimeAPI(VertexEngine::EngineTime* _time)
 {
 	m_EngineTime = _time;
+
+	if (!m_EngineTime)
+		throw std::runtime_error("Vertex Error: Time API failed! Engine Time was bad.");
 }
 
 float VertexEngine::TimeAPI::GetDeltaTime()

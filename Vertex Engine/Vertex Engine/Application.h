@@ -35,6 +35,7 @@ namespace VertexEngine {
 
 		// Window Wrappers for Sandbox interactions.
 		void RenameApplication(std::string _nameApp); // Rename the window of the application.
+		std::string GetApplicationName(); // Returns the current name of the application.
 		void SetApplicationFullscreenMode(bool _fullscreenMode); // change the windows fullscreen
 		void SetVSync(bool _vSync); // Set windows Vsync state
 		bool IsWindowFullscreen(); // Is the screen fullscreen
@@ -48,6 +49,9 @@ namespace VertexEngine {
 		// is only here for input testing until scene manager is added.
 		std::unique_ptr<AssetManager> m_EngineAssetManager;
 		std::unique_ptr<SceneManager> m_EngineSceneManager; // Manages all scenes in the engine.
+
+		// Override Functions
+		void SetRootPath(std::string _filePath); // Sets the path for the asset manager
 
 	private:
 		
