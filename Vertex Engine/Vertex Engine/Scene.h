@@ -25,7 +25,7 @@ namespace VertexEngine {
 		template<typename T>
 		T* FindComponetOfType(bool IncludeInActive = false) {
 
-			static_assert(std::is_base_of<VertexEngine::Componenet, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
+			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
 
 			for (auto& ent : m_GameObjects) {
 

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
-#include "Componenet.h"
+#include "Component.h"
 
 VertexEngine::Scene::Scene(std::string _name)
 {

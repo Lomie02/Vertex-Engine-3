@@ -5,7 +5,7 @@
 
 namespace VertexEngine {
 
-	class Componenet;
+	class Component;
 	class Scene;
 
 	class GameObject {
@@ -33,7 +33,7 @@ namespace VertexEngine {
 		template<typename T, typename... Args>
 		T* AddComponenet(Args&&... args) {
 
-			static_assert(std::is_base_of<VertexEngine::Componenet, T>::value, "VERTEX WARNING: Illegal Type in AddComponenet");
+			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in AddComponenet");
 
 			auto comp = std::make_shared<T>(std::forward<Args>(args)...);
 			comp->gameObject = this;
@@ -49,7 +49,7 @@ namespace VertexEngine {
 		template<typename T>
 		T* GetComponenet() {
 
-			static_assert(std::is_base_of<VertexEngine::Componenet, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
+			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
 
 			for (auto& comp : m_Componenets) {
 				if (auto cast = dynamic_cast<T*>(comp.get())) {
@@ -61,7 +61,7 @@ namespace VertexEngine {
 		}
 
 		// Returns a list of all the componenets on the gameobject.
-		const std::vector<std::shared_ptr<VertexEngine::Componenet>>& GetComponenets() const {
+		const std::vector<std::shared_ptr<VertexEngine::Component>>& GetComponenets() const {
 			return m_Componenets;
 		}
 
@@ -69,7 +69,7 @@ namespace VertexEngine {
 		template<typename T>
 		std::vector<T*> GetComponenetsOfType() {
 
-			static_assert(std::is_base_of<VertexEngine::Componenet, T>::value, "VERTEX WARNING: Illegal Type in GetComponenetsOfType");
+			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenetsOfType");
 
 			std::vector<T*> list;
 
@@ -90,6 +90,6 @@ namespace VertexEngine {
 		bool m_IsActive = true; // Active State of gameobject.
 		VertexEngine::Scene* m_Scene = nullptr; // The scene the gameobject is apart of.
 
-		std::vector<std::shared_ptr<VertexEngine::Componenet>> m_Componenets; // Componenets attached to gameobject.
+		std::vector<std::shared_ptr<VertexEngine::Component>> m_Componenets; // Componenets attached to gameobject.
 	};
 }

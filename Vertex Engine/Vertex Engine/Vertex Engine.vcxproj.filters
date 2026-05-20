@@ -121,7 +121,7 @@
     <ClInclude Include="RenderableType.h">
       <Filter>Asset</Filter>
     </ClInclude>
-    <ClInclude Include="Componenet.h">
+    <ClInclude Include="Component.h">
       <Filter>Componenets</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">

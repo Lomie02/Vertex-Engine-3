@@ -156,7 +156,7 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetType.h" />
     <ClInclude Include="BackendFactory.h" />
-    <ClInclude Include="Componenet.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />

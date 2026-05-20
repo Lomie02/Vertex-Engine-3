@@ -1,5 +1,5 @@
 #pragma once
-#include "Componenet.h"
+#include "Component.h"
 #include "VertexBehaviour.h"
 
 namespace VertexEngine {
