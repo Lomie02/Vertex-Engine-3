@@ -8,6 +8,12 @@ VertexEngine::RenderSystem::RenderSystem(VertexEngine::Renderer* _renderAPI)
 	m_MainlineRenderer = _renderAPI;
 }
 
+void VertexEngine::RenderSystem::SetActiveScene(Scene* _activeScene)
+{
+	m_ActiveScene = _activeScene;
+	//TODO: Add a check
+}
+
 void VertexEngine::RenderSystem::OnUpdate()
 {
 	if (m_MainlineRenderer)
@@ -18,6 +24,9 @@ void VertexEngine::RenderSystem::OnUpdate()
 
 
 	// Get ready for render submissions
+
+
+
 
 	Renderable renderSubmission;
 	renderSubmission.Name = "Quit it";

@@ -1,2 +1,113 @@
 ﻿  Application.cpp
-  Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/Application.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+  RenderSystem.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/RenderSystem.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+  Scene.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/Scene.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+  SceneManager.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/SceneManager.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+  StaticMeshRenderer.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(49,57): error C2039: 'StaticMeshRenderer': is not a member of 'VertexEngine'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(6,11):
+      see declaration of 'VertexEngine'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(49,57): error C2065: 'StaticMeshRenderer': undeclared identifier
+  (compiling source file '/StaticMeshRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(49,32): error C2923: 'std::shared_ptr': 'StaticMeshRenderer' is not a valid template type argument for parameter '_Ty'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(49,57):
+      see declaration of 'StaticMeshRenderer'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(49,77): error C2955: 'std::shared_ptr': use of class template requires template argument list
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include\memory(1588,7):
+      see declaration of 'std::shared_ptr'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(50,59): error C2039: 'StaticMeshRenderer': is not a member of 'VertexEngine'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(6,11):
+      see declaration of 'VertexEngine'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(50,59): error C2065: 'StaticMeshRenderer': undeclared identifier
+  (compiling source file '/StaticMeshRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(50,34): error C2923: 'std::shared_ptr': 'StaticMeshRenderer' is not a valid template type argument for parameter '_Ty'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(50,59):
+      see declaration of 'StaticMeshRenderer'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(50,79): error C2955: 'std::shared_ptr': use of class template requires template argument list
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\include\memory(1588,7):
+      see declaration of 'std::shared_ptr'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(62,31): error C2065: 'StaticMeshRenderer': undeclared identifier
+  (compiling source file '/StaticMeshRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(62,20): error C2923: 'std::shared_ptr': 'StaticMeshRenderer' is not a valid template type argument for parameter '_Ty'
+  (compiling source file '/StaticMeshRenderer.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(62,31):
+      see declaration of 'StaticMeshRenderer'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Scene.h(62,20): error C3203: 'shared_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
+  (compiling source file '/StaticMeshRenderer.cpp')
+  
+  Transform.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/Transform.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
+      see declaration of 'VertexEngine'
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
+      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(7,50): error C2504: 'VertexEngine::Component': base class undefined
+  (compiling source file '/Transform.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,25): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
+  (compiling source file '/Transform.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(4,11):
+      see declaration of 'VertexEngine'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,40): error C3646: 'GetFlags': unknown override specifier
+  (compiling source file '/Transform.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,49): error C2059: syntax error: ')'
+  (compiling source file '/Transform.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,66): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+  (compiling source file '/Transform.cpp')
+  
+  Generating Code...

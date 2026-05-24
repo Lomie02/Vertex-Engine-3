@@ -148,6 +148,12 @@
     <ClInclude Include="AssetType.h">
       <Filter>Asset</Filter>
     </ClInclude>
+    <ClInclude Include="StaticMeshRenderer.h">
+      <Filter>Componenets</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponetFlags.h">
+      <Filter>Componenets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -202,6 +208,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="InputAPI.cpp">
+      <Filter>Sandbox API\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMeshRenderer.cpp">
       <Filter>Sandbox API\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

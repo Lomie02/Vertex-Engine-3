@@ -2,6 +2,7 @@
 #include "EngineContex.h"
 #include <vector>
 #include "GameObject.h"
+#include "StaticMeshRenderer.h"
 namespace VertexEngine {
 	class Scene
 	{
@@ -26,7 +27,7 @@ namespace VertexEngine {
 		template<typename T>
 		T* FindComponetOfType(bool IncludeInActive = false) {
 
-			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
+			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponent");
 
 			for (auto& ent : m_GameObjects) {
 
@@ -45,6 +46,9 @@ namespace VertexEngine {
 
 		std::weak_ptr<GameObject> FindGameObjectWithTag(std::string _tag); // Returns the first gameobject loaded with matching tag.
 
+		void RegisterRenderable(std::shared_ptr<VertexEngine::StaticMeshRenderer> _renderable);
+		void UnRegisterRenderable(std::shared_ptr<VertexEngine::StaticMeshRenderer> _renderable);
+
 
 	private:
 		void DeletePendingObjects(); // Deletes all objects after the update loop has been processed.
@@ -55,6 +59,7 @@ namespace VertexEngine {
 		std::vector<std::shared_ptr<GameObject>> m_GameObjects; // Gameobjects owned bt the scene
 		std::vector<std::shared_ptr<GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
 		VertexEngine::EngineContext* m_Context; // Engine context.
+		std::vector<std::shared_ptr<StaticMeshRenderer>> m_RegisterdStaticMeshes;
 	};
 }
 

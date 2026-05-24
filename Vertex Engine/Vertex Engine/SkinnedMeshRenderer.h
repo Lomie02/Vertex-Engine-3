@@ -1,0 +1,12 @@
+#pragma once
+#include "Component.h"
+
+class SkinnedMeshRenderer : public VertexEngine::Component
+{
+public:
+	// Declare this component as a renderable
+	virtual VertexEngine::ComponentFlags GetFlags() const override {
+		return VertexEngine::ComponentFlags::Renderable | VertexEngine::ComponentFlags::Animated;
+	}
+};
+

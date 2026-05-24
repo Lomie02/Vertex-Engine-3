@@ -157,6 +157,7 @@
     <ClInclude Include="AssetType.h" />
     <ClInclude Include="BackendFactory.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponetFlags.h" />
     <ClInclude Include="EngineContex.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="StaticMeshRenderer.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeAPI.h" />
     <ClInclude Include="Transform.h" />
@@ -208,6 +210,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="StaticMeshRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeAPI.cpp" />
     <ClCompile Include="Transform.cpp" />

@@ -110,6 +110,12 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithT
 	return std::weak_ptr<GameObject>(); // if no gameobject was found return an empty weak ptr
 }
 
+void VertexEngine::Scene::RegisterRenderable(std::shared_ptr<VertexEngine::StaticMeshRenderer> _renderable)
+{
+	m_RegisterdStaticMeshes.push_back(_renderable);
+	std::cout << "Renderable added!" << std::endl;
+}
+
 void VertexEngine::Scene::DeletePendingObjects()
 {
 	for (auto& ent : m_PendingDeletion) {

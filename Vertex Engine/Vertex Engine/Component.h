@@ -1,6 +1,7 @@
 #pragma once
 #include "EngineContex.h"
 #include "Scene.h"
+#include "ComponetFlags.h"
 
 namespace VertexEngine {
 
@@ -14,12 +15,18 @@ namespace VertexEngine {
 		virtual void OnDisabled() {}; // Called when script is disabled
 		virtual void OnDestroy() {}; // called when script or gameobject is destroyed.
 
+		virtual void OnAttach(VertexEngine::GameObject* _parent) {}; // Called when componet is added onto gameobject
+		virtual void OnDetach() {}; // Called when componet is removed from gameobject
+
 		virtual void OnAwake(VertexEngine::EngineContext& _engine) {}; // called on init of scene.
 		virtual void OnStart(VertexEngine::EngineContext& _engine) {}; // called at the start of frame
 		virtual void OnUpdate(VertexEngine::EngineContext& _engine) {}; // called every frame.
 
 		virtual void OnLateUpdate(VertexEngine::EngineContext& _engine) {}; // called after update.
 		virtual void OnFixedUpdate(VertexEngine::EngineContext& _engine) {}; // called at a fixed interval for physics steps.
+
+		virtual VertexEngine::ComponentFlags GetFlags() const { return VertexEngine::ComponentFlags::None; } // Get the rendering flags of the component
+		virtual bool HasFlags(VertexEngine::ComponentFlags _flag) const { return (GetFlags() & _flag) == _flag; } // Check if component has any of the given flags
 
 		void SetEnable(bool _State)
 		{

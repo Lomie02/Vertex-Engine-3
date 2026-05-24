@@ -2,7 +2,6 @@
 #include "Texture.h"
 #include <memory>
 #include "TestComp.h"
-
 // Required for the engine to link to the sandbox.
 VertexEngine::Application* CreateApp() {
 
@@ -32,7 +31,8 @@ void SandboxApp::OnStart()
 	if (auto ent = m_MyObject.lock())
 		ent->AddComponenet<VertexEngine::TestComp>();
 
-
+	if (auto ent = m_MyObject.lock())
+		ent->AddComponenet<VertexEngine::StaticMeshRenderer>();
 }
 
 void SandboxApp::OnUpdate()

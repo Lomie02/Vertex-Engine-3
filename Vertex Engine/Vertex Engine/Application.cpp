@@ -220,7 +220,7 @@ void VertexEngine::Application::InitProps()
 	catch (const std::exception& e) // If core systems fail to be created, enter safe-mode to allow the engine to continue to run scenes. Core systems will not be updated.
 	{
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
-		std::cout << "VERTEX ERROR: Core Systems failed: " << e.what() << " Entering SafeMode." << std::endl;
+		std::cout << "VERTEX ERROR: Core Systems failed: " << e.what() << " Entering SafeMode." << std::endl; 
 
 		// Reset ptrs
 		m_EngineWindow.reset(); // App Window
