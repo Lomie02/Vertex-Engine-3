@@ -1,11 +1,11 @@
 #pragma once
-#include "EngineContex.h"
-#include "Scene.h"
-#include "ComponetFlags.h"
+#include "EngineContext.h"
+#include "ComponentFlags.h"
 
 namespace VertexEngine {
 
 	class GameObject;
+	class Scene;
 
 	class Component {
 	public:
@@ -25,8 +25,8 @@ namespace VertexEngine {
 		virtual void OnLateUpdate(VertexEngine::EngineContext& _engine) {}; // called after update.
 		virtual void OnFixedUpdate(VertexEngine::EngineContext& _engine) {}; // called at a fixed interval for physics steps.
 
-		virtual VertexEngine::ComponentFlags GetFlags() const { return VertexEngine::ComponentFlags::None; } // Get the rendering flags of the component
-		virtual bool HasFlags(VertexEngine::ComponentFlags _flag) const { return (GetFlags() & _flag) == _flag; } // Check if component has any of the given flags
+		virtual VertexEngine::ComponentFlags GetFlags() const { return ComponentFlags::None; } // Get the rendering flags of the component
+		virtual bool HasFlags(VertexEngine::ComponentFlags _flag) const { return static_cast<int>(GetFlags() & _flag) != 0; } // Check if component has any of the given flags
 
 		void SetEnable(bool _State)
 		{

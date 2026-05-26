@@ -1,42 +1,8 @@
 ﻿  EntryPoint.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
-  (compiling source file 'EntryPoint.cpp')
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
-      see declaration of 'VertexEngine'
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
-      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
-  
   SandboxApp.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
-  (compiling source file 'SandboxApp.cpp')
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
-      see declaration of 'VertexEngine'
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
-      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
-  
   TestComp.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(50,43): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
-  (compiling source file 'TestComp.cpp')
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(6,11):
-      see declaration of 'VertexEngine'
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(40,6):
-      This diagnostic occurred in the compiler generated function 'T *VertexEngine::GameObject::AddComponenet(Args ...)'
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(7,50): error C2504: 'VertexEngine::Component': base class undefined
-  (compiling source file 'TestComp.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,25): error C2039: 'ComponentFlags': is not a member of 'VertexEngine'
-  (compiling source file 'TestComp.cpp')
-      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(4,11):
-      see declaration of 'VertexEngine'
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,40): error C3646: 'GetFlags': unknown override specifier
-  (compiling source file 'TestComp.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,49): error C2059: syntax error: ')'
-  (compiling source file 'TestComp.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\StaticMeshRenderer.h(12,66): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-  (compiling source file 'TestComp.cpp')
-  
   Generating Code...
+MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Sandbox.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Sandbox.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

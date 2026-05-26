@@ -99,6 +99,13 @@ void VertexEngine::Scene::DestroyGameObject(std::weak_ptr<GameObject> _obj)
 		m_PendingDeletion.push_back(ptr);
 }
 
+void VertexEngine::Scene::RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _mesh)
+{
+	if (!_mesh) return;
+
+	m_RegisterdStaticMeshes.push_back(_mesh);
+}
+
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithTag(std::string _tag)
 {
 	// Go through all gameobjects & find the one with matching tag.
@@ -108,12 +115,6 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithT
 	}
 
 	return std::weak_ptr<GameObject>(); // if no gameobject was found return an empty weak ptr
-}
-
-void VertexEngine::Scene::RegisterRenderable(std::shared_ptr<VertexEngine::StaticMeshRenderer> _renderable)
-{
-	m_RegisterdStaticMeshes.push_back(_renderable);
-	std::cout << "Renderable added!" << std::endl;
 }
 
 void VertexEngine::Scene::DeletePendingObjects()

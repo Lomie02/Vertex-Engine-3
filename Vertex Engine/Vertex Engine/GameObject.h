@@ -47,9 +47,6 @@ namespace VertexEngine {
 			T* raw = comp.get();
 			m_Componenets.push_back(std::move(comp));
 
-			if (comp.get()->HasFlags(VertexEngine::ComponentFlags::Renderable))
-				GetScene()->RegisterRenderable(comp);
-
 			return raw;
 		}
 

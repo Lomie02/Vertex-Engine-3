@@ -3,14 +3,12 @@
 
 namespace VertexEngine {
 
-
-	class StaticMeshRenderer : public VertexEngine::Component
+	class StaticMeshRenderer : public Component
 	{
 	public:
 
-		// Declare this component as a renderable
-		virtual VertexEngine::ComponentFlags GetFlags() const override {
-			return VertexEngine::ComponentFlags::Renderable;
+		virtual ComponentFlags GetFlags() const override {
+			return ComponentFlags::Renderable;
 		}
 
 	};

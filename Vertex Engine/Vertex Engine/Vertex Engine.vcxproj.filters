@@ -64,7 +64,7 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="EngineContex.h">
+    <ClInclude Include="EngineContext.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="InputAPI.h">
@@ -151,7 +151,7 @@
     <ClInclude Include="StaticMeshRenderer.h">
       <Filter>Componenets</Filter>
     </ClInclude>
-    <ClInclude Include="ComponetFlags.h">
+    <ClInclude Include="ComponentFlags.h">
       <Filter>Componenets</Filter>
     </ClInclude>
   </ItemGroup>

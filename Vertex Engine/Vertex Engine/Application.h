@@ -7,7 +7,7 @@
 #include "EngineTime.h"
 #include "RenderSystem.h"
 #include "InputSystem.h"
-#include "EngineContex.h"
+#include "EngineContext.h"
 
 #include "BackendFactory.h"
 #include "GraphicsAPI.h"

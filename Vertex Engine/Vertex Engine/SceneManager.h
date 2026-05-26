@@ -1,5 +1,5 @@
 #pragma once
-#include "EngineContex.h"
+#include "EngineContext.h"
 #include "Scene.h"
 
 namespace VertexEngine {
