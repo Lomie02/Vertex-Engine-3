@@ -1,3 +1,13 @@
-﻿  Sandbox.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Sandbox.exe
+﻿  EntryPoint.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'EntryPoint.cpp')
+  
+  SandboxApp.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'SandboxApp.cpp')
+  
+  TestComp.cpp
+  Generating Code...
+  Sandbox.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Sandbox.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
