@@ -39,13 +39,13 @@ namespace VertexEngine {
 		template<typename T, typename... Args>
 		T* AddComponenet(Args&&... args);
 
-		// Get the componenet of type given.
+		// Get the component of type given.
 		template<typename T>
 		T* GetComponenet();
 
 		// Returns a list of all the componenets on the gameobject.
 		const std::vector<std::shared_ptr<VertexEngine::Component>>& GetComponents() const {
-			return m_Componenets;
+			return m_Components;
 		}
 
 		// Returns a list of all gameobjects of type.
@@ -62,7 +62,7 @@ namespace VertexEngine {
 		bool m_IsActive = true; // Active State of gameobject.
 		Scene* m_Scene = nullptr; // The scene the gameobject is apart of.
 
-		std::vector<std::shared_ptr<VertexEngine::Component>> m_Componenets; // Componenets attached to gameobject.
+		std::vector<std::shared_ptr<VertexEngine::Component>> m_Components; // Components attached to gameobject.
 	};
 
 }

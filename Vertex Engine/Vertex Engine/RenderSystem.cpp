@@ -11,6 +11,8 @@ VertexEngine::RenderSystem::RenderSystem(VertexEngine::Renderer* _renderAPI)
 void VertexEngine::RenderSystem::OnSceneChanged(Scene* _scene)
 {
 	m_ActiveScene = _scene;
+
+	std::cout << "Scene Changed" << std::endl;
 }
 
 void VertexEngine::RenderSystem::OnUpdate()

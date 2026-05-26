@@ -206,8 +206,8 @@ void VertexEngine::Application::InitProps()
 		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
 
 		// Create the render system & assigned the created renderer.
-		m_EngineRenderSystem = std::make_unique<RenderSystem>(m_EngineRenderer.get());
 		m_EngineSceneManager = std::make_unique<SceneManager>(m_EngineContext.get());
+		m_EngineRenderSystem = std::make_unique<RenderSystem>(m_EngineRenderer.get());
 
 		// engine clock 
 		m_EngineClock = std::make_unique<EngineTime>();
@@ -220,7 +220,7 @@ void VertexEngine::Application::InitProps()
 	catch (const std::exception& e) // If core systems fail to be created, enter safe-mode to allow the engine to continue to run scenes. Core systems will not be updated.
 	{
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
-		std::cout << "VERTEX ERROR: Core Systems failed: " << e.what() << " Entering SafeMode." << std::endl; 
+		std::cout << "VERTEX ERROR: Core Systems failed: " << e.what() << " Entering SafeMode." << std::endl;
 
 		// Reset ptrs
 		m_EngineWindow.reset(); // App Window
@@ -230,6 +230,15 @@ void VertexEngine::Application::InitProps()
 		m_EngineRenderSystem.reset(); // Render System
 		m_EngineSceneManager.reset(); // Scene Manager
 		m_EngineClock.reset(); // Time Class
+	}
+
+	// If both the scene manager & render system have been created allow the render system to subscrive to the scene changes.
+	auto renderSystem = m_EngineRenderSystem.get();
+
+	if (m_EngineSceneManager && m_EngineRenderSystem) {
+		m_EngineSceneManager.get()->OnSceneChanged = [renderSystem](Scene* s) {
+			renderSystem->OnSceneChanged(s);
+			};
 	}
 
 	// Check Engine Context APIs 
@@ -253,5 +262,5 @@ void VertexEngine::Application::InitProps()
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
 	}
 
-	
+
 }

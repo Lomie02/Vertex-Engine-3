@@ -33,7 +33,8 @@ namespace VertexEngine {
 		void RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _mesh); // Register static meshes
 		const std::vector<StaticMeshRenderer*>& GetRenderables() const { return m_RegisterdStaticMeshes; }
 
-		void OnComponentAdded(VertexEngine::Component* _component);
+		void OnComponentAdded(VertexEngine::Component* _component); // Add component to the registery
+		void OnComponentRemoved(VertexEngine::Component* _component); // Remove a component from the registry.
 
 		std::weak_ptr<VertexEngine::GameObject> FindGameObjectWithTag(std::string _tag); // Returns the first gameobject loaded with matching tag.
 

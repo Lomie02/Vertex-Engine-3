@@ -117,6 +117,11 @@ void VertexEngine::Scene::OnComponentAdded(VertexEngine::Component* _component)
 	}
 }
 
+void VertexEngine::Scene::OnComponentRemoved(VertexEngine::Component* _component)
+{
+	std::erase(m_RegisterdStaticMeshes, _component);
+}
+
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithTag(std::string _tag)
 {
 	// Go through all gameobjects & find the one with matching tag.

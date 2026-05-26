@@ -1,5 +1,7 @@
 #pragma once
 #include "Scene.h"
+#include <algorithm>
+#include "Component.h"
 
 // Add a component to the gameobject while also returning a ptr.
 template<typename T, typename... Args>
@@ -11,7 +13,7 @@ T* VertexEngine::GameObject::AddComponenet(Args&&... args) {
 	comp->gameObject = this;
 
 	T* raw = comp.get();
-	m_Componenets.push_back(std::move(comp));
+	m_Components.push_back(std::move(comp));
 	raw->OnAttach(this);
 
 	m_Scene->OnComponentAdded(raw);
@@ -27,7 +29,7 @@ T* VertexEngine::GameObject::GetComponenet() {
 
 	static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
 
-	for (auto& comp : m_Componenets) {
+	for (auto& comp : m_Components) {
 		if (auto cast = dynamic_cast<T*>(comp.get())) {
 			return cast;
 		}
@@ -45,7 +47,7 @@ std::vector<T*> VertexEngine::GameObject::GetComponenetsOfType() {
 
 	std::vector<T*> list;
 
-	for (auto& comp : m_Componenets) {
+	for (auto& comp : m_Components) {
 		if (auto cast = dynamic_cast<T*>(comp.get())) {
 			list.push_back(cast);
 		}
