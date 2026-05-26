@@ -18,7 +18,6 @@ void SandboxApp::OnAwake()
 
 	m_MyObject = m_Scene->CreateGameObject("My Object");
 
-
 }
 
 void SandboxApp::OnStart()

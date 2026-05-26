@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Component.h"
+#include "GameObject.h"
 
 VertexEngine::Scene::Scene(std::string _name)
 {
@@ -84,7 +85,7 @@ void VertexEngine::Scene::OnFixedUpdate()
 
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::CreateGameObject(std::string _name)
 {
-	auto ent = std::make_shared<GameObject>(this);
+	auto ent = std::make_shared<VertexEngine::GameObject>(this);
 
 	ent->SetName(_name);
 	m_GameObjects.push_back(ent);
@@ -92,7 +93,7 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::CreateGameObject(st
 	return ent;
 }
 
-void VertexEngine::Scene::DestroyGameObject(std::weak_ptr<GameObject> _obj)
+void VertexEngine::Scene::DestroyGameObject(std::weak_ptr<VertexEngine::GameObject> _obj)
 {
 	// Push the pending object into a queue to be deleted at the end of the update cycle.
 	if (auto ptr = _obj.lock())
@@ -106,6 +107,16 @@ void VertexEngine::Scene::RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _
 	m_RegisterdStaticMeshes.push_back(_mesh);
 }
 
+void VertexEngine::Scene::OnComponentAdded(VertexEngine::Component* _component)
+{
+	if (!_component) return;
+
+	if (_component->HasFlags(ComponentFlags::Renderable)) {
+		m_RegisterdStaticMeshes.push_back(static_cast<StaticMeshRenderer*>(_component));
+		std::cout << "Static mesh Added" << std::endl;
+	}
+}
+
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithTag(std::string _tag)
 {
 	// Go through all gameobjects & find the one with matching tag.
@@ -114,7 +125,7 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithT
 			return ent;
 	}
 
-	return std::weak_ptr<GameObject>(); // if no gameobject was found return an empty weak ptr
+	return std::weak_ptr<VertexEngine::GameObject>(); // if no gameobject was found return an empty weak ptr
 }
 
 void VertexEngine::Scene::DeletePendingObjects()

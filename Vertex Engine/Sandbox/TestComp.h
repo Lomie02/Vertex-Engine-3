@@ -8,5 +8,6 @@ namespace VertexEngine {
 
 		void OnStart(VertexEngine::EngineContext& _engine) override;
 		void OnUpdate(VertexEngine::EngineContext& _engine) override;
+
 	};
 }

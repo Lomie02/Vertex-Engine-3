@@ -37,33 +37,11 @@ namespace VertexEngine {
 
 		// Add a componenet to the gameobject while also returning a ptr.
 		template<typename T, typename... Args>
-		T* AddComponenet(Args&&... args) {
-
-			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in AddComponenet");
-
-			auto comp = std::make_shared<T>(std::forward<Args>(args)...);
-			comp->gameObject = this;
-
-			T* raw = comp.get();
-			m_Componenets.push_back(std::move(comp));
-
-			return raw;
-		}
+		T* AddComponenet(Args&&... args);
 
 		// Get the componenet of type given.
 		template<typename T>
-		T* GetComponenet() {
-
-			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenet");
-
-			for (auto& comp : m_Componenets) {
-				if (auto cast = dynamic_cast<T*>(comp.get())) {
-					return cast;
-				}
-			}
-
-			return nullptr;
-		}
+		T* GetComponenet();
 
 		// Returns a list of all the componenets on the gameobject.
 		const std::vector<std::shared_ptr<VertexEngine::Component>>& GetComponents() const {
@@ -72,20 +50,7 @@ namespace VertexEngine {
 
 		// Returns a list of all gameobjects of type.
 		template<typename T>
-		std::vector<T*> GetComponenetsOfType() {
-
-			static_assert(std::is_base_of<VertexEngine::Component, T>::value, "VERTEX WARNING: Illegal Type in GetComponenetsOfType");
-
-			std::vector<T*> list;
-
-			for (auto& comp : m_Componenets) {
-				if (auto cast = dynamic_cast<T*>(comp.get())) {
-					list.push_back(cast);
-				}
-			}
-
-			return list;
-		}
+		std::vector<T*> GetComponenetsOfType();
 
 		VertexEngine::Scene* GetScene() { return m_Scene; }
 
@@ -95,8 +60,10 @@ namespace VertexEngine {
 
 		unsigned int m_Id = 0; // Gameobjects Id;
 		bool m_IsActive = true; // Active State of gameobject.
-		VertexEngine::Scene* m_Scene = nullptr; // The scene the gameobject is apart of.
+		Scene* m_Scene = nullptr; // The scene the gameobject is apart of.
 
 		std::vector<std::shared_ptr<VertexEngine::Component>> m_Componenets; // Componenets attached to gameobject.
 	};
+
 }
+#include "GameObject.inl";

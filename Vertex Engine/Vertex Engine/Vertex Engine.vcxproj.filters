@@ -214,4 +214,12 @@
       <Filter>Sandbox API\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="GameObject.inl">
+      <Filter>Componenets</Filter>
+    </None>
+    <None Include="Scene.inl">
+      <Filter>Core</Filter>
+    </None>
+  </ItemGroup>
 </Project>

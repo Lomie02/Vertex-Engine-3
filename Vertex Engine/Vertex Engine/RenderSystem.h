@@ -7,11 +7,12 @@ namespace VertexEngine {
 	{
 	public:
 		RenderSystem(Renderer* _renderAPI);
-		void SetActiveScene(Scene* _activeScene);
 
+		void OnSceneChanged(Scene* _scene);
 		void OnUpdate();
 	private:
 		void InitProps();
+
 		Renderer* m_MainlineRenderer;
 		Scene* m_ActiveScene;
 	};

@@ -216,6 +216,10 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowAPI.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="GameObject.inl" />
+    <None Include="Scene.inl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

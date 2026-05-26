@@ -1,6 +1,7 @@
 #pragma once
 #include "EngineContext.h"
 #include "Scene.h"
+#include <functional>
 
 namespace VertexEngine {
 	class SceneManager
@@ -16,11 +17,13 @@ namespace VertexEngine {
 
 		void ProcessCleanUp(); // called after all update processing & deletes any pending objects set for deletion.
 
+		std::function<void(Scene*)> OnSceneChanged;
 	private:
 		VertexEngine::EngineContext* m_Context;
 
 		std::shared_ptr<Scene> m_ActiveScene;
 		std::shared_ptr<Scene> m_QueuedScene;
+
 	};
 }
 

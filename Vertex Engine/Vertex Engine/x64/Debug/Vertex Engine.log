@@ -1,8 +1,5 @@
-﻿  Application.cpp
-  RenderSystem.cpp
-  Scene.cpp
-  SceneManager.cpp
-  StaticMeshRenderer.cpp
-  Transform.cpp
-  Generating Code...
+﻿  Scene.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file '/Scene.cpp')
+  
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib
