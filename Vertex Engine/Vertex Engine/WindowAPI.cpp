@@ -4,8 +4,10 @@
 VertexEngine::WindowAPI::WindowAPI(VertexEngine::Window* _window)
 {
 	m_EngineWindow = _window;
+	std::string e = "Vertex Error : Window API failed! Window was bad.";
+
 	if (!m_EngineWindow)
-		std::runtime_error("Vertex Error: Window API failed! Window was bad.");
+		throw std::runtime_error(e.c_str());
 }
 
 void VertexEngine::WindowAPI::SetFullscreen(bool _state)

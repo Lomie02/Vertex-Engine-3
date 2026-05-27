@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include "AssetType.h"
+#include "ModelLoader.h"
 namespace VertexEngine {
 
 	class AssetManager
 	{
 	public:
-		AssetManager();
+		AssetManager(std::unique_ptr<VertexEngine::MeshImporter> _importer);
 
 		// Automatically load all assets in the given path.
 		void AutoLoadAll(std::string& _rootpath);
@@ -47,7 +48,7 @@ namespace VertexEngine {
 		void SetRootPath(std::string _filePath, bool _reloadData = false); // Set the file path the engine should load assets from.
 
 	private:
-
+		std::unique_ptr<VertexEngine::ModelLoader> m_ModelLoader;
 
 		std::unordered_map<std::string, AssetEntry> m_AssetList; // all assets are not loaded unless theyred needed. Only references are saved.
 		std::vector<std::string> m_ImageTypeFilter; // All supported file types that the engine should filter.

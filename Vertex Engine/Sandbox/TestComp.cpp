@@ -13,4 +13,3 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 		_engine.Window->SetFullscreen(!_engine.Window->IsFullscreen());
 
 }
- 

@@ -10,7 +10,7 @@ namespace VertexEngine {
 
 		void SetVsync(bool _state); // Set vsync
 	private:
-		VertexEngine::Window* m_EngineWindow; // The engines window.
+		VertexEngine::Window* m_EngineWindow = nullptr; // The engines window.
 	};
 
 

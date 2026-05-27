@@ -13,4 +13,4 @@ namespace VertexEngine {
 		std::unique_ptr<WindowAPI> Window; // Sandbox API for Window
 		std::unique_ptr<TimeAPI> Time; // Sandbox API for Engine Time
 	};
-}
+} 

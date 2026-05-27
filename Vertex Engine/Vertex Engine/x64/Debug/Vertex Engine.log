@@ -1,8 +1,7 @@
 ﻿  Application.cpp
-  RenderSystem.cpp
-  Scene.cpp
-  SceneManager.cpp
-  StaticMeshRenderer.cpp
-  Transform.cpp
+  AssImpLoader.cpp
+  AssetManager.cpp
+  BackendFactory.cpp
+  ModelLoader.cpp
   Generating Code...
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

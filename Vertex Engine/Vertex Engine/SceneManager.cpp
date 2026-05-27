@@ -31,6 +31,9 @@ void VertexEngine::SceneManager::OnUpdate()
 		if (m_ActiveScene) {
 			m_ActiveScene->Init(m_Context);
 		}
+
+		if (OnSceneChanged)
+			OnSceneChanged(m_ActiveScene.get());
 	}
 
 	if (m_ActiveScene)

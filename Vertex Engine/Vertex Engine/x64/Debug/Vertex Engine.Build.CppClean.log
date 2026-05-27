@@ -4,21 +4,24 @@ c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\x64\debug\vertex
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\pch.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glad.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\windowapi.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\shader.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\transform.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\scenemanager.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\scene.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\application.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\backendfactory.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\assetmanager.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\inputapi.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glfwinputsystem.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glwindow.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glrenderer.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\timeapi.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\texture.obj
-c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\rendersystem.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\staticmeshrenderer.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\shader.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\scenemanager.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\scene.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\enginetime.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\rendersystem.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\modelloader.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\inputapi.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glwindow.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glrenderer.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\glfwinputsystem.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\backendfactory.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\assimploader.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\assetmanager.obj
+c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\application.obj
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\x64\debug\vertex engine.lib
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\vertex engine.tlog\cl.command.1.tlog
 c:\users\dylan\onedrive\documents\vertex-engine-3\vertex engine\vertex engine\x64\debug\vertex engine.tlog\cl.items.tlog
