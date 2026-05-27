@@ -22,6 +22,6 @@ namespace VertexEngine {
 		bool GetButtonDown(KeyCode _key, int _joystick) const;
 		bool GetButtonUp(KeyCode _key, int _joystick) const;
 	private:
-		InputSystem* m_EngineInput; // ptr is a ref to the engine owned input system
+		InputSystem* m_EngineInput = nullptr; // ptr is a ref to the engine owned input system
 	};
 }

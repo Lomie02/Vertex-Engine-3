@@ -5,6 +5,8 @@
 #include "InputSystem.h"
 #include "Renderer.h"
 #include "AssetManager.h"
+#include "MeshImporter.h"
+#include "ImporterAPI.h"
 
 namespace VertexEngine {
 
@@ -27,6 +29,7 @@ namespace VertexEngine {
 		/// <returns></returns>
 		std::unique_ptr<VertexEngine::InputSystem> CreateInput(VertexEngine::GraphicsAPI _api, VertexEngine::Window* _window);
 		std::unique_ptr<VertexEngine::Renderer> CreateRenderer(VertexEngine::GraphicsAPI _api, VertexEngine::Window* _window, VertexEngine::AssetManager* _assetManager);
+		std::unique_ptr<VertexEngine::AssetManager> CreateAssetManager(VertexEngine::ImporterAPI _api);
 	};
 }
 

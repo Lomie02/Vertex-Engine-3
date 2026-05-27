@@ -66,4 +66,4 @@ namespace VertexEngine {
 	};
 
 }
-#include "GameObject.inl";
+#include "GameObject.inl"

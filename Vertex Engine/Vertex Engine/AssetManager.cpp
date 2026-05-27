@@ -5,8 +5,15 @@
 #include "Shader.h"
 namespace fs = std::filesystem;
 
-VertexEngine::AssetManager::AssetManager()
+VertexEngine::AssetManager::AssetManager(std::unique_ptr<VertexEngine::MeshImporter> _importer)
 {
+
+	if (_importer) {
+
+		m_ModelLoader = std::make_unique<VertexEngine::ModelLoader>(_importer.get());
+	}
+
+
 	// Assign the default supported types
 	// Add supported image/texture types
 	m_ImageTypeFilter.push_back(".png");
@@ -29,6 +36,7 @@ VertexEngine::AssetManager::AssetManager()
 	// Add Supported shader types
 	m_ShaderTypeFilter.push_back(".vs");
 	m_ShaderTypeFilter.push_back(".fs");
+
 }
 
 void VertexEngine::AssetManager::AutoLoadAll(std::string& _rootpath)

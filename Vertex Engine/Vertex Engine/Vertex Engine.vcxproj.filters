@@ -17,25 +17,28 @@
     <Filter Include="Componenets">
       <UniqueIdentifier>{db399259-a9b7-4866-a0e1-909f8ffeaa94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Sandbox API">
       <UniqueIdentifier>{b6b5fffb-ac1d-462a-82a5-469c7dc1c517}</UniqueIdentifier>
     </Filter>
     <Filter Include="Input">
       <UniqueIdentifier>{a548c2dc-6bce-4eba-877a-82db1fc90f5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sandbox API\Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Asset">
       <UniqueIdentifier>{e6f98153-fee7-4dc0-ab60-05c4bb73d5db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\GLAD">
+    <Filter Include="Model">
+      <UniqueIdentifier>{08765de7-a9f1-45c4-81b7-b04fd40a1fe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="GLAD">
       <UniqueIdentifier>{2933d57c-82bf-4045-a7af-38fca3f20268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -95,10 +98,10 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Externals\GLFW\glad.h">
-      <Filter>Core\GLAD</Filter>
+      <Filter>GLAD</Filter>
     </ClInclude>
     <ClInclude Include="..\Externals\GLFW\khrplatform.h">
-      <Filter>Core\GLAD</Filter>
+      <Filter>GLAD</Filter>
     </ClInclude>
     <ClInclude Include="Asset.h">
       <Filter>Asset</Filter>
@@ -154,10 +157,31 @@
     <ClInclude Include="ComponentFlags.h">
       <Filter>Componenets</Filter>
     </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshImporter.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshData.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="AssImpLoader.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ImporterAPI.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
-      <Filter>Sandbox API\Source Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Core</Filter>
@@ -181,7 +205,7 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\Externals\GLFW\glad.c">
-      <Filter>Core\GLAD</Filter>
+      <Filter>GLAD</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
       <Filter>Core</Filter>
@@ -195,12 +219,6 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Componenets</Filter>
     </ClCompile>
-    <ClCompile Include="TimeAPI.cpp">
-      <Filter>Sandbox API\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowAPI.cpp">
-      <Filter>Sandbox API\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Core</Filter>
     </ClCompile>
@@ -208,10 +226,22 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="InputAPI.cpp">
-      <Filter>Sandbox API\Source Files</Filter>
+      <Filter>Sandbox API</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeAPI.cpp">
+      <Filter>Sandbox API</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowAPI.cpp">
+      <Filter>Sandbox API</Filter>
     </ClCompile>
     <ClCompile Include="StaticMeshRenderer.cpp">
-      <Filter>Sandbox API\Source Files</Filter>
+      <Filter>Componenets</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="AssImpLoader.cpp">
+      <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

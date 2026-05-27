@@ -1,6 +1,5 @@
 #pragma once
-#include "glm.hpp";
-
+#include <glm.hpp>
 namespace VertexEngine {
 	struct Vertex {
 		glm::vec3 position;

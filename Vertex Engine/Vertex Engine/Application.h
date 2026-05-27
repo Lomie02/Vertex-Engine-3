@@ -14,6 +14,7 @@
 #include "EngineMode.h"
 #include "AssetManager.h"
 #include "SceneManager.h"
+#include "ImporterAPI.h"
 namespace VertexEngine {
 
 	class Application
@@ -59,6 +60,7 @@ namespace VertexEngine {
 		EngineMode m_EngineHealth; // The current health state of the engine. If everything is init correctly it shall run as normal. If something fails it enters safemode for debugging. 
 		GraphicsAPI m_EngineGraphics; // The graphics api the engine should be using for input/graphics
 		BackendFactory m_EngineBackend; // Backend to create systems based off given api setting.
+		ImporterAPI m_EngineImporter;
 
 		std::unique_ptr<EngineTime> m_EngineClock; // Allows delta to be grabbed
 		std::unique_ptr<Window> m_EngineWindow; // The window the engine uses.

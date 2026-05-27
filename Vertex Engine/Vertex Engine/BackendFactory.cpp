@@ -3,6 +3,8 @@
 #include "GlWindow.h"
 #include "GlfwInputSystem.h"
 #include "GLRenderer.h"
+#include "AssImpLoader.h"
+
 std::unique_ptr<VertexEngine::Window> VertexEngine::BackendFactory::CreateWindow(VertexEngine::GraphicsAPI _api, int width, int height)
 {
 	switch (_api) {
@@ -48,3 +50,17 @@ std::unique_ptr<VertexEngine::Renderer> VertexEngine::BackendFactory::CreateRend
 
 	throw std::runtime_error("Renderer API Failed!");
 }
+
+std::unique_ptr<VertexEngine::AssetManager> VertexEngine::BackendFactory::CreateAssetManager(VertexEngine::ImporterAPI _api)
+{
+
+	switch (_api) {
+	case VertexEngine::ImporterAPI::AssImp:
+		return std::make_unique<VertexEngine::AssetManager>(std::make_unique<VertexEngine::AssImpLoader>());
+		break;
+	}
+
+	throw std::runtime_error("Importer API Failed!");
+}
+
+   

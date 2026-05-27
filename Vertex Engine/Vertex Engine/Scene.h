@@ -46,7 +46,7 @@ namespace VertexEngine {
 		bool m_HasSceneStarted = false; // Is scene hasnt started call start();
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_GameObjects; // Gameobjects owned bt the scene
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
-		VertexEngine::EngineContext* m_Context; // Engine context.
+		VertexEngine::EngineContext* m_Context = nullptr; // Engine context.
 		std::vector<StaticMeshRenderer*> m_RegisterdStaticMeshes; // Static Meshes.
 	};
 }

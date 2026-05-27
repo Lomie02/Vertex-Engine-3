@@ -184,16 +184,6 @@ void VertexEngine::Application::InitProps()
 	// Create the Window
 	SetEngineAPI(VertexEngine::GraphicsAPI::OpenGL);
 
-	// Create asset manager
-	m_EngineAssetManager = std::make_unique<AssetManager>();
-
-	// Set default filepath
-	std::string name = "Assets";
-	m_EngineAssetManager.get()->SetRootPath(name);
-
-	if (m_EngineAssetManager)
-		m_EngineAssetManager->AutoLoadAll(name);
-
 	// Create the Context menu.
 	m_EngineContext = std::make_unique<EngineContext>();
 
@@ -201,6 +191,21 @@ void VertexEngine::Application::InitProps()
 	{
 		// Create core systems based on selected API
 		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
+		m_EngineAssetManager = m_EngineBackend.CreateAssetManager(m_EngineImporter);
+
+		// If the asset manager is created assign all needed data
+		if (m_EngineAssetManager) {
+			if (m_EngineAssetManager) {
+				// Set default filepath
+				std::string name = "Assets";
+				m_EngineAssetManager.get()->SetRootPath(name);
+
+				if (m_EngineAssetManager)
+					m_EngineAssetManager->AutoLoadAll(name);
+			}
+		}
+
+		// Create sub systems
 		m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
 		m_EngineRenderer = m_EngineBackend.CreateRenderer(m_EngineGraphics, m_EngineWindow.get(), m_EngineAssetManager.get());
 		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
@@ -230,7 +235,9 @@ void VertexEngine::Application::InitProps()
 		m_EngineRenderSystem.reset(); // Render System
 		m_EngineSceneManager.reset(); // Scene Manager
 		m_EngineClock.reset(); // Time Class
+		m_EngineAssetManager.reset(); // Asset Manager
 	}
+
 
 	// If both the scene manager & render system have been created allow the render system to subscrive to the scene changes.
 	auto renderSystem = m_EngineRenderSystem.get();

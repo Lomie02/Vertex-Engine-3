@@ -1,20 +1,7 @@
 ﻿  Application.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/Application.cpp')
-  
-  RenderSystem.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/RenderSystem.cpp')
-  
-  Scene.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/Scene.cpp')
-  
-  SceneManager.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GameObject.h(69,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/SceneManager.cpp')
-  
-  StaticMeshRenderer.cpp
-  Transform.cpp
+  AssImpLoader.cpp
+  AssetManager.cpp
+  BackendFactory.cpp
+  ModelLoader.cpp
   Generating Code...
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

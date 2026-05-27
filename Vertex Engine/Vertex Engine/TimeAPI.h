@@ -12,6 +12,6 @@ namespace VertexEngine {
 		float GetTimeScale(); // Returns the current time scale
 
 	private:
-		VertexEngine::EngineTime* m_EngineTime; // The engines time
+		VertexEngine::EngineTime* m_EngineTime = nullptr; // The engines time
 	};
 }

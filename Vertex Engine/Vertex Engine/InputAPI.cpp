@@ -32,3 +32,33 @@ bool VertexEngine::InputAPI::GetKey(KeyCode _key) const
 
 	return false;
 }
+
+bool VertexEngine::InputAPI::GetMouse(KeyCode _key) const
+{
+	return false;
+}
+
+bool VertexEngine::InputAPI::GetMouseDown(KeyCode _key) const
+{
+	return false;
+}
+
+bool VertexEngine::InputAPI::GetMouseUP(KeyCode _key) const
+{
+	return false;
+}
+
+bool VertexEngine::InputAPI::GetButton(KeyCode _key, int _joystick) const
+{
+	return false;
+}
+
+bool VertexEngine::InputAPI::GetButtonDown(KeyCode _key, int _joystick) const
+{
+	return false;
+}
+
+bool VertexEngine::InputAPI::GetButtonUp(KeyCode _key, int _joystick) const
+{
+	return false;
+}
