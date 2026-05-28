@@ -7,5 +7,5 @@ namespace VertexEngine {
 		glm::vec3 texCord;
 		glm::vec3 tangent;
 		glm::vec3 biTangent;
-	};
+	}; 
 }

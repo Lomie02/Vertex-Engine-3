@@ -8,7 +8,7 @@ std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::
 	Assimp::Importer importer; // Define the importer
 	auto CompletedModel = std::make_shared<VertexEngine::Model>();
 
-	if (!std::filesystem::exists(path.c_str())) return CompletedModel; //TODO: Add an error message here.
+	if (!std::filesystem::exists(m_RootPath + path.c_str())) return CompletedModel; //TODO: Add an error message here.
 
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
 
@@ -16,10 +16,14 @@ std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::
 	if (scene == nullptr) return std::shared_ptr<VertexEngine::Model>();
 
 
-
 	ProcessNode(scene->mRootNode, scene, *CompletedModel);
 
 	return CompletedModel;
+}
+
+void VertexEngine::AssImpLoader::SetRootPath(std::string rootPath)
+{
+	m_RootPath = rootPath;
 }
 
 void VertexEngine::AssImpLoader::ProcessNode(aiNode* node, const aiScene* scene, VertexEngine::Model& model)

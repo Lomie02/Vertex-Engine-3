@@ -73,10 +73,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Externals\GLFW/glfw3.lib;</IncludePath>
     <LibraryPath>$(SolutionDir)Externals\GLFW;$(LibraryPath)</LibraryPath>
+    <OutDir>..\x64\Debug</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Externals\GLFW/glfw3.lib;</IncludePath>
     <LibraryPath>$(SolutionDir)Externals\GLFW;$(LibraryPath)</LibraryPath>
+    <OutDir>..\x64\Debug</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

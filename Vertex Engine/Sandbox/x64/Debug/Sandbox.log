@@ -1,8 +1,2 @@
-﻿  EntryPoint.cpp
-  SandboxApp.cpp
-  TestComp.cpp
-  Generating Code...
-MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(537,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   Sandbox.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Sandbox.exe
-  'pwsh.exe' is not recognized as an internal or external command,
-  operable program or batch file.

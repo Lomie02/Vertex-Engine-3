@@ -14,7 +14,7 @@ namespace VertexEngine {
 	public:
 
 		std::shared_ptr<VertexEngine::Model> LoadModel(std::string path) override; // Load & return fully loaded model.
-
+		void SetRootPath(std::string rootPath) override;
 	private:
 		void ProcessNode(aiNode* node, const aiScene* scene, VertexEngine::Model& model); // Processes each parent node in the models
 		VertexEngine::MeshData ProcessMesh(aiMesh* mesh); // Creates & returns a mesh data container.

@@ -4,13 +4,13 @@
 #include "Texture.h"
 #include "Shader.h"
 namespace fs = std::filesystem;
-
+#include <iostream>
 VertexEngine::AssetManager::AssetManager(std::unique_ptr<VertexEngine::MeshImporter> _importer)
 {
 
 	if (_importer) {
 
-		m_ModelLoader = std::make_unique<VertexEngine::ModelLoader>(_importer.get());
+		m_ModelLoader = std::make_unique<VertexEngine::ModelLoader>(std::move(_importer));
 	}
 
 
@@ -52,11 +52,13 @@ void VertexEngine::AssetManager::AutoLoadAll(std::string& _rootpath)
 	}
 
 	// Load in models
-	if (fs::exists(_rootpath)) {
+	if (fs::exists(_rootpath) && m_ModelLoader) {
 		for (auto& file : fs::recursive_directory_iterator(_rootpath)) {
 			if (file.is_regular_file() && std::find(m_MeshTypeFilter.begin(), m_MeshTypeFilter.end(), file.path().filename().extension().string()) != m_MeshTypeFilter.end()) {
 				std::string name = file.path().stem().string();
-				Register<VertexEngine::Texture>(name, file.path().string());
+				Register<VertexEngine::Model>(name, file.path().string());
+
+				std::cout << "Model: " + name + " has been loaded" << std::endl;
 			}
 		}
 	}
@@ -100,6 +102,9 @@ void VertexEngine::AssetManager::SetRootPath(std::string _filePath, bool _reload
 	// Set the file path string
 	m_AssetRootPath = _filePath;
 
+	if (m_ModelLoader)
+		m_ModelLoader->SetRootPath(m_AssetRootPath);
+
 	// If true reload the asset files
-	if (_reloadData) AutoLoadAll(m_AssetRootPath); 
+	if (_reloadData) AutoLoadAll(m_AssetRootPath);
 }

@@ -190,19 +190,17 @@ void VertexEngine::Application::InitProps()
 	try
 	{
 		// Create core systems based on selected API
-		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
 		m_EngineAssetManager = m_EngineBackend.CreateAssetManager(m_EngineImporter);
+		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
 
 		// If the asset manager is created assign all needed data
 		if (m_EngineAssetManager) {
-			if (m_EngineAssetManager) {
-				// Set default filepath
-				std::string name = "Assets";
-				m_EngineAssetManager.get()->SetRootPath(name);
+			// Set default filepath
+			std::string name = "Build/";
+			m_EngineAssetManager->SetRootPath(name);
 
-				if (m_EngineAssetManager)
-					m_EngineAssetManager->AutoLoadAll(name);
-			}
+			if (m_EngineAssetManager)
+				m_EngineAssetManager->AutoLoadAll(name);
 		}
 
 		// Create sub systems
