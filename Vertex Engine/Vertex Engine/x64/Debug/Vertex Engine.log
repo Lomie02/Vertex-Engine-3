@@ -1,2 +1,14 @@
-﻿  AssetManager.cpp
+﻿  GLRenderer.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(100,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file '/GLRenderer.cpp')
+  
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

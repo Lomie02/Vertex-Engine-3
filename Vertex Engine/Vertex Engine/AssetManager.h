@@ -17,12 +17,15 @@ namespace VertexEngine {
 
 		// Register a asset manually.
 		template<typename T>
-		void Register(const std::string& _name, const std::string& _filepath) {
+		void Register(const std::string& _name, const std::string& _filepath, bool useModelList = false) {
 			AssetEntry newEntry;
 			newEntry.m_Path = _filepath;
 			newEntry.m_Factory = []() { return std::make_shared<T>(); };
 
-			m_AssetList[_name] = std::move(newEntry);
+			if (!useModelList)
+				m_AssetList[_name] = std::move(newEntry);
+			else
+				m_ModelList[_name] = std::move(newEntry);
 		}
 
 		// Get requested asset
@@ -48,10 +51,8 @@ namespace VertexEngine {
 
 
 				auto& ent = m_ModelList.at(_name);
-				
-				m_ModelLoader.get()->LoadModel(_name);
 
-				return std::dynamic_pointer_cast<T>(m_ModelLoader.get()->LoadModel(_name));
+				return std::dynamic_pointer_cast<T>(m_ModelLoader->LoadModel(_name));
 			}
 
 
@@ -60,20 +61,20 @@ namespace VertexEngine {
 
 			if (!ent.m_Instance) {
 				ent.m_Instance = ent.m_Factory();
-				ent.m_Instance->Load(ent.m_Path);
+				ent.m_Instance->Load(ent.m_Path);  
 			}
 
 			return std::dynamic_pointer_cast<T>(ent.m_Instance);
 		}
 
-		void RegisterFileType(std::string _newFileType,  VertexEngine::AssetType _type); // Add custom or more file types.
+		void RegisterFileType(std::string _newFileType, VertexEngine::AssetType _type); // Add custom or more file types.
 		void SetRootPath(std::string _filePath, bool _reloadData = false); // Set the file path the engine should load assets from.
 
 	private:
 		std::unique_ptr<VertexEngine::ModelLoader> m_ModelLoader;
 
 		std::unordered_map<std::string, AssetEntry> m_AssetList; // all assets are not loaded unless they are needed. Only references are saved.
-		std::unordered_map<std::string, VertexEngine::Model> m_ModelList; // all models that are loaded.
+		std::unordered_map<std::string, AssetEntry> m_ModelList; // all models that are loaded.
 		std::vector<std::string> m_ImageTypeFilter; // All supported file types that the engine should filter.
 		std::vector<std::string> m_MeshTypeFilter; // All supported file types that the engine should filter.
 		std::vector<std::string> m_AudioTypeFilter; // All supported file types that the engine should filter.

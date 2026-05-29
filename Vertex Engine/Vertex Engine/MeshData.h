@@ -8,5 +8,8 @@ namespace VertexEngine {
 		std::string meshName;
 		std::vector<Vertex> vertices;
 		std::vector<uint32_t> indices;
+
+		bool m_IsUploaded = false;
+		uint32_t m_gpuId = 0;
 	};
 }

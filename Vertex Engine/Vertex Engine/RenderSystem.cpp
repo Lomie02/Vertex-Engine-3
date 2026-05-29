@@ -11,8 +11,6 @@ VertexEngine::RenderSystem::RenderSystem(VertexEngine::Renderer* _renderAPI)
 void VertexEngine::RenderSystem::OnSceneChanged(Scene* _scene)
 {
 	m_ActiveScene = _scene;
-
-	std::cout << "Scene Changed" << std::endl;
 }
 
 void VertexEngine::RenderSystem::OnUpdate()
@@ -28,7 +26,12 @@ void VertexEngine::RenderSystem::OnUpdate()
 
 	for (auto* var : m_ActiveScene->GetRenderables())
 	{
+		if (!var->GetModel()) continue;
+
 		Renderable mesh;
+
+		mesh.m_Models = var->GetModel();
+
 		mesh.Name = var->gameObject->GetName();
 		mesh.m_Type = RenderableType::Mesh_3D;
 

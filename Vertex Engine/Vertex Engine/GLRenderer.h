@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "Shader.h"
 #include <map>
+#include "GPUMesh.h"
 namespace VertexEngine {
 	class GLRenderer : public VertexEngine::Renderer
 	{
@@ -21,7 +22,17 @@ namespace VertexEngine {
 		// Shader
 		unsigned int CompileProgram(std::shared_ptr<Shader> _vertex, std::shared_ptr<Shader> _frag); // Compile the shader program
 		void UseShader(std::shared_ptr<Shader> _vertex, std::shared_ptr<Shader> _frag); // Use shader
+
 	private:
+
+		uint32_t UploadMesh(std::shared_ptr<VertexEngine::MeshData> _mesh);
+
+		uint32_t GenerateUniqueMeshId() { return m_GeneratedIds++; } // Generate a different id for each uploaded mesh for easy cache
+
+		uint32_t m_GeneratedIds = 0;
+		void SetMatrix4(std::string _name, const glm::mat4& matrix); // Set the matrix uniform of shader.
+		void SetVector4f(std::string _name, const glm::vec4& _vec); // Set a vector 4 of shader.
+
 		unsigned int CompileShader(unsigned int type, const std::string& source); // Compile the shaders
 		unsigned int UploadTexture(std::shared_ptr<Texture> _texture); // Upload texture to gpu
 
@@ -36,8 +47,11 @@ namespace VertexEngine {
 		std::shared_ptr<Shader> m_DefaultFragShader;
 
 		// GLRenderer.h
+		unsigned int m_ActiveProgram = 0;
 		unsigned int m_TriangleVAO = 0;
 		unsigned int m_TriangleVBO = 0;
+
+		std::unordered_map<uint32_t, VertexEngine::GPUMesh> m_MeshCacheList; // Cache all uploaded Meshes
 	};
 }
 

@@ -159,6 +159,7 @@
     <ClInclude Include="AssetType.h" />
     <ClInclude Include="AssImpLoader.h" />
     <ClInclude Include="BackendFactory.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentFlags.h" />
     <ClInclude Include="EngineContext.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GLFWgraphics.h" />
     <ClInclude Include="GlfwInputSystem.h" />
+    <ClInclude Include="GPUMesh.h" />
     <ClInclude Include="GLRenderer.h" />
     <ClInclude Include="GlWindow.h" />
     <ClInclude Include="GraphicsAPI.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="InputAPI.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="KeyCode.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="MeshData.h" />
     <ClInclude Include="MeshImporter.h" />
     <ClInclude Include="Model.h" />
@@ -205,6 +208,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssImpLoader.cpp" />
     <ClCompile Include="BackendFactory.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GlfwInputSystem.cpp" />
     <ClCompile Include="GLRenderer.cpp" />
     <ClCompile Include="GlWindow.cpp" />

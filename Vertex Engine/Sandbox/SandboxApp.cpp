@@ -17,6 +17,7 @@ void SandboxApp::OnAwake()
 	m_Scene = m_EngineSceneManager->CreateScene("My Scene");
 
 	m_MyObject = m_Scene->CreateGameObject("My Object");
+	m_Model = m_EngineAssetManager->Get<VertexEngine::Model>("Cube");
 
 }
 
@@ -24,14 +25,19 @@ void SandboxApp::OnStart()
 {
 	RenameApplication("My Game");
 
+	if (m_Model)
+		std::cout << m_Model->modelName << std::endl;
+
 	if (auto ent = m_MyObject.lock())
 		std::cout << ent->GetName() << std::endl;
 
 	if (auto ent = m_MyObject.lock())
 		ent->AddComponenet<VertexEngine::TestComp>();
 
-	if (auto ent = m_MyObject.lock())
+	if (auto ent = m_MyObject.lock()) {
 		ent->AddComponenet<VertexEngine::StaticMeshRenderer>();
+		ent->GetComponenet<VertexEngine::StaticMeshRenderer>()->SetMesh(m_Model);
+	}
 }
 
 void SandboxApp::OnUpdate()

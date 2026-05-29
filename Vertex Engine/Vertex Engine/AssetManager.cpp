@@ -35,7 +35,7 @@ VertexEngine::AssetManager::AssetManager(std::unique_ptr<VertexEngine::MeshImpor
 
 	// Add Supported shader types
 	m_ShaderTypeFilter.push_back(".vs");
-	m_ShaderTypeFilter.push_back(".fs");
+	m_ShaderTypeFilter.push_back(".frag");
 
 }
 
@@ -56,8 +56,8 @@ void VertexEngine::AssetManager::AutoLoadAll(std::string& _rootpath)
 		for (auto& file : fs::recursive_directory_iterator(_rootpath)) {
 			if (file.is_regular_file() && std::find(m_MeshTypeFilter.begin(), m_MeshTypeFilter.end(), file.path().filename().extension().string()) != m_MeshTypeFilter.end()) {
 				std::string name = file.path().stem().string();
-				Register<VertexEngine::Model>(name, file.path().string());
 
+				Register<VertexEngine::Model>(name, file.path().string(), true);
 				std::cout << "Model: " + name + " has been loaded" << std::endl;
 			}
 		}

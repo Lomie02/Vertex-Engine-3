@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "AssImpLoader.h"
-
+#include <iostream>
 #include <filesystem>
 
 std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::string path)
@@ -8,15 +8,15 @@ std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::
 	Assimp::Importer importer; // Define the importer
 	auto CompletedModel = std::make_shared<VertexEngine::Model>();
 
-	if (!std::filesystem::exists(m_RootPath + path.c_str())) return CompletedModel; //TODO: Add an error message here.
+	if (!std::filesystem::exists(m_RootPath + path.c_str() + ".fbx")) { std::cout << "Failed to load model at " << std::endl; return CompletedModel; } //TODO: Add an error message here.
 
-	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
+	const aiScene* scene = importer.ReadFile(m_RootPath + path.c_str() + ".fbx", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
 
-	// If the scene doesnt exist return an empty model.
+	// If the scene doesnt exist return an empty model.   
 	if (scene == nullptr) return std::shared_ptr<VertexEngine::Model>();
-
-
-	ProcessNode(scene->mRootNode, scene, *CompletedModel);
+	
+	CompletedModel->modelName = path;
+	ProcessNode(scene->mRootNode, scene, CompletedModel);
 
 	return CompletedModel;
 }
@@ -26,13 +26,13 @@ void VertexEngine::AssImpLoader::SetRootPath(std::string rootPath)
 	m_RootPath = rootPath;
 }
 
-void VertexEngine::AssImpLoader::ProcessNode(aiNode* node, const aiScene* scene, VertexEngine::Model& model)
+void VertexEngine::AssImpLoader::ProcessNode(aiNode* node, const aiScene* scene, std::shared_ptr<VertexEngine::Model> model)
 {
 	// parent meshes
 	for (unsigned int i = 0; i < node->mNumMeshes; i++) {
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
 
-		model.meshes.push_back(std::make_shared<VertexEngine::MeshData>(ProcessMesh(mesh)));
+		model->meshes.push_back(std::make_shared<VertexEngine::MeshData>(ProcessMesh(mesh)));
 
 	}
 
