@@ -18,7 +18,7 @@ namespace VertexEngine {
 		// Create window & fetch the primary monitor.
 
 		m_WindowData.Height = _height;
-		m_WindowData.Width = _height;
+		m_WindowData.Width = _width;
 
 		GLFWmonitor* currentUserPrimaryMonitor = glfwGetPrimaryMonitor();
 		m_WindowHandle = glfwCreateWindow(m_WindowData.Width, m_WindowData.Height, m_WindowName.c_str(), currentUserPrimaryMonitor, nullptr);
@@ -76,7 +76,7 @@ namespace VertexEngine {
 		else {
 
 			// Sets screen to be windowed.
-			glfwSetWindowMonitor(m_WindowHandle, nullptr, 100, 100, m_WindowData.Width, m_WindowData.Height, 0);
+			glfwSetWindowMonitor(m_WindowHandle, nullptr, 1920, 1080, m_WindowData.Width, m_WindowData.Height, 0);
 
 		}
 	}
@@ -132,4 +132,14 @@ namespace VertexEngine {
 		return nullptr; // if the window handle doesnt exist dont return anything
 	}
 
+	void GlWindow::SetWindowSize(unsigned int _width, unsigned int _height)
+	{
+		if (m_WindowHandle == nullptr) return; // no window then return
+
+		glfwSetWindowSize(m_WindowHandle, _width, _height);
+
+		// Update the window data values. 
+		m_WindowData.Height = _height;
+		m_WindowData.Width = _width;
+	}
 }

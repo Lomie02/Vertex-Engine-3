@@ -81,11 +81,11 @@ void VertexEngine::GLRenderer::Render()
 
 	for (auto& obj : m_RenderQueue) {
 
-		for (auto& sub : obj.m_Models->meshes) {
+		for (auto& mesh : obj.m_Models->meshes) {
 
-			if (!sub->m_IsUploaded) continue;
+			if (!mesh->m_IsUploaded) continue;
 
-			GPUMesh& gpuData = m_MeshCacheList[sub->m_gpuId];
+			GPUMesh& gpuData = m_MeshCacheList[mesh->m_gpuId];
 
 			glm::mat4 model = glm::mat4(1.0f);
 
@@ -95,9 +95,14 @@ void VertexEngine::GLRenderer::Render()
 				glm::vec3(1, 0, 0));
 
 			SetMatrix4("Model", model);
-			SetVector4f("Colour", glm::vec4(1.0f, 1.0f, 0.0f, 0.0f));
+
 			glBindVertexArray(gpuData.VAO);
-			glDrawElements(GL_TRIANGLES, sub->indices.size(), GL_UNSIGNED_INT, nullptr);
+
+			for (auto& sub : mesh->subMeshes) {
+
+				SetVector4f("Colour", glm::vec4(1.0f, 1.0f, 0.0f, 0.0f));
+				glDrawElements(GL_TRIANGLES, sub.indexCount, GL_UNSIGNED_INT, (void*)(sub.indexOffset * sizeof(uint32_t)));
+			}
 		}
 	}
 

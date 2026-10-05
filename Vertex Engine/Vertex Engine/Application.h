@@ -71,6 +71,7 @@ namespace VertexEngine {
 		std::unique_ptr<EngineContext> m_EngineContext; // Engine Context holds core systems that the Sandbox should be allowed to use without giving full application permissions.
 		bool m_IsEngineRunning = false; // Determines of the engine is running
 		void InitProps(); // Create all the systems application owns.
+		int m_ScreenY, m_ScreenX; // Stores the default window size for start up
 	};
 }
 

@@ -12,7 +12,7 @@ VertexEngine::Application* CreateApp() {
 
 void SandboxApp::OnAwake()
 {
-	SetApplicationFullscreenMode(false);
+	SetApplicationFullscreenMode(true);
 
 	m_Scene = m_EngineSceneManager->CreateScene("My Scene");
 

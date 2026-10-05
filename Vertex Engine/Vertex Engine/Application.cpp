@@ -181,18 +181,22 @@ void VertexEngine::Application::SetRootPath(std::string _filePath)
 
 void VertexEngine::Application::InitProps()
 {
+	// Set the windows default size to 1980 x 1080.
+	m_ScreenY = 1920;
+	m_ScreenX = 1080;
+
 	// Create the Window
 	SetEngineAPI(VertexEngine::GraphicsAPI::OpenGL);
 
 	// Create the Context menu.
 	m_EngineContext = std::make_unique<EngineContext>();
 
+	// Attempt to create core engine systems.
 	try
 	{
 		// Create core systems based on selected API
 		m_EngineAssetManager = m_EngineBackend.CreateAssetManager(m_EngineImporter);
-		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, 500, 500);
-
+		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, m_ScreenY, m_ScreenX);
 
 		// If the asset manager is created assign all needed data
 		if (m_EngineAssetManager) {
@@ -205,7 +209,7 @@ void VertexEngine::Application::InitProps()
 		}
 
 		// Create sub systems
-		m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
+		m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get()); 
 		m_EngineRenderer = m_EngineBackend.CreateRenderer(m_EngineGraphics, m_EngineWindow.get(), m_EngineAssetManager.get());
 		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
 
@@ -238,7 +242,7 @@ void VertexEngine::Application::InitProps()
 	}
 
 
-	// If both the scene manager & render system have been created allow the render system to subscrive to the scene changes.
+	// If both the scene manager & render system have been created allow the render system to subscribe to the scene changes.
 	auto renderSystem = m_EngineRenderSystem.get();
 
 	if (m_EngineSceneManager && m_EngineRenderSystem) {

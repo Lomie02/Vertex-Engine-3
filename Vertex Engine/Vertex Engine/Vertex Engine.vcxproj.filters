@@ -187,6 +187,9 @@
     <ClInclude Include="Material.h">
       <Filter>Asset</Filter>
     </ClInclude>
+    <ClInclude Include="SubMeshData.h">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

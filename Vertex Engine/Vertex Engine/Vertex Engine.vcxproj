@@ -191,6 +191,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="StaticMeshRenderer.h" />
+    <ClInclude Include="SubMeshData.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeAPI.h" />
     <ClInclude Include="Transform.h" />
