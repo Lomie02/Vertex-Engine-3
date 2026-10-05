@@ -27,3 +27,4 @@ void VertexEngine::Shader::Load(const std::string& _path)
 	m_AssetLoaded = true;
 
 }
+

@@ -24,6 +24,12 @@ bool VertexEngine::WindowAPI::IsFullscreen()
 	return false;
 }
 
+void VertexEngine::WindowAPI::SetWindowSize(unsigned int _width, unsigned int _height)
+{
+	if (m_EngineWindow)
+		m_EngineWindow->SetWindowSize(_width, _height);
+}
+
 void VertexEngine::WindowAPI::SetVsync(bool _state)
 {
 	if (m_EngineWindow)

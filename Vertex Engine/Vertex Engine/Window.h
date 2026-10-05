@@ -21,6 +21,7 @@ namespace VertexEngine {
 		virtual bool IsWindowFullscreen() = 0;
 
 		virtual std::string GetWindowName() = 0;
+		virtual void SetWindowSize(unsigned int _width, unsigned int _height) = 0;
 
 	private:
 		struct WindowDataProfile {

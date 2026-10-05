@@ -2,11 +2,14 @@
 #include "Shader.h"
 #include "RenderableType.h"
 #include <string>
+#include "Model.h"
+#include "Transform.h"
 namespace VertexEngine {
 	struct Renderable {
-		//TODO: Add all render stuff
 		std::string Name;
-		std::shared_ptr<Shader> m_ShaderOveride;
+		VertexEngine::Transform* m_Transform;
+		std::shared_ptr<VertexEngine::Model> m_Models;
+		std::shared_ptr<Shader> m_ShaderOverride;
 		RenderableType m_Type;
 	};
 }

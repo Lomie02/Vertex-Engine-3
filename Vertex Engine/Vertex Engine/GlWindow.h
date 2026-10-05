@@ -22,6 +22,8 @@ namespace VertexEngine {
 
 		bool IsWindowFullscreen() override;
 		GLFWwindow* GetWindowHandle() const;
+
+		void SetWindowSize(unsigned int _width, unsigned int _height) override;
 	private:
 		GLFWwindow* m_WindowHandle = nullptr;
 		std::string m_WindowName = "Vertex Engine 3";
