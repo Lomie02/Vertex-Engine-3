@@ -2,7 +2,8 @@
 #include "Scene.h"
 #include "Component.h"
 #include "GameObject.h"
-
+#include "Transform.h"
+#include <glm.hpp>
 VertexEngine::Scene::Scene(std::string _name)
 {
 	SetSceneName(_name);
@@ -68,20 +69,51 @@ void VertexEngine::Scene::OnUpdate()
 
 void VertexEngine::Scene::OnFixedUpdate()
 {
-	// This is seperate from OnUpdate because fixed update is called differently.
+	// This is separate from OnUpdate because fixed update is called differently.
 
 	for (auto& ent : m_GameObjects) {
 
-		if (!ent->IsActive()) continue; // Only update componets if gameobject is active
+		if (!ent->IsActive()) continue; // Only update components if gameobject is active
 
 		for (auto& comp : ent->GetComponents()) // Update all context into components
 		{
-			if (!comp->IsEnabled()) continue;
+			if (!comp->IsEnabled()) continue;  
 			comp->OnFixedUpdate(*m_Context);
 		}
 	}
 
 }
+
+void VertexEngine::Scene::UpdateTransforms()
+{
+	for (auto & object : m_GameObjects) {
+		  Transform* transform = object->GetComponenet<Transform>();
+		
+		if (!transform)
+			continue;
+
+		if (!transform->HasParent()) {
+			UpdateTransformHierarchy(transform, glm::mat4(1.0f));
+		}
+	}
+}
+
+void VertexEngine::Scene::UpdateTransformHierarchy(Transform* _transform, const glm::mat4& _parentWorld)
+{
+
+	glm::mat4 local = _transform->GetLocalMatrix();
+
+	_transform->SetWorldMatrix(_parentWorld * local);
+
+	for (const auto& Wchild : _transform->GetChildren()) {
+
+		if (auto child = Wchild.lock()) {
+			UpdateTransformHierarchy(child.get(), _transform->GetWorldMatrix());
+		}
+	}
+}
+
+
 
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::CreateGameObject(std::string _name)
 {
@@ -89,6 +121,7 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::CreateGameObject(st
 
 	ent->SetName(_name);
 	m_GameObjects.push_back(ent);
+	ent->AddComponenet<Transform>();
 
 	return ent;
 }

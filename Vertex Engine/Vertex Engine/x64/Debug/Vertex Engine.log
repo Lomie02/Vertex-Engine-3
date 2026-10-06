@@ -1,24 +1,5 @@
-﻿  Application.cpp
-  BackendFactory.cpp
-  GLRenderer.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-  (compiling source file '/GLRenderer.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-  (compiling source file '/GLRenderer.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-  (compiling source file '/GLRenderer.cpp')
-  
-  GlWindow.cpp
-  GlfwInputSystem.cpp
-  InputAPI.cpp
-  RenderSystem.cpp
+﻿  RenderSystem.cpp
   Scene.cpp
-  SceneManager.cpp
-  StaticMeshRenderer.cpp
   Transform.cpp
-  WindowAPI.cpp
   Generating Code...
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(226,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

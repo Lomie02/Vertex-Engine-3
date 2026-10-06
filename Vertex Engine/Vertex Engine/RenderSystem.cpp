@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "RenderSystem.h"
-
+#include "Transform.h"
 //TODO: Replace all these place holder funcs with correct ones. These are for testing purposes.
 
 VertexEngine::RenderSystem::RenderSystem(VertexEngine::Renderer* _renderAPI)
@@ -31,6 +31,7 @@ void VertexEngine::RenderSystem::OnUpdate()
 		Renderable mesh;
 
 		mesh.m_Models = var->GetModel();
+		mesh.ModelMatrix = var->gameObject->GetComponenet<Transform>()->GetWorldMatrix();
 
 		mesh.Name = var->gameObject->GetName();
 		mesh.m_Type = RenderableType::Mesh_3D;

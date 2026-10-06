@@ -1,5 +1,7 @@
 #pragma once
 #include "Component.h"
+#include "GameObject.h"
+#include "Transform.h"
 namespace VertexEngine {
 
 	class VertexBehaviour : public VertexEngine::Component {

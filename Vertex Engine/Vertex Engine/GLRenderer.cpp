@@ -87,14 +87,7 @@ void VertexEngine::GLRenderer::Render()
 
 			GPUMesh& gpuData = m_MeshCacheList[mesh->m_gpuId];
 
-			glm::mat4 model = glm::mat4(1.0f);
-
-			model = glm::translate(model, glm::vec3(0, -1, -0.5));
-			model = glm::scale(model, glm::vec3(0.5f));
-			model = glm::rotate(model, glm::radians(-90.0f),
-				glm::vec3(1, 0, 0));
-
-			SetMatrix4("Model", model);
+			SetMatrix4("Model", obj.ModelMatrix);
 
 			glBindVertexArray(gpuData.VAO);
 

@@ -4,11 +4,13 @@
 #include "StaticMeshRenderer.h"
 
 namespace VertexEngine {
+
+	class Transform;
+
 	class Scene
 	{
 		friend class SceneManager; // Make scene manager a friend so it can access the DeletePendingObjects() without giving sandbox access to it.
 		class GameObject;
-
 	public:
 		Scene() {};
 		Scene(std::string _name);
@@ -20,6 +22,8 @@ namespace VertexEngine {
 
 		void OnUpdate(); // Runs all update loops on componets.
 		void OnFixedUpdate(); // Runs the fixed update loop, this is done seperate from the main.
+		void UpdateTransforms(); // Update all gameobject transforms in the scene.
+		void UpdateTransformHierarchy(Transform* _transform, const glm::mat4& _parentWorld); // Update transform children
 
 		std::weak_ptr<VertexEngine::GameObject> CreateGameObject(std::string _name = "gameobject"); // Create a new gameobject
 

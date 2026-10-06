@@ -29,6 +29,16 @@ void SandboxApp::OnStart()
 		std::cout << m_Model->modelName << std::endl;
 
 	if (auto ent = m_MyObject.lock())
+		ent->GetComponenet<VertexEngine::Transform>()->m_Rotation =
+		glm::angleAxis(
+			glm::radians(45.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f)
+		);
+
+	if (auto ent = m_MyObject.lock())
+		ent->GetComponenet<VertexEngine::Transform>()->m_Scale = glm::vec3(0.5f, 0.5f, 0.5f);
+
+	if (auto ent = m_MyObject.lock())
 		std::cout << ent->GetName() << std::endl;
 
 	if (auto ent = m_MyObject.lock())
