@@ -33,6 +33,45 @@ glm::mat4 VertexEngine::Transform::GetLocalMatrix() const
 	return trans;
 }
 
+void VertexEngine::Transform::SetPosition(const glm::vec3& _position)
+{
+	m_Position = _position;
+	m_IsWorldMatrixValid = false;
+}
+
+void VertexEngine::Transform::SetRotation(const glm::quat& _rotation)
+{
+	m_Rotation = _rotation;
+	m_IsWorldMatrixValid = false;
+}
+
+void VertexEngine::Transform::SetAngleAxis(float _angle, const glm::vec3& _axis)
+{
+	float axisLength = glm::length(_axis);
+
+	if (axisLength <= 0.0001f) return;
+	m_Rotation = glm::angleAxis(glm::radians(_angle), _axis / axisLength);
+
+	m_IsWorldMatrixValid = false;
+}
+
+void VertexEngine::Transform::SetEulerRotation(const glm::vec3& _angle)
+{
+	m_Rotation = glm::quat(glm::radians(_angle));
+	m_IsWorldMatrixValid = false;
+}
+
+void VertexEngine::Transform::SetScale(const glm::vec3& _scale)
+{
+	m_Scale = _scale;
+	m_IsWorldMatrixValid = false;
+}
+
+glm::vec3 VertexEngine::Transform::GetEulerRotation() const
+{
+	return glm::degrees(glm::eulerAngles(m_Rotation));
+}
+
 void VertexEngine::Transform::SetParent(VertexEngine::Transform* _parent)
 {
 

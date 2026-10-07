@@ -21,11 +21,11 @@ void SandboxApp::OnAwake()
 	m_Camera = m_Scene->CreateGameObject("Camera");
 
 	if (auto dum = m_DummyObject.lock()) {
-		dum->GetComponenet<VertexEngine::Transform>()->m_Position = glm::vec3(5.0f, 10.0f, 0.0f);
+		dum->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(5.0f, 10.0f, 0.0f));
 	}
 
 	if (auto ent = m_MyObject.lock()) {
-		ent->GetComponenet<VertexEngine::Transform>()->m_Position = glm::vec3(1.0f, 1.0f, 1.0f);
+		ent->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(1.0f, 1.0f, 1.0f));
 
 		if (auto dum = m_DummyObject.lock()) {
 			dum->GetComponenet<VertexEngine::Transform>()->SetParent(ent->GetComponenet<VertexEngine::Transform>());
@@ -34,13 +34,13 @@ void SandboxApp::OnAwake()
 
 	if (auto cam = m_Camera.lock()) {
 		cam->AddComponenet<VertexEngine::Camera>();
-		cam->GetComponenet<VertexEngine::Transform>()->m_Position = glm::vec3(0.0f, 0.0f, 20.0f);
+		cam->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(0.0f, 0.0f, 20.0f));
 		cam->GetComponenet<VertexEngine::Camera>()->m_FieldOfView = 100.0f;
 
 		
 	}
 
-	m_Model = m_EngineAssetManager->Get<VertexEngine::Model>("Cube");
+	m_Model = m_EngineAssetManager->Get<VertexEngine::Model>("Squ");
 }
 
 void SandboxApp::OnStart()
@@ -65,12 +65,5 @@ void SandboxApp::OnStart()
 
 void SandboxApp::OnUpdate()
 {	
-	if (auto cube = m_MyObject.lock()) {
-		std::cout << "Cube Pos: " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.x << " | " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.y << " | " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.z << std::endl;
-	}
-
-	if (auto cube = m_Camera.lock()) {
-		std::cout << "Camera Pos: " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.x << " | " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.y << " | " << cube->GetComponenet<VertexEngine::Transform>()->m_Position.z << std::endl;
-	}
 
 }
