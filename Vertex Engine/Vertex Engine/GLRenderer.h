@@ -17,6 +17,7 @@ namespace VertexEngine {
 		void Render() override; // Render everything in queue
 		void EndFrame() override; // End frame & switch polls
 
+		void SubmitCamera(const CameraRenderable& _camera) override; // Submit Camera
 		void BindTexture(std::shared_ptr<Texture> _texture) override; // Bind textures
 
 		// Shader
@@ -24,6 +25,8 @@ namespace VertexEngine {
 		void UseShader(std::shared_ptr<Shader> _vertex, std::shared_ptr<Shader> _frag); // Use shader
 
 	private:
+
+		CameraRenderable m_ActiveCamera;
 
 		uint32_t UploadMesh(std::shared_ptr<VertexEngine::MeshData> _mesh);
 

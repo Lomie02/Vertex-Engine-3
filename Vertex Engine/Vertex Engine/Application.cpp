@@ -17,6 +17,9 @@ VertexEngine::Application::~Application()
 void VertexEngine::Application::Execute()
 {
 	OnAwake();
+	if (m_EngineAssetManager);
+	m_EngineSceneManager->OnUpdateTransforms();
+
 	OnStart();
 
 	m_IsEngineRunning = true;
@@ -89,6 +92,10 @@ void VertexEngine::Application::Execute()
 			// Sandbox update functions.
 			OnUpdate();
 			OnLateUpdate();
+
+			// Update the transforms
+			if (m_EngineSceneManager)
+				m_EngineSceneManager->OnUpdateTransforms();
 
 			// Tell the scene manager to make scenes delete any gameobjects waiting to be deleted by user.
 			if (m_EngineSceneManager)

@@ -77,7 +77,7 @@ void VertexEngine::Scene::OnFixedUpdate()
 
 		for (auto& comp : ent->GetComponents()) // Update all context into components
 		{
-			if (!comp->IsEnabled()) continue;  
+			if (!comp->IsEnabled()) continue;
 			comp->OnFixedUpdate(*m_Context);
 		}
 	}
@@ -86,9 +86,9 @@ void VertexEngine::Scene::OnFixedUpdate()
 
 void VertexEngine::Scene::UpdateTransforms()
 {
-	for (auto & object : m_GameObjects) {
-		  Transform* transform = object->GetComponenet<Transform>();
-		
+	for (auto& object : m_GameObjects) {
+		Transform* transform = object->GetComponenet<Transform>();
+
 		if (!transform)
 			continue;
 
@@ -140,19 +140,33 @@ void VertexEngine::Scene::RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _
 	m_RegisterdStaticMeshes.push_back(_mesh);
 }
 
+void VertexEngine::Scene::RegisterCamera(VertexEngine::Camera* _camera)
+{
+	if (!_camera) return;
+	m_RegisteredCameras.push_back(_camera);
+}
+
 void VertexEngine::Scene::OnComponentAdded(VertexEngine::Component* _component)
 {
 	if (!_component) return;
 
 	if (_component->HasFlags(ComponentFlags::Renderable)) {
 		m_RegisterdStaticMeshes.push_back(static_cast<StaticMeshRenderer*>(_component));
-		std::cout << "Static mesh Added" << std::endl;
+	}
+	else if (_component->HasFlags(ComponentFlags::Camera)) {
+		m_RegisteredCameras.push_back(static_cast<Camera*>(_component));
 	}
 }
 
 void VertexEngine::Scene::OnComponentRemoved(VertexEngine::Component* _component)
 {
-	std::erase(m_RegisterdStaticMeshes, _component);
+
+	if (_component->HasFlags(ComponentFlags::Renderable)) {
+		std::erase(m_RegisterdStaticMeshes, _component);
+	}
+	else if (_component->HasFlags(ComponentFlags::Camera)) {
+		std::erase(m_RegisteredCameras, _component);
+	}
 }
 
 std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::FindGameObjectWithTag(std::string _tag)

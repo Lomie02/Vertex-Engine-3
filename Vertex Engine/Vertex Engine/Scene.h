@@ -2,7 +2,7 @@
 #include "EngineContext.h"
 #include <vector>
 #include "StaticMeshRenderer.h"
-
+#include "Camera.h"
 namespace VertexEngine {
 
 	class Transform;
@@ -37,6 +37,9 @@ namespace VertexEngine {
 		void RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _mesh); // Register static meshes
 		const std::vector<StaticMeshRenderer*>& GetRenderables() const { return m_RegisterdStaticMeshes; }
 
+		void RegisterCamera(VertexEngine::Camera* _camera); // Register camera objects
+		const std::vector<Camera*>& GetCameras() const { return m_RegisteredCameras; } // Get registered cameras
+
 		void OnComponentAdded(VertexEngine::Component* _component); // Add component to the registery
 		void OnComponentRemoved(VertexEngine::Component* _component); // Remove a component from the registry.
 
@@ -52,6 +55,7 @@ namespace VertexEngine {
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
 		VertexEngine::EngineContext* m_Context = nullptr; // Engine context.
 		std::vector<StaticMeshRenderer*> m_RegisterdStaticMeshes; // Static Meshes.
+		std::vector<Camera*> m_RegisteredCameras; // Camera Objects.
 	};
 }
 

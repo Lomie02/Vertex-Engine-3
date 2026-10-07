@@ -21,5 +21,7 @@ private:
 	float m_Timer;
 	std::shared_ptr<VertexEngine::Scene> m_Scene;
 	std::weak_ptr<VertexEngine::GameObject> m_MyObject;
+	std::weak_ptr<VertexEngine::GameObject> m_DummyObject;
+	std::weak_ptr<VertexEngine::GameObject> m_Camera;
 	std::shared_ptr<VertexEngine::Model> m_Model;
 };

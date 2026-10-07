@@ -21,9 +21,21 @@ void VertexEngine::RenderSystem::OnUpdate()
 	// Starting a new frame
 	m_MainlineRenderer->BeginFrame();
 
+	// Submit the camera
+	float aspect =  static_cast<float>(1920.0f) / static_cast<float>(1080.0f);
+
+	for (auto* var : m_ActiveScene->GetCameras())
+	{
+		CameraRenderable camera;
+
+		camera.m_ViewMatrix = glm::inverse(var->gameObject->GetComponenet<Transform>()->GetWorldMatrix());
+		camera.m_ProjectionMatrix = glm::perspective(glm::radians(var->m_FieldOfView), aspect, var->m_NearClip, var->m_FarClip);
+
+		m_MainlineRenderer->SubmitCamera(camera);
+		break;
+	}
 
 	// Get ready for render submissions
-
 	for (auto* var : m_ActiveScene->GetRenderables())
 	{
 		if (!var->GetModel()) continue;

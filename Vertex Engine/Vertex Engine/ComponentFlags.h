@@ -6,7 +6,8 @@ namespace VertexEngine {
 		None = 0,
 		Renderable = 1 << 0,
 		Skinned = 1 << 1,
-		Animated = 1 << 2
+		Animated = 1 << 2,
+		Camera = 1 << 3
 	};
 
 	inline ComponentFlags operator|(ComponentFlags a, ComponentFlags b) {

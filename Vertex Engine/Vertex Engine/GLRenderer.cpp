@@ -88,6 +88,8 @@ void VertexEngine::GLRenderer::Render()
 			GPUMesh& gpuData = m_MeshCacheList[mesh->m_gpuId];
 
 			SetMatrix4("Model", obj.ModelMatrix);
+			SetMatrix4("View", m_ActiveCamera.m_ViewMatrix);
+			SetMatrix4("Projection", m_ActiveCamera.m_ProjectionMatrix);
 
 			glBindVertexArray(gpuData.VAO);
 
@@ -109,6 +111,11 @@ void VertexEngine::GLRenderer::EndFrame()
 
 	glFlush();
 	glFinish();
+}
+
+void VertexEngine::GLRenderer::SubmitCamera(const CameraRenderable& _camera)
+{
+	m_ActiveCamera = _camera;
 }
 
 void VertexEngine::GLRenderer::BindTexture(std::shared_ptr<Texture> _texture)

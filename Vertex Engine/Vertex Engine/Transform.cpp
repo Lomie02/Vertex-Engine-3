@@ -33,12 +33,18 @@ glm::mat4 VertexEngine::Transform::GetLocalMatrix() const
 	return trans;
 }
 
-void VertexEngine::Transform::SetParent(std::weak_ptr<VertexEngine::Transform> _parent)
+void VertexEngine::Transform::SetParent(VertexEngine::Transform* _parent)
 {
 
 	// Store old position
 	glm::mat4 oldWorldMatrix = m_WorldMatrix;
-	auto newParent = _parent.lock();
+	bool preserveWorld = m_IsWorldMatrixValid;
+
+	std::shared_ptr<Transform> newParent;
+
+	if (_parent) {
+		newParent = _parent->shared_from_this();
+	}
 
 	// Check that old & new parent isnt itself
 	if (newParent && newParent.get() == this) return;
@@ -55,24 +61,23 @@ void VertexEngine::Transform::SetParent(std::weak_ptr<VertexEngine::Transform> _
 
 	// check if parent is valid
 	if (!newParent) {
-		SetFromMatrix(oldWorldMatrix);
+
+		if (preserveWorld)
+			SetFromMatrix(oldWorldMatrix);
+
 		return;
 	}
 
-	// set up child relations
-	if (auto parent = _parent.lock()) {
+	if (preserveWorld) {
 
-		if (parent.get() == this)
-			return;
-
-		glm::mat4 newLocalMatrix = glm::inverse(parent->GetWorldMatrix()) * oldWorldMatrix;
+		glm::mat4 newLocalMatrix = glm::inverse(newParent->GetWorldMatrix()) * oldWorldMatrix;
 
 		if (!SetFromMatrix(newLocalMatrix)) return;
-
-		m_Parent = _parent;
-
-		parent->m_Children.push_back(shared_from_this());
 	}
+
+	m_Parent = newParent;
+
+	newParent->m_Children.push_back(shared_from_this());
 }
 
 std::weak_ptr<VertexEngine::Transform> VertexEngine::Transform::GetParent() const
@@ -93,6 +98,7 @@ bool VertexEngine::Transform::HasParent() const
 void VertexEngine::Transform::SetWorldMatrix(const glm::mat4& _matrix)
 {
 	m_WorldMatrix = _matrix;
+	m_IsWorldMatrixValid = true;
 }
 
 glm::mat4 VertexEngine::Transform::GetWorldMatrix() const
