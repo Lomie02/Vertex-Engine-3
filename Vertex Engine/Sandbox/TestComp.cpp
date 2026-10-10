@@ -72,4 +72,9 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 
 		m_Trans->SetPosition(newPos);
 	}
+
+	if (_engine.Input->GetKey(KeyCode::Escape)) {
+
+		_engine.Application->Quit();
+	}
 }

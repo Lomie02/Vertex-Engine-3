@@ -153,6 +153,7 @@
     <ClInclude Include="..\Externals\GLFW\khrplatform.h" />
     <ClInclude Include="..\Externals\stb\stb_image.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="ApplicationAPI.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEntry.h" />
     <ClInclude Include="AssetManager.h" />
@@ -210,6 +211,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ApplicationAPI.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssImpLoader.cpp" />
     <ClCompile Include="BackendFactory.cpp" />

@@ -36,12 +36,18 @@ void SandboxApp::OnAwake()
 		cam->AddComponenet<VertexEngine::Camera>();
 		cam->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(0.0f, 0.7f, 10.0f));
 
-		
+
 	}
 
 	m_Sphere = m_EngineAssetManager->Get<VertexEngine::Model>("Sphere");
 	m_Cube = m_EngineAssetManager->Get<VertexEngine::Model>("Cube");
 
+	if (auto dum = m_DummyObject.lock()) {
+
+		if (auto obj = m_MyObject.lock()) {
+			dum->GetComponenet<VertexEngine::Transform>()->SetParent(obj->GetComponenet<VertexEngine::Transform>());
+		}
+	}
 }
 
 void SandboxApp::OnStart()
@@ -63,6 +69,6 @@ void SandboxApp::OnStart()
 }
 
 void SandboxApp::OnUpdate()
-{	
+{
 
 }

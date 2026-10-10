@@ -20,7 +20,7 @@ namespace VertexEngine {
 		/// <param name="width"></param>
 		/// <param name="height"></param>
 		/// <returns></returns>
-		std::unique_ptr<VertexEngine::Window> CreateWindow(VertexEngine::GraphicsAPI _api, int width, int height);
+		std::unique_ptr<VertexEngine::Window> CreateAppWindow(VertexEngine::GraphicsAPI _api, int width, int height);
 		/// <summary>
 		///  Create & return the inputsystem based on the given API.
 		/// </summary>

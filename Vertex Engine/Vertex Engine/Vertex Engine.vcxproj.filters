@@ -202,6 +202,9 @@
     <ClInclude Include="MaterialData.h">
       <Filter>Asset</Filter>
     </ClInclude>
+    <ClInclude Include="ApplicationAPI.h">
+      <Filter>Sandbox API</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -272,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="CameraRenderable.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ApplicationAPI.cpp">
+      <Filter>Sandbox API</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

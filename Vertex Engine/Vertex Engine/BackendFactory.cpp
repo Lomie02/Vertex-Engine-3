@@ -5,7 +5,7 @@
 #include "GLRenderer.h"
 #include "AssImpLoader.h"
 
-std::unique_ptr<VertexEngine::Window> VertexEngine::BackendFactory::CreateWindow(VertexEngine::GraphicsAPI _api, int width, int height)
+std::unique_ptr<VertexEngine::Window> VertexEngine::BackendFactory::CreateAppWindow(VertexEngine::GraphicsAPI _api, int width, int height)
 {
 	switch (_api) {
 	case VertexEngine::GraphicsAPI::OpenGL:

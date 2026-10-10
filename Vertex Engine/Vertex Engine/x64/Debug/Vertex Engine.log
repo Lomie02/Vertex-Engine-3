@@ -1,10 +1,52 @@
-﻿  Application.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Application.cpp(20,27): warning C4390: ';': empty controlled statement found; is this the intent?
+﻿  pch.cpp
+  glad.c
+  Application.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
+  (compiling source file '/Application.cpp')
+      C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Externals\GLFW\glfw3.h(123,11):
+      see previous definition of 'APIENTRY'
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Application.cpp(22,27): warning C4390: ';': empty controlled statement found; is this the intent?
   (compiling source file '/Application.cpp')
   
+  ApplicationAPI.cpp
+  AssetManager.cpp
+  AssImpLoader.cpp
+  BackendFactory.cpp
+  CameraRenderable.cpp
+  GameObject.cpp
+  GlfwInputSystem.cpp
+  GLRenderer.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  (compiling source file '/GLRenderer.cpp')
+  
+  GlWindow.cpp
+  InputAPI.cpp
+  ModelLoader.cpp
   RenderSystem.cpp
+  EngineTime.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(18,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/EngineTime.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(19,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/EngineTime.cpp')
+  
   Scene.cpp
   SceneManager.cpp
+  Shader.cpp
+  StaticMeshRenderer.cpp
+  Texture.cpp
+  TimeAPI.cpp
+  Generating Code...
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(226,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
+  Compiling...
   Transform.cpp
+  WindowAPI.cpp
   Generating Code...
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

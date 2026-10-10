@@ -26,6 +26,9 @@ namespace VertexEngine {
 		void Execute(); // Run the engine
 		void Quit(); // Quit the application
 
+		// Utility Functions
+		void OpenURL(const wchar_t* _path); // Open web url
+		bool OpenProgram(std::string _name); // Open an app
 	protected:
 		// Engine main functions
 		virtual void OnAwake() {} // Called on initalize
@@ -53,6 +56,7 @@ namespace VertexEngine {
 
 		// Override Functions
 		void SetRootPath(std::string _filePath); // Sets the path for the asset manager
+
 
 	private:
 		
