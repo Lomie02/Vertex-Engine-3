@@ -17,13 +17,13 @@ C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Ap
   GameObject.cpp
   GlfwInputSystem.cpp
   GLRenderer.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(62,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
   GlWindow.cpp
@@ -39,13 +39,14 @@ C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\En
   
   Scene.cpp
   SceneManager.cpp
+  SceneManagerAPI.cpp
   Shader.cpp
   StaticMeshRenderer.cpp
   Texture.cpp
-  TimeAPI.cpp
   Generating Code...
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(226,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
   Compiling...
+  TimeAPI.cpp
   Transform.cpp
   WindowAPI.cpp
   Generating Code...

@@ -34,8 +34,6 @@ VertexEngine::GLRenderer::GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _de
 	{
 		std::cout << "Shaders Success!: Vertex shader loaded." << std::endl;
 	}
-
-
 }
 
 void VertexEngine::GLRenderer::BeginFrame()
@@ -50,6 +48,7 @@ void VertexEngine::GLRenderer::BeginFrame()
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
+
 	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);
@@ -58,8 +57,8 @@ void VertexEngine::GLRenderer::BeginFrame()
 
 void VertexEngine::GLRenderer::ClearFrame()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.3, 0.3, 0.3, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void VertexEngine::GLRenderer::Submit(const Renderable& _mesh)
@@ -70,7 +69,6 @@ void VertexEngine::GLRenderer::Submit(const Renderable& _mesh)
 		if (!sub->m_IsUploaded)
 			UploadMesh(sub);
 	}
-
 }
 
 void VertexEngine::GLRenderer::Render()
@@ -93,9 +91,6 @@ void VertexEngine::GLRenderer::EndFrame()
 {
 	if (m_WindowHandle)
 		glfwSwapBuffers(m_WindowHandle->GetWindowHandle());
-
-	glFlush();
-	glFinish();
 }
 
 void VertexEngine::GLRenderer::SubmitCamera(const CameraRenderable& _camera)
@@ -205,7 +200,6 @@ void VertexEngine::GLRenderer::RenderModelNode(const VertexEngine::ModelNode& no
 	for (const auto& child : node.m_Children) {
 		RenderModelNode(child, nodeWorld, obj);
 	}
-
 }
 
 uint32_t VertexEngine::GLRenderer::UploadMesh(std::shared_ptr<VertexEngine::MeshData> _mesh)

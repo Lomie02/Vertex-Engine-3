@@ -14,7 +14,6 @@ namespace VertexEngine {
 	private:
 
 		float m_Spin;
-		Transform* m_Trans;
 		float m_Movement;
 		float m_Forward;
 	};

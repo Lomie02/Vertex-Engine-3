@@ -3,6 +3,7 @@
 #include "WindowAPI.h"
 #include "TimeAPI.h"
 #include "ApplicationAPI.h"
+#include "SceneManagerAPI.h"
 // The EngineContex allows sandbox componets/ VertexBehaviour scripts to interact with some systems from the engine with an API wrapper.
 // wrapping core systems in a sandbox api allows the user to still use input, window settings, time & more without having access to the engine code directly.
 // There is only 1 engine context that is owned by the engine.
@@ -14,5 +15,6 @@ namespace VertexEngine {
 		std::unique_ptr<WindowAPI> Window; // Sandbox API for Window
 		std::unique_ptr<TimeAPI> Time; // Sandbox API for Engine Time
 		std::unique_ptr<ApplicationAPI> Application; // Sandbox API for Application Functions
+		std::unique_ptr<SceneManagerAPI> SceneManager; // Sandbox API for Scene Management Functions
 	};
 } 

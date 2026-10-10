@@ -194,6 +194,7 @@
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneManagerAPI.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="StaticMeshRenderer.h" />
     <ClInclude Include="SubMeshData.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneManagerAPI.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="StaticMeshRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />

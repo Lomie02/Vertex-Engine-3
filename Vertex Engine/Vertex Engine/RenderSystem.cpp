@@ -17,10 +17,11 @@ void VertexEngine::RenderSystem::OnUpdate()
 {
 	if (!m_ActiveScene || !m_MainlineRenderer) return;
 
-	m_MainlineRenderer->ClearFrame();
 	// Starting a new frame
+
 	m_MainlineRenderer->BeginFrame();
 
+	m_MainlineRenderer->ClearFrame();
 	// Submit the camera
 	float aspect =  static_cast<float>(1920.0f) / static_cast<float>(1080.0f);
 

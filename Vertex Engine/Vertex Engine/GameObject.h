@@ -7,8 +7,11 @@ namespace VertexEngine {
 
 	class Component;
 	class Scene;
+	class Transform;
 
 	class GameObject {
+		friend class Scene;
+
 	public:
 
 		GameObject() {};
@@ -54,10 +57,13 @@ namespace VertexEngine {
 
 		VertexEngine::Scene* GetScene() { return m_Scene; }
 
+		Transform* GetTransform() { return m_GameObjectTransform; }
+
 	private:
 		std::string m_Name = "Gameobject"; // Gameobjects name
 		std::string m_ObjectTag = "untagged"; // Gameobjects tag
 
+		Transform* m_GameObjectTransform = nullptr;
 		unsigned int m_Id = 0; // Gameobjects Id;
 		bool m_IsActive = true; // Active State of gameobject.
 		Scene* m_Scene = nullptr; // The scene the gameobject is apart of.

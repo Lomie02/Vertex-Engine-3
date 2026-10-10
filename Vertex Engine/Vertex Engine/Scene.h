@@ -22,8 +22,6 @@ namespace VertexEngine {
 
 		void OnUpdate(); // Runs all update loops on componets.
 		void OnFixedUpdate(); // Runs the fixed update loop, this is done seperate from the main.
-		void UpdateTransforms(); // Update all gameobject transforms in the scene.
-		void UpdateTransformHierarchy(Transform* _transform, const glm::mat4& _parentWorld); // Update transform children
 
 		std::weak_ptr<VertexEngine::GameObject> CreateGameObject(std::string _name = "gameobject"); // Create a new gameobject
 
@@ -49,13 +47,17 @@ namespace VertexEngine {
 		void DeletePendingObjects(); // Deletes all objects after the update loop has been processed.
 
 		std::string m_Name = "untitled"; // Scenes name
-
 		bool m_HasSceneStarted = false; // Is scene hasnt started call start();
+		bool m_IsInit = false;
+
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_GameObjects; // Gameobjects owned bt the scene
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
 		VertexEngine::EngineContext* m_Context = nullptr; // Engine context.
 		std::vector<StaticMeshRenderer*> m_RegisterdStaticMeshes; // Static Meshes.
 		std::vector<Camera*> m_RegisteredCameras; // Camera Objects.
+
+		void UpdateTransforms(); // Update all gameobject transforms in the scene.
+		void UpdateTransformHierarchy(Transform* _transform, const glm::mat4& _parentWorld); // Update transform children
 	};
 }
 

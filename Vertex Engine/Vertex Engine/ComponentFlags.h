@@ -2,7 +2,7 @@
 
 namespace VertexEngine {
 
-	enum class ComponentFlags { // Used for registery for rendering.
+	enum class ComponentFlags { // Flags for rendering
 		None = 0,
 		Renderable = 1 << 0,
 		Skinned = 1 << 1,

@@ -44,9 +44,12 @@ namespace VertexEngine {
 
 		const glm::vec4& GetAlbedoColour() { return m_AlbedoColour; }
 
+		void SetDoubleSided(bool _state) { m_IsDoubleSided = _state; }
+		bool IsDoubleSided() { return m_IsDoubleSided; }
 
 	private:
 
+		bool m_IsDoubleSided = false;
 		std::string m_Name;
 		glm::vec4 m_AlbedoColour{ 1.0f };
 
