@@ -16,11 +16,21 @@ namespace VertexEngine {
 		int GetHeight() const { return m_height; } // Get the texures height
 		int GetChannelds() const { return m_Channels; } // get the channels the texure has
 
+		uint32_t GetGPUid() const {
+			return m_GPUid;
+		}
+
+		void SetGPUid(uint32_t _id) {
+			m_GPUid = _id;
+		}
+
 	private:
 		std::vector<unsigned char> m_Pixels; // Texture pixels
 		int m_Width = 0; // Textures Wdith
 		int m_height = 0; // Texures Height
 		int m_Channels = 0; // Channels that the texture has
+
+		uint32_t m_GPUid = 0;
 	};
 }
 

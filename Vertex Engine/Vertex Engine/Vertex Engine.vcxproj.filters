@@ -196,6 +196,12 @@
     <ClInclude Include="CameraRenderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModelNode.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialData.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

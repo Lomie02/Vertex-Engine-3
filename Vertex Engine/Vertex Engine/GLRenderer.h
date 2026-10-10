@@ -24,6 +24,7 @@ namespace VertexEngine {
 		unsigned int CompileProgram(std::shared_ptr<Shader> _vertex, std::shared_ptr<Shader> _frag); // Compile the shader program
 		void UseShader(std::shared_ptr<Shader> _vertex, std::shared_ptr<Shader> _frag); // Use shader
 
+		void RenderModelNode(const VertexEngine::ModelNode& node, const glm::mat4& parentTrans, const Renderable& obj);
 	private:
 
 		CameraRenderable m_ActiveCamera;
@@ -35,6 +36,9 @@ namespace VertexEngine {
 		uint32_t m_GeneratedIds = 0;
 		void SetMatrix4(std::string _name, const glm::mat4& matrix); // Set the matrix uniform of shader.
 		void SetVector4f(std::string _name, const glm::vec4& _vec); // Set a vector 4 of shader.
+
+		void SetInt(std::string _name, int _value);
+		void SetBool(std::string _name, bool _state);
 
 		unsigned int CompileShader(unsigned int type, const std::string& source); // Compile the shaders
 		unsigned int UploadTexture(std::shared_ptr<Texture> _texture); // Upload texture to gpu

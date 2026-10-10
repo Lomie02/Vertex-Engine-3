@@ -81,24 +81,9 @@ void VertexEngine::GLRenderer::Render()
 
 	for (auto& obj : m_RenderQueue) {
 
-		for (auto& mesh : obj.m_Models->meshes) {
+		if (!obj.m_Models) continue;
 
-			if (!mesh->m_IsUploaded) continue;
-
-			GPUMesh& gpuData = m_MeshCacheList[mesh->m_gpuId];
-
-			SetMatrix4("Model", obj.ModelMatrix);
-			SetMatrix4("View", m_ActiveCamera.m_ViewMatrix);
-			SetMatrix4("Projection", m_ActiveCamera.m_ProjectionMatrix);
-
-			glBindVertexArray(gpuData.VAO);
-
-			for (auto& sub : mesh->subMeshes) {
-
-				SetVector4f("Colour", glm::vec4(1.0f, 1.0f, 0.0f, 0.0f));
-				glDrawElements(GL_TRIANGLES, sub.indexCount, GL_UNSIGNED_INT, (void*)(sub.indexOffset * sizeof(uint32_t)));
-			}
-		}
+		RenderModelNode(obj.m_Models->m_RootNode, glm::mat4(1.0f), obj);
 	}
 
 	m_RenderQueue.clear();
@@ -164,6 +149,65 @@ void VertexEngine::GLRenderer::UseShader(std::shared_ptr<Shader> _vertex, std::s
 	glUseProgram(m_ActiveProgram);
 }
 
+void VertexEngine::GLRenderer::RenderModelNode(const VertexEngine::ModelNode& node, const glm::mat4& parentTrans, const Renderable& obj)
+{
+	glm::mat4 nodeWorld = parentTrans * node.m_LocalTransform;
+
+	glm::mat4 finalWorld = obj.ModelMatrix * nodeWorld;
+
+	for (uint32_t meshIndex : node.m_MeshIndices) {
+
+		if (meshIndex >= obj.m_Models->meshes.size())
+			continue;
+
+		auto& mesh = obj.m_Models->meshes[meshIndex];
+
+		if (!mesh->m_IsUploaded)
+			continue;
+
+		GPUMesh& gpuData = m_MeshCacheList[mesh->m_gpuId];
+
+		SetMatrix4("Model", finalWorld);
+		SetMatrix4("View", m_ActiveCamera.m_ViewMatrix);
+		SetMatrix4("Projection", m_ActiveCamera.m_ProjectionMatrix);
+
+		glBindVertexArray(gpuData.VAO);
+
+		for (auto& sub : mesh->subMeshes) {
+
+			if (sub.materialIndex >= obj.m_Models->materials.size())
+				continue;
+
+			auto& material =
+				obj.m_Models->materials[sub.materialIndex];
+
+			// Set albedo colour
+			SetVector4f("Colour", material.GetAlbedoColour());
+
+			auto albedo = material.GetAlbedoMap();
+
+			if (albedo) {
+
+				glActiveTexture(GL_TEXTURE0);
+				BindTexture(albedo);
+
+				SetInt("AlbedoMap", 0);
+				SetBool("HasAlbedo", true);
+			}
+			else {
+				SetBool("HasAlbedo", false);
+			}
+
+			glDrawElements(GL_TRIANGLES, sub.indexCount, GL_UNSIGNED_INT, (void*)(sub.indexOffset * sizeof(uint32_t)));
+		}
+	}
+
+	for (const auto& child : node.m_Children) {
+		RenderModelNode(child, nodeWorld, obj);
+	}
+
+}
+
 uint32_t VertexEngine::GLRenderer::UploadMesh(std::shared_ptr<VertexEngine::MeshData> _mesh)
 {
 	uint32_t id = GenerateUniqueMeshId();
@@ -182,20 +226,23 @@ uint32_t VertexEngine::GLRenderer::UploadMesh(std::shared_ptr<VertexEngine::Mesh
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gpu.EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, _mesh->indices.size() * sizeof(uint32_t), _mesh->indices.data(), GL_STATIC_DRAW);
 
-
+	// Position
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	// Normal
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCord));
+	// UV
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCord));
 	glEnableVertexAttribArray(2);
 
-
+	// Tangent
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, tangent));
 	glEnableVertexAttribArray(3);
 
+	// Bi Tangent
 	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, biTangent));
 	glEnableVertexAttribArray(4);
 
@@ -218,6 +265,16 @@ void VertexEngine::GLRenderer::SetVector4f(std::string _name, const glm::vec4& _
 	glUniform4f(glGetUniformLocation(m_ActiveProgram, _name.c_str()), _vec.x, _vec.y, _vec.z, _vec.w);
 }
 
+void VertexEngine::GLRenderer::SetInt(std::string _name, int _value)
+{
+	glUniform1i(glGetUniformLocation(m_ActiveProgram, _name.c_str()), _value);
+}
+
+void VertexEngine::GLRenderer::SetBool(std::string _name, bool _state)
+{
+	glUniform1i(glGetUniformLocation(m_ActiveProgram, _name.c_str()), _state ? 1 : 0);
+}
+
 unsigned int VertexEngine::GLRenderer::CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int shader = glCreateShader(type);
@@ -230,6 +287,15 @@ unsigned int VertexEngine::GLRenderer::CompileShader(unsigned int type, const st
 
 unsigned int VertexEngine::GLRenderer::UploadTexture(std::shared_ptr<Texture> _texture)
 {
+	std::cout
+		<< "Uploading Texture: "
+		<< _texture->GetWidth()
+		<< "x"
+		<< _texture->GetHeight()
+		<< " Channels: "
+		<< _texture->GetChannelds()
+		<< "\n";
+
 	unsigned int handle;
 	glGenTextures(1, &handle);
 	glBindTexture(GL_TEXTURE_2D, handle);
@@ -242,6 +308,7 @@ unsigned int VertexEngine::GLRenderer::UploadTexture(std::shared_ptr<Texture> _t
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
 
 	return handle;
 }

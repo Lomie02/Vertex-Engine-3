@@ -33,6 +33,12 @@ namespace VertexEngine {
 		bool HasParent() const; // Does transform have a parent
 		glm::mat4 GetWorldMatrix() const; // Get the world matrix
 
+		glm::vec3 GetForward() { return m_Rotation * glm::vec3(0, 0, -1); } // Get forward vector
+		glm::vec3 GetUp() { return m_Rotation * glm::vec3(0, 1, 0 ); } // Get Up vector
+		glm::vec3 GetDown() { return m_Rotation * glm::vec3(0, -1, 0); } // Get down vector
+		glm::vec3 GetRight() { return m_Rotation * glm::vec3(1, 0, 0); } // Get Right vector
+		glm::vec3 GetLeft() { return m_Rotation * glm::vec3(-1, 0, 0); } // Get Left vector
+
 	private:
 		glm::vec3 m_Position{0.0f};
 		glm::quat m_Rotation{1.0f,0.0f,0.0f,0.0f};

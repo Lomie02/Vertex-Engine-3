@@ -178,10 +178,12 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="KeyCode.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="MaterialData.h" />
     <ClInclude Include="MeshData.h" />
     <ClInclude Include="MeshImporter.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="ModelNode.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProjectionType.h" />
     <ClInclude Include="Renderable.h" />

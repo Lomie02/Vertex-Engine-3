@@ -23,5 +23,6 @@ private:
 	std::weak_ptr<VertexEngine::GameObject> m_MyObject;
 	std::weak_ptr<VertexEngine::GameObject> m_DummyObject;
 	std::weak_ptr<VertexEngine::GameObject> m_Camera;
-	std::shared_ptr<VertexEngine::Model> m_Model;
+	std::shared_ptr<VertexEngine::Model> m_Cube;
+	std::shared_ptr<VertexEngine::Model> m_Sphere;
 };

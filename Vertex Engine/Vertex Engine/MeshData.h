@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Vertex.h"
 #include "SubMeshData.h"
+#include "Vertex.h"
 namespace VertexEngine {
 
 	struct MeshData {
