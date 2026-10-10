@@ -14,6 +14,7 @@ namespace VertexEngine {
 
 		void OnUpdate(); // Updates scene core
 		void OnFixedUpdate(); // Updates scenes fixed update
+		void OnUpdateTransforms(); // Updates all scene object transforms
 
 		void ProcessCleanUp(); // called after all update processing & deletes any pending objects set for deletion.
 

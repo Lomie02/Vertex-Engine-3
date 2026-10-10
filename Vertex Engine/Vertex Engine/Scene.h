@@ -2,13 +2,15 @@
 #include "EngineContext.h"
 #include <vector>
 #include "StaticMeshRenderer.h"
-
+#include "Camera.h"
 namespace VertexEngine {
+
+	class Transform;
+
 	class Scene
 	{
 		friend class SceneManager; // Make scene manager a friend so it can access the DeletePendingObjects() without giving sandbox access to it.
 		class GameObject;
-
 	public:
 		Scene() {};
 		Scene(std::string _name);
@@ -20,6 +22,8 @@ namespace VertexEngine {
 
 		void OnUpdate(); // Runs all update loops on componets.
 		void OnFixedUpdate(); // Runs the fixed update loop, this is done seperate from the main.
+		void UpdateTransforms(); // Update all gameobject transforms in the scene.
+		void UpdateTransformHierarchy(Transform* _transform, const glm::mat4& _parentWorld); // Update transform children
 
 		std::weak_ptr<VertexEngine::GameObject> CreateGameObject(std::string _name = "gameobject"); // Create a new gameobject
 
@@ -32,6 +36,9 @@ namespace VertexEngine {
 		//NOTE: In future replace this to use component type for a singlular list.
 		void RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _mesh); // Register static meshes
 		const std::vector<StaticMeshRenderer*>& GetRenderables() const { return m_RegisterdStaticMeshes; }
+
+		void RegisterCamera(VertexEngine::Camera* _camera); // Register camera objects
+		const std::vector<Camera*>& GetCameras() const { return m_RegisteredCameras; } // Get registered cameras
 
 		void OnComponentAdded(VertexEngine::Component* _component); // Add component to the registery
 		void OnComponentRemoved(VertexEngine::Component* _component); // Remove a component from the registry.
@@ -48,6 +55,7 @@ namespace VertexEngine {
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
 		VertexEngine::EngineContext* m_Context = nullptr; // Engine context.
 		std::vector<StaticMeshRenderer*> m_RegisterdStaticMeshes; // Static Meshes.
+		std::vector<Camera*> m_RegisteredCameras; // Camera Objects.
 	};
 }
 

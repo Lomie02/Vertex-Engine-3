@@ -46,6 +46,12 @@ void VertexEngine::SceneManager::OnFixedUpdate()
 		m_ActiveScene->OnFixedUpdate();
 }
 
+void VertexEngine::SceneManager::OnUpdateTransforms()
+{
+	if (m_ActiveScene)
+		m_ActiveScene->UpdateTransforms();
+}
+
 void VertexEngine::SceneManager::ProcessCleanUp()
 {
 	if (m_ActiveScene)

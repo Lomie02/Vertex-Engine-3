@@ -46,6 +46,7 @@ void VertexEngine::AssetManager::AutoLoadAll(std::string& _rootpath)
 		for (auto& file : fs::recursive_directory_iterator(_rootpath)) {
 			if (file.is_regular_file() && std::find(m_ImageTypeFilter.begin(), m_ImageTypeFilter.end(), file.path().filename().extension().string()) != m_ImageTypeFilter.end()) {
 				std::string name = file.path().stem().string();
+
 				Register<VertexEngine::Texture>(name, file.path().string());
 			}
 		}
@@ -107,4 +108,90 @@ void VertexEngine::AssetManager::SetRootPath(std::string _filePath, bool _reload
 
 	// If true reload the asset files
 	if (_reloadData) AutoLoadAll(m_AssetRootPath);
+}
+
+std::shared_ptr<VertexEngine::Material> VertexEngine::AssetManager::CreateMaterial(const std::string& _name, const MaterialData& _data)
+{
+	auto mat = std::make_shared<VertexEngine::Material>(_data);
+	AssetEntry ent;
+
+	ent.m_Path = "";
+	ent.m_Instance = mat;
+
+	// Resolve the albedo texture
+
+	std::string albedoPath = _data.m_AlbedoMap;
+
+	// Override takes priority
+	if (!_data.m_AlbedoOverride.empty())
+	{
+		albedoPath = _data.m_AlbedoOverride;
+
+		std::cout
+			<< "Using Albedo Override: "
+			<< albedoPath
+			<< "\n";
+	}
+
+	if (!albedoPath.empty())
+	{
+		std::filesystem::path texturePath(albedoPath);
+		std::string textureName = texturePath.stem().string();
+
+		std::cout
+			<< "Resolve Albedo Texture: "
+			<< textureName
+			<< "\n";
+
+		auto texture = Get<VertexEngine::Texture>(textureName);
+
+		if (texture)
+		{
+			mat->SetAlbedoMap(texture);
+
+			std::cout
+				<< "Loaded Albedo Texture: "
+				<< textureName
+				<< "\n";
+		}
+		else
+		{
+			std::cout
+				<< "Failed to find Albedo Texture: "
+				<< textureName
+				<< "\n";
+		}
+	}
+
+	// Resolve normal map
+	if (!_data.m_NormalMap.empty()) {
+		std::filesystem::path texturePath(_data.m_NormalMap);
+
+		std::string texturename = texturePath.stem().string();
+
+
+		std::cout << "Resolve Normal Texture: " << texturename << "\n";
+
+		auto texture = Get<VertexEngine::Texture>(texturename);
+
+		if (texture) {
+			mat->SetNormalMap(texture);
+
+			std::cout
+				<< "Loaded Normal Texture: "
+				<< texturename
+				<< "\n";
+		}
+		else {
+
+			std::cout
+				<< "Failed to find Normal Texture: "
+				<< texturename
+				<< "\n";
+		}
+	}
+
+	m_AssetList[_name] = std::move(ent);
+
+	return mat;
 }

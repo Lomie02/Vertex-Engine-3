@@ -17,6 +17,9 @@ VertexEngine::Application::~Application()
 void VertexEngine::Application::Execute()
 {
 	OnAwake();
+	if (m_EngineAssetManager);
+	m_EngineSceneManager->OnUpdateTransforms();
+
 	OnStart();
 
 	m_IsEngineRunning = true;
@@ -57,9 +60,15 @@ void VertexEngine::Application::Execute()
 				}
 			}
 
+			// Update the transforms
+			if (m_EngineSceneManager)
+				m_EngineSceneManager->OnUpdateTransforms();
+
+
 			// Tell the scene manager to make scenes delete any gameobjects waiting to be deleted by user.
 			if (m_EngineSceneManager)
 				m_EngineSceneManager->ProcessCleanUp();
+
 
 			// Render system begins the render process.
 			if (m_EngineRenderSystem)
@@ -83,6 +92,10 @@ void VertexEngine::Application::Execute()
 			// Sandbox update functions.
 			OnUpdate();
 			OnLateUpdate();
+
+			// Update the transforms
+			if (m_EngineSceneManager)
+				m_EngineSceneManager->OnUpdateTransforms();
 
 			// Tell the scene manager to make scenes delete any gameobjects waiting to be deleted by user.
 			if (m_EngineSceneManager)
@@ -209,7 +222,7 @@ void VertexEngine::Application::InitProps()
 		}
 
 		// Create sub systems
-		m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get()); 
+		m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
 		m_EngineRenderer = m_EngineBackend.CreateRenderer(m_EngineGraphics, m_EngineWindow.get(), m_EngineAssetManager.get());
 		m_EngineInputSystem = m_EngineBackend.CreateInput(m_EngineGraphics, m_EngineWindow.get());
 

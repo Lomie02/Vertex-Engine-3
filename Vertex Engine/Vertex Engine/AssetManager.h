@@ -44,15 +44,43 @@ namespace VertexEngine {
 			if (isModel) {
 
 				auto it = m_ModelList.find(_name);
+
 				if (it == m_ModelList.end()) {
-					// If nothing is found then the asset doesnt exist at all.
+					// If nothing is found then the asset doesn't exist at all.
 					return nullptr;
 				}
 
-
 				auto& ent = m_ModelList.at(_name);
 
-				return std::dynamic_pointer_cast<T>(m_ModelLoader->LoadModel(_name));
+				if (!ent.m_Instance)
+				{
+					auto model = m_ModelLoader->LoadModel(_name);
+
+					if (!model)
+						return nullptr;
+
+					// Convert imported MaterialData into runtime Materials.
+					for (const auto& materialData : model->materialData)
+					{
+						auto material = CreateMaterial(
+							materialData.m_Name,
+							materialData
+						);
+
+						if (material)
+						{
+							model->materials.push_back(*material);
+
+							std::cout
+								<< "AssetManager created material: "
+								<< material->GetName()
+								<< "\n";
+						}
+					}
+
+					ent.m_Instance = model;
+				}
+				return std::dynamic_pointer_cast<T>(ent.m_Instance); 
 			}
 
 
@@ -61,7 +89,7 @@ namespace VertexEngine {
 
 			if (!ent.m_Instance) {
 				ent.m_Instance = ent.m_Factory();
-				ent.m_Instance->Load(ent.m_Path);  
+				ent.m_Instance->Load(ent.m_Path);
 			}
 
 			return std::dynamic_pointer_cast<T>(ent.m_Instance);
@@ -80,6 +108,8 @@ namespace VertexEngine {
 		std::vector<std::string> m_AudioTypeFilter; // All supported file types that the engine should filter.
 		std::vector<std::string> m_ShaderTypeFilter; // All supported file types that the engine should filter.
 		std::string m_AssetRootPath = "asset"; // The file path the engine should use
+
+		std::shared_ptr<Material> CreateMaterial(const std::string& _name, const MaterialData& _data);
 
 		bool m_HasStarted = false;
 	};
