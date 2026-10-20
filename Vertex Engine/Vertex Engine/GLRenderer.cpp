@@ -6,8 +6,9 @@
 #include <glm.hpp>
 #include <gtc/type_ptr.inl>
 #include <gtc/matrix_transform.hpp>
+#include <gtx/matrix_decompose.hpp>
 
-VertexEngine::GLRenderer::GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _defaultVertex, std::shared_ptr<Shader> _defaultFrag)
+VertexEngine::GLRenderer::GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _defaultVertex, std::shared_ptr<Shader> _defaultFrag, std::shared_ptr<Shader> _defaultSkinnedVertex)
 {
 	m_WindowHandle = _win;
 	if (!gladLoadGL()) {
@@ -15,8 +16,10 @@ VertexEngine::GLRenderer::GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _de
 
 	}
 
+	// Cache the default shaders
 	m_DefaultFragShader = _defaultFrag;
 	m_DefaultVertexShader = _defaultVertex;
+	m_DefaultSkinnedVertexShader = _defaultSkinnedVertex;
 
 	if (m_DefaultFragShader == nullptr) {
 
@@ -34,6 +37,8 @@ VertexEngine::GLRenderer::GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _de
 	{
 		std::cout << "Shaders Success!: Vertex shader loaded." << std::endl;
 	}
+
+	InitBoneBuffer();
 }
 
 void VertexEngine::GLRenderer::BeginFrame()
@@ -48,6 +53,7 @@ void VertexEngine::GLRenderer::BeginFrame()
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
+
 
 	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
@@ -73,13 +79,33 @@ void VertexEngine::GLRenderer::Submit(const Renderable& _mesh)
 
 void VertexEngine::GLRenderer::Render()
 {
-	if (!m_DefaultFragShader || !m_DefaultVertexShader) return;
+	if (!m_DefaultFragShader || !m_DefaultVertexShader || !m_DefaultSkinnedVertexShader) return;
 
-	UseShader(m_DefaultVertexShader, m_DefaultFragShader);
+	UseShader(m_DefaultSkinnedVertexShader, m_DefaultFragShader);
 
 	for (auto& obj : m_RenderQueue) {
 
 		if (!obj.m_Models) continue;
+
+		SetBool("IsSkinned", obj.m_IsSkinned);
+
+		// prepare bones 
+		if (obj.m_IsSkinned && obj.m_Models->m_Skeleton) {
+
+			std::vector<glm::mat4> boneMats;
+
+
+			CalculateSkinningMatrices(*obj.m_Models, boneMats);
+
+
+			if (!boneMats.empty())
+				UploadBoneMatrices(boneMats);
+
+			glActiveTexture(GL_TEXTURE7);
+			glBindTexture(GL_TEXTURE_BUFFER, m_BoneTexture);
+
+			SetInt("BoneBuffer", 7);
+		}
 
 		RenderModelNode(obj.m_Models->m_RootNode, glm::mat4(1.0f), obj);
 	}
@@ -240,6 +266,15 @@ uint32_t VertexEngine::GLRenderer::UploadMesh(std::shared_ptr<VertexEngine::Mesh
 	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, biTangent));
 	glEnableVertexAttribArray(4);
 
+	// Bones
+	glVertexAttribIPointer(5, 4, GL_INT, sizeof(Vertex), (void*)offsetof(Vertex, boneIDs));
+	glEnableVertexAttribArray(5);
+
+	// Bone Weight
+
+	glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, boneWeights));
+	glEnableVertexAttribArray(6);
+
 	glBindVertexArray(0);
 
 	m_MeshCacheList[id] = gpu;
@@ -272,9 +307,46 @@ void VertexEngine::GLRenderer::SetBool(std::string _name, bool _state)
 unsigned int VertexEngine::GLRenderer::CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int shader = glCreateShader(type);
+
+	if (shader == 0) {
+		std::cout << "VERTEX ERROR: Shader Failed" << std::endl;
+	}
+
 	const char* src = source.c_str();
 	glShaderSource(shader, 1, &src, nullptr);
 	glCompileShader(shader);
+
+	GLint success = GL_FALSE;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+
+	if (success != GL_TRUE)
+	{
+		GLint logLength = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
+
+		std::string log(
+			logLength > 0 ? static_cast<size_t>(logLength) : 1,
+			'\0');
+
+		if (logLength > 0)
+		{
+			glGetShaderInfoLog(
+				shader,
+				logLength,
+				nullptr,
+				log.data());
+		}
+
+		std::cerr
+			<< "Shader compilation failed ("
+			<< (type == GL_VERTEX_SHADER ? "Vertex" :
+				type == GL_FRAGMENT_SHADER ? "Fragment" : "Unknown")
+			<< "):\n"
+			<< log << '\n';
+
+		glDeleteShader(shader);
+		return 0;
+	}
 
 	return shader;
 }
@@ -305,4 +377,246 @@ unsigned int VertexEngine::GLRenderer::UploadTexture(std::shared_ptr<Texture> _t
 
 
 	return handle;
+}
+
+void VertexEngine::GLRenderer::BuildBoneNodeTransforms(const ModelNode& _node, const glm::mat4& _parentTransform, const Skeleton& _skeleton, std::vector<glm::mat4>& _boneNodeTransforms, std::vector<bool>& _boneFound)
+{
+	glm::mat4 nodeGlobal =
+		_parentTransform * _node.m_LocalTransform;
+
+	for (size_t i = 0; i < _skeleton.m_bones.size(); ++i) {
+		if (_skeleton.m_bones[i].name == _node.m_Name) {
+			_boneNodeTransforms[i] = nodeGlobal;
+			_boneFound[i] = true;
+		}
+	}
+
+	if (_node.m_Name == "mixamorig:Spine")
+	{
+		std::cout << "Spine parent transform:\n";
+
+		for (int row = 0; row < 4; ++row)
+		{
+			for (int col = 0; col < 4; ++col)
+				std::cout << _parentTransform[col][row] << ' ';
+
+			std::cout << '\n';
+		}
+	}
+
+	for (const auto& child : _node.m_Children) {
+		BuildBoneNodeTransforms(
+			child,
+			nodeGlobal,
+			_skeleton,
+			_boneNodeTransforms,
+			_boneFound
+		);
+	}
+}
+
+void VertexEngine::GLRenderer::CalculateSkinningMatrices(const Model& _model, std::vector<glm::mat4>& _outMat)
+{
+	_outMat.clear();
+
+	if (!_model.m_Skeleton)
+		return;
+
+	const Skeleton& skeleton = *_model.m_Skeleton;
+	const size_t boneCount = skeleton.m_bones.size();
+
+	if (boneCount == 0)
+		return;
+
+	if (boneCount > 310)
+	{
+		std::cerr
+			<< "Warning: Skeleton has "
+			<< boneCount
+			<< " bones; maximum supported is 310.\n";
+	}
+
+	std::vector<glm::mat4> boneNodeTransforms(
+		boneCount, glm::mat4(1.0f));
+
+	std::vector<bool> boneFound(boneCount, false);
+
+	BuildBoneNodeTransforms(
+		_model.m_RootNode,
+		glm::mat4(1.0f),
+		skeleton,
+		boneNodeTransforms,
+		boneFound
+	);
+
+	_outMat.resize(boneCount, glm::mat4(1.0f));
+
+	for (size_t i = 0; i < boneCount; ++i)
+	{
+		if (!boneFound[i])
+		{
+			std::cerr
+				<< "Warning: Bone node not found: "
+				<< skeleton.m_bones[i].name
+				<< '\n';
+
+			continue;
+		}
+
+		_outMat[i] =
+			boneNodeTransforms[i] *
+			skeleton.m_bones[i].offsetMat;
+
+		if (skeleton.m_bones[i].name == "mixamorig:LeftShoulder")
+		{
+			auto printMatrix = [](const char* label, const glm::mat4& m)
+				{
+					std::cout << "\n" << label << ":\n";
+
+					for (int row = 0; row < 4; ++row)
+					{
+						for (int col = 0; col < 4; ++col)
+							std::cout << m[col][row] << ' ';
+
+						std::cout << '\n';
+					}
+				};
+
+			printMatrix("Shoulder global", boneNodeTransforms[i]);
+			printMatrix("Shoulder offset", skeleton.m_bones[i].offsetMat);
+			printMatrix("Shoulder skin", _outMat[i]);
+		}
+
+		float maxError = 0.0f;
+
+		for (int col = 0; col < 4; ++col)
+		{
+			for (int row = 0; row < 4; ++row)
+			{
+				float expected = (col == row) ? 1.0f : 0.0f;
+
+				maxError = std::max(
+					maxError,
+					std::abs(_outMat[i][col][row] - expected)
+				);
+			}
+		}
+
+		std::cout
+			<< skeleton.m_bones[i].name
+			<< " bind-pose identity error: "
+			<< maxError << '\n';
+	}
+}
+
+void VertexEngine::GLRenderer::UploadBoneMatrices(const std::vector<glm::mat4>& _matrices)
+{
+	constexpr size_t MAX_BONES = 310;
+
+	if (!_matrices.empty())
+	{
+		const glm::mat4& m = _matrices[0];
+
+		std::cout << "Bone 0 matrix:\n";
+
+		for (int row = 0; row < 4; ++row)
+		{
+			for (int col = 0; col < 4; ++col)
+			{
+				std::cout << m[col][row] << " ";
+			}
+
+			std::cout << '\n';
+		}
+	}
+
+	if (m_BoneBuffer == 0 || _matrices.empty())
+		return;
+
+	const size_t count =
+		std::min(_matrices.size(), MAX_BONES);
+
+	glBindBuffer(GL_TEXTURE_BUFFER, m_BoneBuffer);
+
+	glBufferSubData(
+		GL_TEXTURE_BUFFER,
+		0,
+		count * sizeof(glm::mat4),
+		_matrices.data()
+	);
+
+	glBindBuffer(GL_TEXTURE_BUFFER, 0);
+}
+
+bool VertexEngine::GLRenderer::SetBoneRotation(Model& _model, const std::string& _bonename, const glm::quat& _rotation)
+{
+	return SetBoneRotationRecursive(_model.m_RootNode, _bonename, _rotation);
+}
+
+bool VertexEngine::GLRenderer::SetBoneRotationRecursive(ModelNode& _model, const std::string& _bonename, const glm::quat& _rotation)
+{
+	if (_model.m_Name == _bonename)
+	{
+		glm::vec3 position;
+		glm::vec3 scale;
+		glm::quat bindRotation;
+
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		if (!glm::decompose(
+			_model.m_BindLocal,
+			scale,
+			bindRotation,
+			position,
+			skew,
+			perspective))
+		{
+			return false;
+		}
+
+		glm::mat4 rotationMatrix =
+			glm::mat4_cast(glm::normalize(_rotation));
+
+		_model.m_LocalTransform =
+			glm::translate(glm::mat4(1.0f), position)
+			* rotationMatrix
+			* glm::scale(glm::mat4(1.0f), scale);
+
+		return true;
+	}
+
+	for (auto& child : _model.m_Children)
+	{
+		if (SetBoneRotationRecursive(child, _bonename, _rotation))
+			return true;
+	}
+
+	return false;
+}
+
+void VertexEngine::GLRenderer::InitBoneBuffer()
+{
+	glGenBuffers(1, &m_BoneBuffer);
+	glBindBuffer(GL_TEXTURE_BUFFER, m_BoneBuffer);
+
+	// 310 matrices × 4 vec4 columns per matrix.
+	glBufferData(
+		GL_TEXTURE_BUFFER,
+		310 * 4 * sizeof(glm::vec4),
+		nullptr,
+		GL_DYNAMIC_DRAW
+	);
+
+	glGenTextures(1, &m_BoneTexture);
+	glBindTexture(GL_TEXTURE_BUFFER, m_BoneTexture);
+
+	glTexBuffer(
+		GL_TEXTURE_BUFFER,
+		GL_RGBA32F,
+		m_BoneBuffer
+	);
+
+	glBindTexture(GL_TEXTURE_BUFFER, 0);
+	glBindBuffer(GL_TEXTURE_BUFFER, 0);
 }

@@ -5,6 +5,9 @@ void VertexEngine::TestComp::OnAwake(VertexEngine::EngineContext& _engine)
 }
 void VertexEngine::TestComp::OnStart(VertexEngine::EngineContext& _engine)
 {
+
+	m_Event.AddListener([this]() { skipScene();  });
+
 }
 
 void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
@@ -23,9 +26,8 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 		gameObject->GetTransform()->SetAngleAxis(m_Spin, glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 
-	// Vert
 
-	if (_engine.Input->GetKey(KeyCode::ArrowDown)) {
+	if (_engine.Input->GetKey(KeyCode::GamepadLeftBumper)) {
 
 		m_Movement -= 2 * _engine.Time->GetDeltaTime();
 
@@ -36,9 +38,9 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 		gameObject->GetTransform()->SetPosition(newPos);
 	}
 
-	if (_engine.Input->GetKey(KeyCode::ArrowUp)) {
+	if (_engine.Input->HasAxisMoved("Left Stick", 0.2f)) {
 
-		m_Movement += 2 * _engine.Time->GetDeltaTime();
+		m_Movement += 10 * _engine.Time->GetDeltaTime();
 
 		glm::vec3 newPos = gameObject->GetTransform()->GetPosition();
 
@@ -80,6 +82,12 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 	}
 
 	if (_engine.Input->GetKey(KeyCode::Spacebar)) {
-		_engine.SceneManager->LoadScene("Scene2");
+		m_Event.Invoke();
 	}
+}
+
+void VertexEngine::TestComp::skipScene()
+{
+	std::cout << "Event Fired" << std::endl;
+
 }

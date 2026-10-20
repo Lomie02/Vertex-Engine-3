@@ -40,6 +40,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="VertexIncludes">
+      <UniqueIdentifier>{f6126798-03a4-4e70-a8cb-7424a8fd3674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\OpenGL Renderer">
+      <UniqueIdentifier>{b31dcada-4dc1-48ef-9990-5dab38d8627c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Assimp Loader">
+      <UniqueIdentifier>{7ee84cc9-ddb4-4883-9ed8-8ddc1823decb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -89,9 +98,6 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Renderable.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="GLRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="GLFWgraphics.h">
@@ -172,9 +178,6 @@
     <ClInclude Include="MeshData.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="AssImpLoader.h">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="ImporterAPI.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -208,6 +211,33 @@
     <ClInclude Include="SceneManagerAPI.h">
       <Filter>Sandbox API</Filter>
     </ClInclude>
+    <ClInclude Include="VertexAPI.h">
+      <Filter>VertexIncludes</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexUI.h">
+      <Filter>VertexIncludes</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexEvent.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexRendering.h">
+      <Filter>VertexIncludes</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletalMeshRenderer.h">
+      <Filter>Componenets</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="BoneInfo.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GLRenderer.h">
+      <Filter>Renderer\OpenGL Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="AssImpLoader.h">
+      <Filter>Model\Assimp Loader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -230,9 +260,6 @@
     </ClCompile>
     <ClCompile Include="BackendFactory.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="GLRenderer.cpp">
-      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\Externals\GLFW\glad.c">
       <Filter>GLAD</Filter>
@@ -270,9 +297,6 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="AssImpLoader.cpp">
-      <Filter>Model</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -284,6 +308,18 @@
     </ClCompile>
     <ClCompile Include="SceneManagerAPI.cpp">
       <Filter>Sandbox API</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletalMeshRenderer.cpp">
+      <Filter>Componenets</Filter>
+    </ClCompile>
+    <ClCompile Include="GLRenderer.cpp">
+      <Filter>Renderer\OpenGL Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="AssImpLoader.cpp">
+      <Filter>Model\Assimp Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

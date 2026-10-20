@@ -3,6 +3,7 @@
 #include <vector>
 #include "StaticMeshRenderer.h"
 #include "Camera.h"
+#include "SkeletalMeshRenderer.h"
 namespace VertexEngine {
 
 	class Transform;
@@ -34,6 +35,7 @@ namespace VertexEngine {
 		//NOTE: In future replace this to use component type for a singlular list.
 		void RegisterStaticMesh(VertexEngine::StaticMeshRenderer* _mesh); // Register static meshes
 		const std::vector<StaticMeshRenderer*>& GetRenderables() const { return m_RegisterdStaticMeshes; }
+		const std::vector<SkeletalMeshRenderer*>& GetSkinnedMeshes() const { return m_RegisterdSkinnedMeshes; }
 
 		void RegisterCamera(VertexEngine::Camera* _camera); // Register camera objects
 		const std::vector<Camera*>& GetCameras() const { return m_RegisteredCameras; } // Get registered cameras
@@ -54,6 +56,7 @@ namespace VertexEngine {
 		std::vector<std::shared_ptr<VertexEngine::GameObject>> m_PendingDeletion; // Gameobject waiting to be deleted.
 		VertexEngine::EngineContext* m_Context = nullptr; // Engine context.
 		std::vector<StaticMeshRenderer*> m_RegisterdStaticMeshes; // Static Meshes.
+		std::vector <SkeletalMeshRenderer*> m_RegisterdSkinnedMeshes; // Skinned Meshes.
 		std::vector<Camera*> m_RegisteredCameras; // Camera Objects.
 
 		void UpdateTransforms(); // Update all gameobject transforms in the scene.

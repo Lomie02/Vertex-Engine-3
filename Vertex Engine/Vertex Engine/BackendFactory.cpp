@@ -40,7 +40,10 @@ std::unique_ptr<VertexEngine::Renderer> VertexEngine::BackendFactory::CreateRend
 {
 	switch (_api) {
 	case VertexEngine::GraphicsAPI::OpenGL:
-		return std::make_unique<VertexEngine::GLRenderer>(static_cast<VertexEngine::GlWindow*>(_window), _assetManager->Get<Shader>("gl_default_shader_vertex"), _assetManager->Get<Shader>("gl_default_shader_fragment"));
+		return std::make_unique<VertexEngine::GLRenderer>(static_cast<VertexEngine::GlWindow*>(_window), 
+			_assetManager->Get<Shader>("gl_default_shader_vertex"), 
+			_assetManager->Get<Shader>("gl_default_shader_fragment"),
+			_assetManager->Get<Shader>("gl_default_skinned_shader_vertex"));
 		break;
 	case VertexEngine::GraphicsAPI::Vulkan:
 		break;

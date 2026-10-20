@@ -163,6 +163,9 @@ void VertexEngine::Scene::OnComponentAdded(VertexEngine::Component* _component)
 	else if (_component->HasFlags(ComponentFlags::Camera)) {
 		m_RegisteredCameras.push_back(static_cast<Camera*>(_component));
 	}
+	else if (_component->HasFlags(ComponentFlags::Skinned)) {
+		m_RegisterdSkinnedMeshes.push_back(static_cast<SkeletalMeshRenderer*>(_component));
+	}
 }
 
 void VertexEngine::Scene::OnComponentRemoved(VertexEngine::Component* _component)

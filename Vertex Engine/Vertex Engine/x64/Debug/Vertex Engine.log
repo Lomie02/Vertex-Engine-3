@@ -12,18 +12,27 @@ C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Ap
   ApplicationAPI.cpp
   AssetManager.cpp
   AssImpLoader.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(254,19): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,int,glm::packed_highp>::length_type', possible loss of data
+  (compiling source file '/AssImpLoader.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(255,23): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
+  (compiling source file '/AssImpLoader.cpp')
+  
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(261,24): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
+  (compiling source file '/AssImpLoader.cpp')
+  
   BackendFactory.cpp
   CameraRenderable.cpp
   GameObject.cpp
   GlfwInputSystem.cpp
   GLRenderer.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(66,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(66,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(63,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(66,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
   
   GlWindow.cpp
@@ -41,13 +50,18 @@ C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\En
   SceneManager.cpp
   SceneManagerAPI.cpp
   Shader.cpp
+  SkeletalMeshRenderer.cpp
   StaticMeshRenderer.cpp
-  Texture.cpp
   Generating Code...
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(226,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(275,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
   Compiling...
+  Texture.cpp
   TimeAPI.cpp
   Transform.cpp
+  VertexEvent.cpp
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\VertexEvent.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file '/VertexEvent.cpp')
+  
   WindowAPI.cpp
   Generating Code...
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

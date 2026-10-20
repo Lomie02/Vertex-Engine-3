@@ -60,6 +60,55 @@ bool VertexEngine::GlfwInputSystem::IsGamepad(int _joystick)
 	return false;
 }
 
+glm::vec2 VertexEngine::GlfwInputSystem::GetAxis(std::string _axisName)
+{
+	GLFWgamepadstate state;
+
+	if (glfwGetGamepadState(0, &state)) {
+		m_AxisMap[m_LeftAxisStick] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_LEFT_X], -state.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
+		m_AxisMap[m_LeftTrigger] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER], 0);
+
+		m_AxisMap[m_RightAxisStick] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_RIGHT_X], -state.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
+		m_AxisMap[m_RightTrigger] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER], 0);
+	}
+
+	return m_AxisMap[_axisName];
+}
+
+bool VertexEngine::GlfwInputSystem::HasAxisMoved(std::string _axisName, float _deadzone)
+{
+	GLFWgamepadstate state;
+
+	if (glfwGetGamepadState(0, &state)) {
+		m_AxisMap[m_LeftAxisStick] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_LEFT_X], -state.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
+		m_AxisMap[m_LeftTrigger] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER], 0);
+
+		m_AxisMap[m_RightAxisStick] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_RIGHT_X], -state.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
+		m_AxisMap[m_RightTrigger] = glm::vec2(state.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER], 0);
+	}
+
+	float xAxis = m_AxisMap[_axisName].x;
+	float yAxis = m_AxisMap[_axisName].y;
+
+	// If given string is a trigger name, swap the return functions.
+	//TODO: Try to clean this up or make it a little easier to look at
+	if (_axisName == m_LeftTrigger || _axisName == m_RightTrigger) {
+
+		if (fabs(xAxis) > _deadzone || fabs(yAxis) > _deadzone) {
+			return  false;
+		}
+
+		return true;
+	}
+	else {
+		if (fabs(xAxis) > _deadzone || fabs(yAxis) > _deadzone) {
+			return true;
+		}
+
+		return  false;
+	}
+}
+
 void VertexEngine::GlfwInputSystem::UpdateInputLogs()
 {
 	glfwPollEvents();

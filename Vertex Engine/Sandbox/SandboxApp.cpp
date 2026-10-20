@@ -37,7 +37,7 @@ void SandboxApp::OnAwake()
 
 	if (auto cam = m_Camera.lock()) {
 		cam->AddComponenet<VertexEngine::Camera>();
-		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 0.7f, 10.0f));
+		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 20.7f, 100.0f));
 	}
 
 	if (auto cam = m_Scene2Camera.lock()) {
@@ -63,8 +63,8 @@ void SandboxApp::OnStart()
 	}
 
 	if (auto ent = m_MyObject.lock()) {
-		ent->AddComponenet<VertexEngine::StaticMeshRenderer>();
-		ent->GetComponenet<VertexEngine::StaticMeshRenderer>()->SetMesh(m_Cube);
+		ent->AddComponenet<VertexEngine::SkeletalMeshRenderer>();
+		ent->GetComponenet<VertexEngine::SkeletalMeshRenderer>()->SetModel(m_Cube);
 	}
 }
 
