@@ -186,6 +186,7 @@ void VertexEngine::Application::SetRootPath(std::string _filePath)
 	// Only set the file path if the asset manager exists
 	if (m_EngineAssetManager)
 		m_EngineAssetManager.get()->SetRootPath(_filePath);
+
 }
 
 bool VertexEngine::Application::OpenProgram(std::string _name)
@@ -219,11 +220,10 @@ void VertexEngine::Application::InitProps()
 		// If the asset manager is created assign all needed data
 		if (m_EngineAssetManager) {
 			// Set default filepath
-			std::string name = "Build/";
-			m_EngineAssetManager->SetRootPath(name);
+			m_EngineAssetManager->SetRootPath(m_EngineRootPathDefault);
 
 			if (m_EngineAssetManager)
-				m_EngineAssetManager->AutoLoadAll(name);
+				m_EngineAssetManager->AutoLoadAll(m_EngineRootPathDefault);
 		}
 
 		// Create sub systems

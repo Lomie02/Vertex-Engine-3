@@ -14,6 +14,7 @@ void SandboxApp::OnAwake()
 {
 	SetApplicationFullscreenMode(true);
 
+
 	m_Scene = m_EngineSceneManager->CreateScene("My Scene");
 	m_Scene2 = m_EngineSceneManager->CreateScene("Scene2");
 
@@ -37,7 +38,7 @@ void SandboxApp::OnAwake()
 
 	if (auto cam = m_Camera.lock()) {
 		cam->AddComponenet<VertexEngine::Camera>();
-		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 20.7f, 100.0f));
+		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 1.0, 20.0f));
 	}
 
 	if (auto cam = m_Scene2Camera.lock()) {

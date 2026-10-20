@@ -81,7 +81,7 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 	}
 
 	if (_engine.Input->GetKey(KeyCode::Spacebar)) {
-		m_Event.Invoke();
+		_engine.Window->SetWindowSize(500, 500);
 	}
 }
 

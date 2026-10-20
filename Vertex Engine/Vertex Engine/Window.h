@@ -24,11 +24,14 @@ namespace VertexEngine {
 		virtual std::string GetWindowName() = 0;
 		virtual void SetWindowSize(unsigned int _width, unsigned int _height) = 0;
 
+		virtual void SetRefreshRate(int _refreshRate) = 0;
+
 		std::function<void(float)> OnWindowSizeChanged;
 	private:
 		struct WindowDataProfile {
 			unsigned int Width;
 			unsigned int Height;
+			unsigned int RefreshRate;
 		};
 	protected:
 		WindowDataProfile m_WindowData;

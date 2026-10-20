@@ -238,6 +238,9 @@
     <ClInclude Include="AssImpLoader.h">
       <Filter>Model\Assimp Loader</Filter>
     </ClInclude>
+    <ClInclude Include="EngineRuntimeMode.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

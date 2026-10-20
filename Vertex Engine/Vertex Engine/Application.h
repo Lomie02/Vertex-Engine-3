@@ -15,6 +15,8 @@
 #include "AssetManager.h"
 #include "SceneManager.h"
 #include "ImporterAPI.h"
+
+#include "EngineRuntimeMode.h"
 namespace VertexEngine {
 
 	class Application
@@ -59,7 +61,9 @@ namespace VertexEngine {
 
 
 	private:
-		
+
+		std::string m_EngineRootPathDefault = "project/";
+
 		//TODO: Implement engine health safemode fallback.
 		EngineMode m_EngineHealth; // The current health state of the engine. If everything is init correctly it shall run as normal. If something fails it enters safemode for debugging. 
 		GraphicsAPI m_EngineGraphics; // The graphics api the engine should be using for input/graphics
@@ -76,6 +80,7 @@ namespace VertexEngine {
 		bool m_IsEngineRunning = false; // Determines of the engine is running
 		void InitProps(); // Create all the systems application owns.
 		int m_ScreenY, m_ScreenX; // Stores the default window size for start up
+
 	};
 }
 

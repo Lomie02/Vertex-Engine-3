@@ -29,6 +29,9 @@ namespace VertexEngine {
 		}
 
 		glfwMakeContextCurrent(m_WindowHandle);
+
+		glfwSetWindowUserPointer(m_WindowHandle, this);
+		glfwSetFramebufferSizeCallback(m_WindowHandle, FrameBufferCallback);
 		std::cout << "VertexMessage: OpenGL window created." << std::endl;
 	}
 
@@ -72,6 +75,7 @@ namespace VertexEngine {
 			// Update the window data so its not mismatched.
 			m_WindowData.Width = videoMode->width;
 			m_WindowData.Height = videoMode->height;
+			m_WindowData.RefreshRate = videoMode->refreshRate;
 		}
 		else {
 
@@ -132,6 +136,11 @@ namespace VertexEngine {
 		return nullptr; // if the window handle doesnt exist dont return anything
 	}
 
+	void GlWindow::SetRefreshRate(int _refreshRate)
+	{
+		m_WindowData.RefreshRate = _refreshRate;
+	}
+
 	void GlWindow::SetWindowSize(unsigned int _width, unsigned int _height)
 	{
 		if (m_WindowHandle == nullptr) return; // no window then return
@@ -147,5 +156,22 @@ namespace VertexEngine {
 		// Window size callback
 		if (OnWindowSizeChanged)
 			OnWindowSizeChanged(aspect);
+	}
+
+	void GlWindow::FrameBufferCallback(GLFWwindow* _window, int width, int height)
+	{
+		glViewport(0, 0, width, height);
+		if (height == 0) return;
+
+		auto* self = static_cast<GlWindow*>(glfwGetWindowUserPointer(_window));
+
+		if (self) {
+
+			float aspect = static_cast<float>(width) / static_cast<float>(height);
+
+			// Window size callback
+			if (self->OnWindowSizeChanged)
+				self->OnWindowSizeChanged(aspect);
+		}
 	}
 }

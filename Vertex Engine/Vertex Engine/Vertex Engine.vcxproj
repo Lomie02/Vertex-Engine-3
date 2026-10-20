@@ -166,6 +166,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentFlags.h" />
     <ClInclude Include="EngineContext.h" />
+    <ClInclude Include="EngineRuntimeMode.h" />
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
