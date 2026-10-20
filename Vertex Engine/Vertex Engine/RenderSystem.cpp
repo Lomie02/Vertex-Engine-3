@@ -17,10 +17,11 @@ void VertexEngine::RenderSystem::OnUpdate()
 {
 	if (!m_ActiveScene || !m_MainlineRenderer) return;
 
-	m_MainlineRenderer->ClearFrame();
 	// Starting a new frame
+
 	m_MainlineRenderer->BeginFrame();
 
+	m_MainlineRenderer->ClearFrame();
 	// Submit the camera
 	float aspect =  static_cast<float>(1920.0f) / static_cast<float>(1080.0f);
 
@@ -38,7 +39,7 @@ void VertexEngine::RenderSystem::OnUpdate()
 	// Get ready for render submissions
 	for (auto* var : m_ActiveScene->GetRenderables())
 	{
-		if (!var->GetModel()) continue;
+		if (!var->GetModel() || !var->gameObject->IsActive()) continue;
 
 		Renderable mesh;
 
@@ -48,8 +49,29 @@ void VertexEngine::RenderSystem::OnUpdate()
 		mesh.Name = var->gameObject->GetName();
 		mesh.m_Type = RenderableType::Mesh_3D;
 
+		mesh.m_IsSkinned = false;
+
 		m_MainlineRenderer->Submit(mesh);
 	}
+
+	// Submit Skinned meshes
+	for (auto* var : m_ActiveScene->GetSkinnedMeshes())
+	{
+		if (!var->GetModel() || !var->gameObject->IsActive()) continue;
+
+		Renderable mesh;
+
+		mesh.m_Models = var->GetModel();
+		mesh.ModelMatrix = var->gameObject->GetComponenet<Transform>()->GetWorldMatrix();
+
+		mesh.Name = var->gameObject->GetName();
+		mesh.m_Type = RenderableType::Mesh_3D;
+
+		mesh.m_IsSkinned = true;
+
+		m_MainlineRenderer->Submit(mesh);
+	}
+
 
 	// Render the frame
 	m_MainlineRenderer->Render();

@@ -9,6 +9,11 @@
 #include <assimp/material.h>
 #include "MaterialData.h"
 
+#include <unordered_map>
+#include <cstdint>
+#include <glm.hpp>
+#include "BoneInfo.h"
+
 namespace VertexEngine {
 
 	class AssImpLoader : public VertexEngine::MeshImporter
@@ -29,8 +34,17 @@ namespace VertexEngine {
 
 		std::string FetchFirstAbledo(aiMaterial* _material);
 		std::string FetchFirstTexturePath(aiMaterial* _material);
+		uint32_t GetorCreateBoneIndex(aiBone* _bone);
+		void BuildBoneHierarchy(const ModelNode& _node, int32_t _parentIndex);
+
+		void ValidateBoneWeights(const Model& _model);
+		void ValidateSkeleton() const;
 
 		float m_UnitScale = 0.01f;
+		
+		std::unordered_map<std::string, uint32_t> m_BoneMapping;
+		std::vector<BoneInfo> m_Bones;
+
 	};
 
 }

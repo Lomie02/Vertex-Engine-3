@@ -8,6 +8,8 @@ namespace VertexEngine{
 
 		glm::mat4 m_LocalTransform{1.0f};
 
+		glm::mat4 m_BindLocal{1.0f};
+
 		std::vector<uint32_t> m_MeshIndices;
 		std::vector<ModelNode> m_Children;
 	};

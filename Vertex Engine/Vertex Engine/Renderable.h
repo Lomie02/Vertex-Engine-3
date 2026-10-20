@@ -10,5 +10,6 @@ namespace VertexEngine {
 		std::shared_ptr<VertexEngine::Model> m_Models;
 		std::shared_ptr<Shader> m_ShaderOverride;
 		RenderableType m_Type;
+		bool m_IsSkinned = false;
 	};
 }

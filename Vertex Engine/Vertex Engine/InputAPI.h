@@ -1,5 +1,6 @@
 #pragma once
 #include "InputSystem.h"
+#include <glm.hpp>
 namespace VertexEngine {
 
 	class InputAPI {
@@ -21,6 +22,10 @@ namespace VertexEngine {
 		bool GetButton(KeyCode _key, int _joystick) const;
 		bool GetButtonDown(KeyCode _key, int _joystick) const;
 		bool GetButtonUp(KeyCode _key, int _joystick) const;
+
+		glm::vec2 GetAxis(std::string _axisName) const;
+		bool HasAxisMoved(std::string _axisName, float _deadzone) const;
+
 	private:
 		InputSystem* m_EngineInput = nullptr; // ptr is a ref to the engine owned input system
 	};

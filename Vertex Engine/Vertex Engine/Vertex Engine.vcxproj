@@ -153,12 +153,14 @@
     <ClInclude Include="..\Externals\GLFW\khrplatform.h" />
     <ClInclude Include="..\Externals\stb\stb_image.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="ApplicationAPI.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetEntry.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AssetType.h" />
     <ClInclude Include="AssImpLoader.h" />
     <ClInclude Include="BackendFactory.h" />
+    <ClInclude Include="BoneInfo.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraRenderable.h" />
     <ClInclude Include="Component.h" />
@@ -193,14 +195,21 @@
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneManagerAPI.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SkeletalMeshRenderer.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="StaticMeshRenderer.h" />
     <ClInclude Include="SubMeshData.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeAPI.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexAPI.h" />
     <ClInclude Include="VertexBehaviour.h" />
+    <ClInclude Include="VertexEvent.h" />
+    <ClInclude Include="VertexRendering.h" />
+    <ClInclude Include="VertexUI.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowAPI.h" />
   </ItemGroup>
@@ -210,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ApplicationAPI.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssImpLoader.cpp" />
     <ClCompile Include="BackendFactory.cpp" />
@@ -230,11 +240,14 @@
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneManagerAPI.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="SkeletalMeshRenderer.cpp" />
     <ClCompile Include="StaticMeshRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeAPI.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="VertexEvent.cpp" />
     <ClCompile Include="WindowAPI.cpp" />
   </ItemGroup>
   <ItemGroup>

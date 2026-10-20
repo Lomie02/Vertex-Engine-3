@@ -11,6 +11,10 @@ VertexEngine::Scene::Scene(std::string _name)
 
 void VertexEngine::Scene::Init(VertexEngine::EngineContext* _ctx)
 {
+	if (!_ctx) throw std::runtime_error("VERTEX ERROR: EngineContext is null. Scene cannot initialize.");
+
+	if (m_IsInit) return;
+
 	m_Context = _ctx;
 
 	// On awake
@@ -21,6 +25,8 @@ void VertexEngine::Scene::Init(VertexEngine::EngineContext* _ctx)
 		for (auto& comp : ent->GetComponents()) // Update all context into components
 			comp->OnAwake(*m_Context);
 	}
+
+	m_IsInit = true;
 }
 
 void VertexEngine::Scene::OnUpdate()
@@ -122,6 +128,7 @@ std::weak_ptr<VertexEngine::GameObject> VertexEngine::Scene::CreateGameObject(st
 	ent->SetName(_name);
 	m_GameObjects.push_back(ent);
 	ent->AddComponenet<Transform>();
+	ent->m_GameObjectTransform = ent->GetComponenet<Transform>();
 
 	return ent;
 }
@@ -155,6 +162,9 @@ void VertexEngine::Scene::OnComponentAdded(VertexEngine::Component* _component)
 	}
 	else if (_component->HasFlags(ComponentFlags::Camera)) {
 		m_RegisteredCameras.push_back(static_cast<Camera*>(_component));
+	}
+	else if (_component->HasFlags(ComponentFlags::Skinned)) {
+		m_RegisterdSkinnedMeshes.push_back(static_cast<SkeletalMeshRenderer*>(_component));
 	}
 }
 

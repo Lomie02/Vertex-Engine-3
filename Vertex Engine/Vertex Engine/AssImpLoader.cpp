@@ -9,10 +9,18 @@
 #include <algorithm>
 #include <cctype>
 
+#include <cmath>
+#include <utility>
+
 std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::string path)
 {
 	Assimp::Importer importer; // Define the importer
 	auto CompletedModel = std::make_shared<VertexEngine::Model>();
+
+	m_BoneMapping.clear();
+	m_Bones.clear();
+
+	CompletedModel->m_Skeleton = std::make_shared<VertexEngine::Skeleton>();
 
 	if (!std::filesystem::exists(m_RootPath + path.c_str() + ".fbx")) { std::cout << "Failed to load model at " << std::endl; return CompletedModel; } //TODO: Add an error message here.
 
@@ -27,11 +35,26 @@ std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::
 
 	if (scene->mMetaData) {
 		ai_real unitScaleFactor = 100.0f;
-
 		if (scene->mMetaData->Get("UnitScaleFactor", unitScaleFactor)) {
 			unitScale = static_cast<float>(unitScaleFactor) * CentimetersToMeters;
 		}
 	}
+
+	std::cout << "UnitScaleFactor metadata: ";
+
+	ai_real metadataScale = -1.0f;
+
+	if (scene->mMetaData &&
+		scene->mMetaData->Get("UnitScaleFactor", metadataScale))
+	{
+		std::cout << metadataScale << '\n';
+	}
+	else
+	{
+		std::cout << "Not found; using default\n";
+	}
+
+	std::cout << "Final unitScale: " << unitScale << '\n';
 
 	CompletedModel->modelName = path;
 
@@ -45,7 +68,33 @@ std::shared_ptr<VertexEngine::Model> VertexEngine::AssImpLoader::LoadModel(std::
 		CompletedModel->materialData.push_back(data);
 	}
 
+	m_UnitScale = unitScale;
+
 	ProcessNode(scene->mRootNode, scene, CompletedModel, CompletedModel->m_RootNode, unitScale);
+	BuildBoneHierarchy(CompletedModel->m_RootNode, -1);
+	ValidateSkeleton();
+
+	// Assign the bones
+	CompletedModel->m_Skeleton->m_bones = m_Bones;
+
+	ValidateBoneWeights(*CompletedModel);
+
+	std::cout << "\n===== Skeleton Debug =====\n";
+
+	for (size_t i = 0; i < CompletedModel->m_Skeleton->m_bones.size(); ++i)
+	{
+		const auto& bone = CompletedModel->m_Skeleton->m_bones[i];
+
+		std::cout
+			<< "Bone Index: " << i
+			<< " | Name: " << bone.name
+			<< " | Parent Index: " << bone.parentIndex
+			<< '\n';
+	}
+
+	std::cout << "Total Bones: "
+		<< CompletedModel->m_Skeleton->m_bones.size()
+		<< "\n===========================\n";
 
 	return CompletedModel;
 }
@@ -58,7 +107,26 @@ void VertexEngine::AssImpLoader::SetRootPath(std::string rootPath)
 void VertexEngine::AssImpLoader::ProcessNode(aiNode* node, const aiScene* scene, std::shared_ptr<VertexEngine::Model> model, VertexEngine::ModelNode& modelNode, float _unitScale)
 {
 	modelNode.m_Name = node->mName.C_Str();
+
+
+	if (modelNode.m_Name == "mixamorig:Hips" ||
+		modelNode.m_Name == "mixamorig:Spine" ||
+		modelNode.m_Name == "mixamorig:LeftShoulder")
+	{
+		const aiMatrix4x4& m = node->mTransformation;
+
+		std::cout << "\nNode: " << modelNode.m_Name
+			<< "\nRaw local transform:\n";
+
+		std::cout << m.a1 << ' ' << m.a2 << ' ' << m.a3 << ' ' << m.a4 << '\n';
+		std::cout << m.b1 << ' ' << m.b2 << ' ' << m.b3 << ' ' << m.b4 << '\n';
+		std::cout << m.c1 << ' ' << m.c2 << ' ' << m.c3 << ' ' << m.c4 << '\n';
+		std::cout << m.d1 << ' ' << m.d2 << ' ' << m.d3 << ' ' << m.d4 << '\n';
+	}
+
+
 	modelNode.m_LocalTransform = ConvertNodeTransform(node->mTransformation, _unitScale, (node == scene->mRootNode));
+	modelNode.m_BindLocal = modelNode.m_LocalTransform;
 
 	// parent meshes
 	for (unsigned int i = 0; i < node->mNumMeshes; i++) {
@@ -84,6 +152,19 @@ VertexEngine::MeshData VertexEngine::AssImpLoader::ProcessMesh(aiMesh* mesh)
 	VertexEngine::MeshData finalMesh;
 
 	// Create Vertex data
+	for (unsigned int i = 0;
+		i < std::min(mesh->mNumVertices, 5u);
+		++i)
+	{
+		const aiVector3D& v = mesh->mVertices[i];
+
+		std::cout
+			<< "Vertex " << i << ": "
+			<< v.x << ", "
+			<< v.y << ", "
+			<< v.z << '\n';
+	}
+
 
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 		VertexEngine::Vertex vert{};
@@ -125,15 +206,71 @@ VertexEngine::MeshData VertexEngine::AssImpLoader::ProcessMesh(aiMesh* mesh)
 		finalMesh.vertices.push_back(vert);
 	}
 
+	// Skeleton
+	std::vector<std::vector<std::pair<int, float>>> influences(
+		finalMesh.vertices.size());
+
+	for (unsigned int i = 0; i < mesh->mNumBones; i++) {
+		aiBone* bone = mesh->mBones[i];
+		uint32_t boneIndex = GetorCreateBoneIndex(bone);
+
+		for (unsigned int j = 0; j < bone->mNumWeights; j++) {
+			const aiVertexWeight& weight = bone->mWeights[j];
+
+			// Protect against invalid vertex indices
+			if (weight.mVertexId >= finalMesh.vertices.size())
+				continue;
+
+			// Ignore invalid or non-positive weights
+			if (!std::isfinite(weight.mWeight) || weight.mWeight <= 0.0f)
+				continue;
+
+			influences[weight.mVertexId].emplace_back(
+				static_cast<int>(boneIndex),
+				weight.mWeight
+			);
+		}
+	}
+
+	// Keep the four strongest influences and normalize them
+	for (size_t i = 0; i < finalMesh.vertices.size(); i++) {
+		Vertex& vertex = finalMesh.vertices[i];
+		auto& vertexInfluences = influences[i];
+
+		// Sort strongest weight first
+		std::sort(
+			vertexInfluences.begin(),
+			vertexInfluences.end(),
+			[](const auto& a, const auto& b) {
+				return a.second > b.second;
+			}
+		);
+
+		float totalWeight = 0.0f;
+		const size_t influenceCount =
+			std::min(vertexInfluences.size(), size_t(4));
+
+		for (size_t j = 0; j < influenceCount; j++) {
+			vertex.boneIDs[j] = vertexInfluences[j].first;
+			vertex.boneWeights[j] = vertexInfluences[j].second;
+			totalWeight += vertexInfluences[j].second;
+		}
+
+		if (totalWeight > 0.0f) {
+			for (size_t j = 0; j < influenceCount; j++) {
+				vertex.boneWeights[j] /= totalWeight;
+			}
+		}
+	}
 
 
 	// Create faces of the model
 
 	if (mesh->HasFaces()) {
 		for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
-			finalMesh.indices.push_back((unsigned short)mesh->mFaces[i].mIndices[0]);
-			finalMesh.indices.push_back((unsigned short)mesh->mFaces[i].mIndices[1]);
-			finalMesh.indices.push_back((unsigned short)mesh->mFaces[i].mIndices[2]);
+			finalMesh.indices.push_back(mesh->mFaces[i].mIndices[0]);
+			finalMesh.indices.push_back(mesh->mFaces[i].mIndices[1]);
+			finalMesh.indices.push_back(mesh->mFaces[i].mIndices[2]);
 		}
 	}
 
@@ -147,6 +284,19 @@ VertexEngine::MeshData VertexEngine::AssImpLoader::ProcessMesh(aiMesh* mesh)
 	subMesh.materialIndex = mesh->mMaterialIndex;
 
 	finalMesh.subMeshes.push_back(subMesh);
+
+	for (size_t i = 0;
+		i < std::min(finalMesh.vertices.size(), size_t(5));
+		++i)
+	{
+		const auto& v = finalMesh.vertices[i].position;
+
+		std::cout
+			<< "Processed vertex " << i << ": "
+			<< v.x << ", "
+			<< v.y << ", "
+			<< v.z << '\n';
+	}
 
 	return finalMesh;
 }
@@ -201,9 +351,9 @@ glm::mat4 VertexEngine::AssImpLoader::ConvertNodeTransform(const aiMatrix4x4& _m
 
 	glm::vec3 glmScale(scaling.x, scaling.y, scaling.z);
 
-	if (!_isRoot) {
+	/*if (!_isRoot) {
 		glmScale *= _unitScale;
-	}
+	}*/
 
 	glm::quat glmRotation(
 		rotation.w,
@@ -211,6 +361,15 @@ glm::mat4 VertexEngine::AssImpLoader::ConvertNodeTransform(const aiMatrix4x4& _m
 		rotation.y,
 		rotation.z
 	);
+
+	std::cout
+		<< "Node scale: "
+		<< _matrix.a1 << ", "
+		<< _matrix.b2 << ", "
+		<< _matrix.c3
+		<< " | unitScale: " << _unitScale
+		<< " | root: " << _isRoot
+		<< '\n';
 
 	return glm::translate(glm::mat4(1.0f), glmPosition)
 		* glm::mat4_cast(glmRotation) * glm::scale(glm::mat4(1.0f), glmScale);
@@ -306,11 +465,6 @@ VertexEngine::MaterialData VertexEngine::AssImpLoader::ProcessMaterial(aiMateria
 	if (_material->Get(AI_MATKEY_ROUGHNESS_FACTOR, roughness) == AI_SUCCESS) {
 		data.m_Roughness = roughness;
 	}
-
-	/*if (data.m_Name == "Dva_Hair1")
-	{
-		data.m_AlbedoOverride = "DVa_Hair_D_Classic.jpg";
-	}*/
 
 	return data;
 }
@@ -409,5 +563,194 @@ std::string VertexEngine::AssImpLoader::FetchFirstTexturePath(aiMaterial* _mater
 	}
 
 	return {};
+}
+
+uint32_t VertexEngine::AssImpLoader::GetorCreateBoneIndex(aiBone* _bone)
+{
+	std::string name = _bone->mName.C_Str();
+
+	auto it = m_BoneMapping.find(name);
+	if (it != m_BoneMapping.end()) {
+		return it->second;
+	}
+
+	uint32_t index = static_cast<uint32_t>(m_BoneMapping.size());
+
+	m_BoneMapping[name] = index;
+
+	BoneInfo info;
+	info.name = name;
+
+	std::cout << "Raw offset for " << name << ":\n";
+	std::cout << _bone->mOffsetMatrix.a4 << ", "
+		<< _bone->mOffsetMatrix.b4 << ", "
+		<< _bone->mOffsetMatrix.c4 << '\n';
+
+	info.offsetMat = ConvertMatrix(_bone->mOffsetMatrix);
+
+	info.offsetMat[3][0] *= m_UnitScale;
+	info.offsetMat[3][1] *= m_UnitScale;
+	info.offsetMat[3][2] *= m_UnitScale;
+
+	m_Bones.push_back(info);
+
+	return index;
+}
+
+void VertexEngine::AssImpLoader::BuildBoneHierarchy(const ModelNode& _node, int32_t _parentIndex)
+{
+	int32_t currentBone = _parentIndex;
+
+	auto it = m_BoneMapping.find(_node.m_Name);
+
+	if (it != m_BoneMapping.end()) {
+		currentBone = static_cast<int32_t>(it->second);
+
+		m_Bones[currentBone].parentIndex = _parentIndex;
+	}
+
+	for (const auto& child : _node.m_Children) {
+		BuildBoneHierarchy(child, currentBone);
+	}
+
+}
+
+void VertexEngine::AssImpLoader::ValidateBoneWeights(const Model& _model)
+{
+	if (!_model.m_Skeleton)
+	{
+		std::cout << "[Skinning Validation] No skeleton found!\n";
+		return;
+	}
+
+	const auto& bones = _model.m_Skeleton->m_bones;
+
+	size_t totalVertices = 0;
+	size_t verticesWithWeights = 0;
+	size_t verticesWithoutWeights = 0;
+	size_t invalidBoneIDs = 0;
+	size_t invalidWeights = 0;
+	size_t unnormalizedWeights = 0;
+
+	for (const auto& mesh : _model.meshes)
+	{
+		if (!mesh)
+			continue;
+
+		for (const auto& vertex : mesh->vertices)
+		{
+			float totalWeight = 0.0f;
+			bool hasWeight = false;
+
+			for (int i = 0; i < 4; ++i)
+			{
+				const int boneID = vertex.boneIDs[i];
+				const float weight = vertex.boneWeights[i];
+
+				if (!std::isfinite(weight) || weight < 0.0f)
+				{
+					++invalidWeights;
+					continue;
+				}
+
+				if (boneID == -1)
+				{
+					if (weight > 0.0001f)
+						++invalidWeights;
+
+					continue;
+				}
+
+				if (boneID < 0 ||
+					static_cast<size_t>(boneID) >= bones.size())
+				{
+					++invalidBoneIDs;
+					continue;
+				}
+
+				if (weight > 0.0f)
+				{
+					hasWeight = true;
+					totalWeight += weight;
+				}
+			}
+
+			if (hasWeight)
+			{
+				++verticesWithWeights;
+
+				if (std::abs(totalWeight - 1.0f) > 0.001f)
+				{
+					if (unnormalizedWeights < 10)
+					{
+						std::cout << "Sum: " << totalWeight
+							<< " | IDs: ";
+
+						for (int i = 0; i < 4; ++i)
+							std::cout << vertex.boneIDs[i] << ' ';
+
+						std::cout << "| Weights: ";
+
+						for (int i = 0; i < 4; ++i)
+							std::cout << vertex.boneWeights[i] << ' ';
+
+						std::cout << '\n';
+					}
+
+					++unnormalizedWeights;
+				}
+			}
+			else
+			{
+				++verticesWithoutWeights;
+			}
+		}
+
+
+	}
+
+	std::cout << "\n===== Bone Weight Validation =====\n"
+		<< "Bones: " << bones.size() << '\n'
+		<< "Vertices: " << totalVertices << '\n'
+		<< "Vertices with weights: " << verticesWithWeights << '\n'
+		<< "Vertices without weights: " << verticesWithoutWeights << '\n'
+		<< "Invalid bone IDs: " << invalidBoneIDs << '\n'
+		<< "Invalid weights: " << invalidWeights << '\n'
+		<< "Unnormalized vertices: " << unnormalizedWeights << '\n'
+		<< "==================================\n";
+}
+
+void VertexEngine::AssImpLoader::ValidateSkeleton() const
+{
+
+	int invalidParents = 0;
+	int rootBones = 0;
+
+	for (size_t i = 0; i < m_Bones.size(); i++) {
+
+		const BoneInfo& bone = m_Bones[i];
+
+		if (bone.parentIndex == -1) {
+			rootBones++;
+			continue;
+		}
+
+		if (bone.parentIndex < 0 || static_cast<size_t>(bone.parentIndex) >= m_Bones.size() || static_cast<size_t>(bone.parentIndex) == i) {
+
+			std::cout << "Invalid parent for bone " << bone.name
+				<< " (index " << i
+				<< ", parent " << bone.parentIndex << ")\n";
+
+			invalidParents++;
+
+		}
+
+		std::cout << "\n===== Skeleton Validation =====\n";
+		std::cout << "Total bones: " << m_Bones.size() << '\n';
+		std::cout << "Root bones: " << rootBones << '\n';
+		std::cout << "Invalid parents: " << invalidParents << '\n';
+		std::cout << "================================\n";
+
+	}
 }
 

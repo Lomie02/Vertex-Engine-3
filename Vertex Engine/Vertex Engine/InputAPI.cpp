@@ -50,6 +50,9 @@ bool VertexEngine::InputAPI::GetMouseUP(KeyCode _key) const
 
 bool VertexEngine::InputAPI::GetButton(KeyCode _key, int _joystick) const
 {
+	if (m_EngineInput)
+		return m_EngineInput->GetButton(_key, _joystick);
+
 	return false;
 }
 
@@ -60,5 +63,22 @@ bool VertexEngine::InputAPI::GetButtonDown(KeyCode _key, int _joystick) const
 
 bool VertexEngine::InputAPI::GetButtonUp(KeyCode _key, int _joystick) const
 {
+	return false;
+}
+
+glm::vec2 VertexEngine::InputAPI::GetAxis(std::string _axisName) const
+{
+	if (m_EngineInput)
+		return m_EngineInput->GetAxis(_axisName);
+
+	return glm::vec2();
+}
+
+bool VertexEngine::InputAPI::HasAxisMoved(std::string _axisName, float _deadzone) const
+{
+	if (m_EngineInput)
+		return m_EngineInput->HasAxisMoved(_axisName, _deadzone);
+
+
 	return false;
 }

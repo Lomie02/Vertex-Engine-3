@@ -15,17 +15,20 @@ void SandboxApp::OnAwake()
 	SetApplicationFullscreenMode(true);
 
 	m_Scene = m_EngineSceneManager->CreateScene("My Scene");
+	m_Scene2 = m_EngineSceneManager->CreateScene("Scene2");
 
 	m_MyObject = m_Scene->CreateGameObject("My Object");
-	m_DummyObject = m_Scene->CreateGameObject("Dummy");
 	m_Camera = m_Scene->CreateGameObject("Camera");
 
+	m_DummyObject = m_Scene2->CreateGameObject("Dummy");
+	m_Scene2Camera = m_Scene2->CreateGameObject("Camera");
+
 	if (auto dum = m_DummyObject.lock()) {
-		dum->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(5.0f, 5.0f, 0.0f));
+		dum->GetTransform()->SetPosition(glm::vec3(5.0f, 5.0f, 0.0f));
 	}
 
 	if (auto ent = m_MyObject.lock()) {
-		ent->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+		ent->GetTransform()->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 		/*if (auto dum = m_DummyObject.lock()) {
 			dum->GetComponenet<VertexEngine::Transform>()->SetParent(ent->GetComponenet<VertexEngine::Transform>());
@@ -34,9 +37,12 @@ void SandboxApp::OnAwake()
 
 	if (auto cam = m_Camera.lock()) {
 		cam->AddComponenet<VertexEngine::Camera>();
-		cam->GetComponenet<VertexEngine::Transform>()->SetPosition(glm::vec3(0.0f, 0.7f, 10.0f));
+		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 20.7f, 100.0f));
+	}
 
-		
+	if (auto cam = m_Scene2Camera.lock()) {
+		cam->AddComponenet<VertexEngine::Camera>();
+		cam->GetTransform()->SetPosition(glm::vec3(0.0f, 0.7f, 10.0f));
 	}
 
 	m_Sphere = m_EngineAssetManager->Get<VertexEngine::Model>("Sphere");
@@ -57,12 +63,12 @@ void SandboxApp::OnStart()
 	}
 
 	if (auto ent = m_MyObject.lock()) {
-		ent->AddComponenet<VertexEngine::StaticMeshRenderer>();
-		ent->GetComponenet<VertexEngine::StaticMeshRenderer>()->SetMesh(m_Cube);
+		ent->AddComponenet<VertexEngine::SkeletalMeshRenderer>();
+		ent->GetComponenet<VertexEngine::SkeletalMeshRenderer>()->SetModel(m_Cube);
 	}
 }
 
 void SandboxApp::OnUpdate()
-{	
+{
 
 }

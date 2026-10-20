@@ -9,7 +9,7 @@ namespace VertexEngine {
 	class GLRenderer : public VertexEngine::Renderer
 	{
 	public:
-		GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _defaultVertex, std::shared_ptr<Shader> _defaultFrag); // Takes in the window alongside the default opengl shaders. Provided by backend.
+		GLRenderer(GlWindow* _win, std::shared_ptr<Shader> _defaultVertex, std::shared_ptr<Shader> _defaultFrag, std::shared_ptr<Shader> _defaultSkinnedVertex); // Takes in the window alongside the default opengl shaders. Provided by backend.
 
 		void BeginFrame() override; // Prepare start of frame.
 		void ClearFrame() override; // Clear flags
@@ -51,6 +51,7 @@ namespace VertexEngine {
 
 		// Default OpenGL shaders
 		std::shared_ptr<Shader> m_DefaultVertexShader; 
+		std::shared_ptr<Shader> m_DefaultSkinnedVertexShader; 
 		std::shared_ptr<Shader> m_DefaultFragShader;
 
 		// GLRenderer.h
@@ -59,6 +60,19 @@ namespace VertexEngine {
 		unsigned int m_TriangleVBO = 0;
 
 		std::unordered_map<uint32_t, VertexEngine::GPUMesh> m_MeshCacheList; // Cache all uploaded Meshes
+
+		// Skinned Meshes
+		void BuildBoneNodeTransforms(const ModelNode& _node, const glm::mat4& _parentTransform, const Skeleton& _skeleton, std::vector<glm::mat4>& _boneNodeTransforms, std::vector<bool>& _boneFound);
+		void CalculateSkinningMatrices(const Model& _model, std::vector<glm::mat4>& _outMtraices);
+		void UploadBoneMatrices(const std::vector<glm::mat4>& _matrices);
+
+		bool SetBoneRotation(Model& _model, const std::string& _bonename, const glm::quat& _rotation);
+		bool SetBoneRotationRecursive(ModelNode& _model, const std::string& _bonename, const glm::quat& _rotation);
+
+		void InitBoneBuffer();
+
+		unsigned int m_BoneBuffer = 0;
+		unsigned int m_BoneTexture = 0;
 	};
 }
 

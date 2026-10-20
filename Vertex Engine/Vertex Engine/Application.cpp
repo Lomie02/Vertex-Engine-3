@@ -5,6 +5,8 @@
 #include <memory>
 #include <iostream>
 #include "Shader.h"
+#include <Windows.h>
+
 VertexEngine::Application::Application()
 {
 	InitProps();// Initalize all systems & check that they actually are created.
@@ -78,9 +80,6 @@ void VertexEngine::Application::Execute()
 			if (m_EngineWindow != nullptr)
 				m_EngineWindow->OnUpdate();
 
-			// Render system begins the render process.
-			if (m_EngineRenderSystem)
-				m_EngineRenderSystem->OnUpdate();
 		}
 	else
 		while (m_IsEngineRunning) {
@@ -109,9 +108,6 @@ void VertexEngine::Application::Execute()
 			if (m_EngineWindow != nullptr)
 				m_EngineWindow->OnUpdate();
 
-			// Render system begins the render process.
-			if (m_EngineRenderSystem)
-				m_EngineRenderSystem->OnUpdate();
 		}
 }
 
@@ -192,6 +188,15 @@ void VertexEngine::Application::SetRootPath(std::string _filePath)
 		m_EngineAssetManager.get()->SetRootPath(_filePath);
 }
 
+bool VertexEngine::Application::OpenProgram(std::string _name)
+{
+	const char* _path = _name.data();
+
+	if (system(_path)) return true;
+
+	return false;
+}
+
 void VertexEngine::Application::InitProps()
 {
 	// Set the windows default size to 1980 x 1080.
@@ -209,7 +214,7 @@ void VertexEngine::Application::InitProps()
 	{
 		// Create core systems based on selected API
 		m_EngineAssetManager = m_EngineBackend.CreateAssetManager(m_EngineImporter);
-		m_EngineWindow = m_EngineBackend.CreateWindow(m_EngineGraphics, m_ScreenY, m_ScreenX);
+		m_EngineWindow = m_EngineBackend.CreateAppWindow(m_EngineGraphics, m_ScreenY, m_ScreenX);
 
 		// If the asset manager is created assign all needed data
 		if (m_EngineAssetManager) {
@@ -236,6 +241,8 @@ void VertexEngine::Application::InitProps()
 		m_EngineContext->Input = std::make_unique<InputAPI>(m_EngineInputSystem.get()); // Assign the input to the context menu.
 		m_EngineContext->Window = std::make_unique<WindowAPI>(m_EngineWindow.get()); // Assign the Window to the context menu.
 		m_EngineContext->Time = std::make_unique<TimeAPI>(m_EngineClock.get()); // Assign the Time class to the context menu.
+		m_EngineContext->Application = std::make_unique<ApplicationAPI>(this); // Assign the Application class to the context menu.
+		m_EngineContext->SceneManager = std::make_unique<SceneManagerAPI>(m_EngineSceneManager.get()); // Assign the Time class to the context menu.
 
 	}
 	catch (const std::exception& e) // If core systems fail to be created, enter safe-mode to allow the engine to continue to run scenes. Core systems will not be updated.
@@ -266,24 +273,35 @@ void VertexEngine::Application::InitProps()
 
 	// Check Engine Context APIs 
 
-	if (!m_EngineContext->Input) {
+	if (!m_EngineContext->Input) { // Input API
 		m_EngineContext->Input = std::make_unique<InputAPI>();
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
 		std::cout << "VERTEX ERROR: Core Systems failed: (INPUT API) Entering SafeMode." << std::endl;
 
 	}
-	if (!m_EngineContext->Time) {
+	if (!m_EngineContext->Time) { // Time API
 
 		m_EngineContext->Time = std::make_unique<TimeAPI>();
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
 		std::cout << "VERTEX ERROR: Core Systems failed: (TIME API) Entering SafeMode." << std::endl;
 	}
-	if (!m_EngineContext->Window)
+	if (!m_EngineContext->Window) // Window API
 	{
 		m_EngineContext->Window = std::make_unique<WindowAPI>();
 		std::cout << "VERTEX ERROR: Core Systems failed: (WINDOW API) Entering SafeMode." << std::endl;
 		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
 	}
+	if (!m_EngineContext->Application) { // App API
 
+		m_EngineContext->Application = std::make_unique<ApplicationAPI>();
+		std::cout << "VERTEX ERROR: Core Systems failed: (APPLICATION API) Entering SafeMode." << std::endl;
+		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
+	}
+	if (!m_EngineContext->SceneManager) { // Scene Management API
+
+		m_EngineContext->SceneManager = std::make_unique<SceneManagerAPI>();
+		std::cout << "VERTEX ERROR: Core Systems failed: (SCENE MANAGER API) Entering SafeMode." << std::endl;
+		m_EngineHealth = VertexEngine::EngineMode::SafeMode;
+	}
 
 }

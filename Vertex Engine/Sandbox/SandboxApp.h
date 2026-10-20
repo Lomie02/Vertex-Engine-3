@@ -20,9 +20,13 @@ protected:
 private:
 	float m_Timer;
 	std::shared_ptr<VertexEngine::Scene> m_Scene;
+	std::shared_ptr<VertexEngine::Scene> m_Scene2;
+
 	std::weak_ptr<VertexEngine::GameObject> m_MyObject;
 	std::weak_ptr<VertexEngine::GameObject> m_DummyObject;
 	std::weak_ptr<VertexEngine::GameObject> m_Camera;
+	std::weak_ptr<VertexEngine::GameObject> m_Scene2Camera;
+
 	std::shared_ptr<VertexEngine::Model> m_Cube;
 	std::shared_ptr<VertexEngine::Model> m_Sphere;
 };

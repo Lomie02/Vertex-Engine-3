@@ -7,6 +7,7 @@
 #include <vector>
 #include "ModelNode.h"
 #include "Material.h"
+#include "Skeleton.h"
 namespace VertexEngine {
 
 	class Model : public VertexEngine::Asset{
@@ -17,6 +18,7 @@ namespace VertexEngine {
 	
 		std::vector<Material> materials;
 		std::vector<MaterialData> materialData;
+		std::shared_ptr<Skeleton> m_Skeleton;
 
 		ModelNode m_RootNode;
 	};

@@ -1,6 +1,7 @@
 #pragma once
 #include "Window.h"
 #include "KeyCode.h"
+#include <glm.hpp>
 namespace VertexEngine {
 
 	class InputSystem
@@ -22,6 +23,8 @@ namespace VertexEngine {
 		virtual bool GetButtonUp(KeyCode _key, int _joystick) = 0;
 
 		virtual bool IsGamepad(int _joystick) = 0;
+		virtual glm::vec2 GetAxis(std::string _axisName) = 0;
+		virtual bool HasAxisMoved(std::string _axisName, float _deadzone) = 0;
 
 		// Engine access functions
 		virtual void UpdateInputLogs() = 0;
