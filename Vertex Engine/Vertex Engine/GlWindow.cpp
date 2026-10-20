@@ -76,7 +76,7 @@ namespace VertexEngine {
 		else {
 
 			// Sets screen to be windowed.
-			glfwSetWindowMonitor(m_WindowHandle, nullptr, 1920, 1080, m_WindowData.Width, m_WindowData.Height, 0);
+			glfwSetWindowMonitor(m_WindowHandle, nullptr, 0, 0, m_WindowData.Width, m_WindowData.Height, 0);
 
 		}
 	}
@@ -141,5 +141,11 @@ namespace VertexEngine {
 		// Update the window data values. 
 		m_WindowData.Height = _height;
 		m_WindowData.Width = _width;
+
+		float aspect = static_cast<float>(_width) / static_cast<float>(_height);
+
+		// Window size callback
+		if (OnWindowSizeChanged)
+			OnWindowSizeChanged(aspect);
 	}
 }

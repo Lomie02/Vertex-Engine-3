@@ -1,6 +1,4 @@
-﻿  pch.cpp
-  glad.c
-  Application.cpp
+﻿  Application.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
   (compiling source file '/Application.cpp')
       C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Externals\GLFW\glfw3.h(123,11):
@@ -9,22 +7,21 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(1
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Application.cpp(22,27): warning C4390: ';': empty controlled statement found; is this the intent?
   (compiling source file '/Application.cpp')
   
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\Application.cpp(277,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file '/Application.cpp')
+  
   ApplicationAPI.cpp
-  AssetManager.cpp
   AssImpLoader.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(254,19): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,int,glm::packed_highp>::length_type', possible loss of data
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(253,19): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,int,glm::packed_highp>::length_type', possible loss of data
   (compiling source file '/AssImpLoader.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(255,23): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(254,23): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
   (compiling source file '/AssImpLoader.cpp')
   
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(261,24): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\AssImpLoader.cpp(260,24): warning C4267: 'argument': conversion from 'size_t' to 'glm::vec<4,float,glm::packed_highp>::length_type', possible loss of data
   (compiling source file '/AssImpLoader.cpp')
   
   BackendFactory.cpp
-  CameraRenderable.cpp
-  GameObject.cpp
-  GlfwInputSystem.cpp
   GLRenderer.cpp
 C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GLRenderer.cpp(66,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
   (compiling source file '/GLRenderer.cpp')
@@ -36,32 +33,19 @@ C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GL
   (compiling source file '/GLRenderer.cpp')
   
   GlWindow.cpp
+  GlfwInputSystem.cpp
   InputAPI.cpp
-  ModelLoader.cpp
   RenderSystem.cpp
-  EngineTime.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(18,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/EngineTime.cpp')
-  
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\EngineTime.cpp(19,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  (compiling source file '/EngineTime.cpp')
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\RenderSystem.cpp(18,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '/RenderSystem.cpp')
   
   Scene.cpp
   SceneManager.cpp
   SceneManagerAPI.cpp
-  Shader.cpp
   SkeletalMeshRenderer.cpp
   StaticMeshRenderer.cpp
-  Generating Code...
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(275,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
-  Compiling...
-  Texture.cpp
-  TimeAPI.cpp
   Transform.cpp
-  VertexEvent.cpp
-C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\VertexEvent.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file '/VertexEvent.cpp')
-  
   WindowAPI.cpp
   Generating Code...
+C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\Vertex Engine\GlfwInputSystem.cpp(275,1): warning C4715: 'VertexEngine::GlfwInputSystem::ConvertKeycodeToGLFW': not all control paths return a value
   Vertex Engine.vcxproj -> C:\Users\dylan\OneDrive\Documents\Vertex-Engine-3\Vertex Engine\x64\Debug\Vertex Engine.lib

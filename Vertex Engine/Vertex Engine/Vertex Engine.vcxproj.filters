@@ -297,12 +297,6 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraRenderable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ApplicationAPI.cpp">
       <Filter>Sandbox API</Filter>
     </ClCompile>

@@ -223,8 +223,6 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AssImpLoader.cpp" />
     <ClCompile Include="BackendFactory.cpp" />
-    <ClCompile Include="CameraRenderable.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GlfwInputSystem.cpp" />
     <ClCompile Include="GLRenderer.cpp" />
     <ClCompile Include="GlWindow.cpp" />

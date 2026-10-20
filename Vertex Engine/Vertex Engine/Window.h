@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <functional>
 namespace VertexEngine {
 	class Window
 	{
@@ -23,12 +24,12 @@ namespace VertexEngine {
 		virtual std::string GetWindowName() = 0;
 		virtual void SetWindowSize(unsigned int _width, unsigned int _height) = 0;
 
+		std::function<void(float)> OnWindowSizeChanged;
 	private:
 		struct WindowDataProfile {
 			unsigned int Width;
 			unsigned int Height;
 		};
-
 	protected:
 		WindowDataProfile m_WindowData;
 	};

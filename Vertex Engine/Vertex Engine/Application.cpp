@@ -266,9 +266,17 @@ void VertexEngine::Application::InitProps()
 	auto renderSystem = m_EngineRenderSystem.get();
 
 	if (m_EngineSceneManager && m_EngineRenderSystem) {
-		m_EngineSceneManager.get()->OnSceneChanged = [renderSystem](Scene* s) {
-			renderSystem->OnSceneChanged(s);
+		m_EngineSceneManager.get()->OnSceneChanged = [renderSystem](Scene* scene) {
+			renderSystem->OnSceneChanged(scene);
 			};
+	}
+
+	// Setup Window size callback for Render System
+	if (m_EngineWindow && m_EngineRenderSystem) {
+		m_EngineWindow.get()->OnWindowSizeChanged = [renderSystem](float aspect) {
+			renderSystem->OnWindowChanged(aspect);
+			};
+
 	}
 
 	// Check Engine Context APIs 

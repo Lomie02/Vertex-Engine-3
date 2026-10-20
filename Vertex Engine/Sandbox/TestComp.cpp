@@ -74,7 +74,6 @@ void VertexEngine::TestComp::OnUpdate(VertexEngine::EngineContext& _engine)
 		gameObject->GetTransform()->SetPosition(newPos);
 	}
 
-
 	// Quit Application
 	if (_engine.Input->GetKey(KeyCode::Escape)) {
 

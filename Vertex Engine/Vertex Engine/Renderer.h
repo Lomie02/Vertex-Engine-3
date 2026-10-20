@@ -20,6 +20,23 @@ namespace VertexEngine {
 
 		virtual void BindTexture(std::shared_ptr<VertexEngine::Texture> _texture) = 0; // Bind texture to the gpu
 
+
+		// Debugging data
+		void SetPassChange() { m_SetPasses++; } // Increase set passes
+		int GetSetPasses() { return m_SetPasses; } // Get the current amount of set passes
+
+		void BatchesChange() { m_Batches++; } // Increase Batches
+		int GetBatches() { return m_Batches; } // Get the current amount of batches
+
+
+		void ClearStatisticData() { // Clear all debugging data
+			m_SetPasses = 0;
+			m_Batches = 0;
+		}
+
+	private:
+		int m_SetPasses = 0;
+		int m_Batches = 0;
 	};
 }
 

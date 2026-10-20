@@ -13,6 +13,11 @@ void VertexEngine::RenderSystem::OnSceneChanged(Scene* _scene)
 	m_ActiveScene = _scene;
 }
 
+void VertexEngine::RenderSystem::OnWindowChanged(int _aspect)
+{
+	m_AspectRatio = _aspect;
+}
+
 void VertexEngine::RenderSystem::OnUpdate()
 {
 	if (!m_ActiveScene || !m_MainlineRenderer) return;
@@ -23,14 +28,14 @@ void VertexEngine::RenderSystem::OnUpdate()
 
 	m_MainlineRenderer->ClearFrame();
 	// Submit the camera
-	float aspect =  static_cast<float>(1920.0f) / static_cast<float>(1080.0f);
+
 
 	for (auto* var : m_ActiveScene->GetCameras())
 	{
 		CameraRenderable camera;
 
 		camera.m_ViewMatrix = glm::inverse(var->gameObject->GetComponenet<Transform>()->GetWorldMatrix());
-		camera.m_ProjectionMatrix = glm::perspective(glm::radians(var->m_FieldOfView), aspect, var->m_NearClip, var->m_FarClip);
+		camera.m_ProjectionMatrix = glm::perspective(glm::radians(var->m_FieldOfView), m_AspectRatio, var->m_NearClip, var->m_FarClip);
 
 		m_MainlineRenderer->SubmitCamera(camera);
 		break;

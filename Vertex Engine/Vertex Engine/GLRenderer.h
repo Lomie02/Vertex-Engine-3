@@ -27,7 +27,7 @@ namespace VertexEngine {
 		void RenderModelNode(const VertexEngine::ModelNode& node, const glm::mat4& parentTrans, const Renderable& obj);
 	private:
 
-		CameraRenderable m_ActiveCamera;
+		CameraRenderable m_ActiveCamera; // Active CameraRenderable
 
 		uint32_t UploadMesh(std::shared_ptr<VertexEngine::MeshData> _mesh);
 
@@ -54,6 +54,9 @@ namespace VertexEngine {
 		std::shared_ptr<Shader> m_DefaultSkinnedVertexShader; 
 		std::shared_ptr<Shader> m_DefaultFragShader;
 
+		// Cache the stored custom shader to avoid loading it twice in a render.
+		std::shared_ptr<Shader> m_CustomShaderOverride;
+
 		// GLRenderer.h
 		unsigned int m_ActiveProgram = 0;
 		unsigned int m_TriangleVAO = 0;
@@ -69,8 +72,11 @@ namespace VertexEngine {
 		bool SetBoneRotation(Model& _model, const std::string& _bonename, const glm::quat& _rotation);
 		bool SetBoneRotationRecursive(ModelNode& _model, const std::string& _bonename, const glm::quat& _rotation);
 
-		void InitBoneBuffer();
+		// Shader
+		bool PermissionToUseShader(std::shared_ptr<Shader> _shader); // Check if renderer has permission to change the current shader.
 
+		// Skeletal Buffers
+		void InitBoneBuffer();
 		unsigned int m_BoneBuffer = 0;
 		unsigned int m_BoneTexture = 0;
 	};

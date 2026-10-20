@@ -46,7 +46,7 @@ void SandboxApp::OnAwake()
 	}
 
 	m_Sphere = m_EngineAssetManager->Get<VertexEngine::Model>("Sphere");
-	m_Cube = m_EngineAssetManager->Get<VertexEngine::Model>("Cube");
+	m_Cube = m_EngineAssetManager->Get<VertexEngine::Model>("Sphere");
 
 }
 
@@ -63,8 +63,8 @@ void SandboxApp::OnStart()
 	}
 
 	if (auto ent = m_MyObject.lock()) {
-		ent->AddComponenet<VertexEngine::SkeletalMeshRenderer>();
-		ent->GetComponenet<VertexEngine::SkeletalMeshRenderer>()->SetModel(m_Cube);
+		ent->AddComponenet<VertexEngine::StaticMeshRenderer>();
+		ent->GetComponenet<VertexEngine::StaticMeshRenderer>()->SetMesh(m_Cube);
 	}
 }
 

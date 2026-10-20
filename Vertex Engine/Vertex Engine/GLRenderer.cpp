@@ -94,9 +94,7 @@ void VertexEngine::GLRenderer::Render()
 
 			std::vector<glm::mat4> boneMats;
 
-
 			CalculateSkinningMatrices(*obj.m_Models, boneMats);
-
 
 			if (!boneMats.empty())
 				UploadBoneMatrices(boneMats);
@@ -117,6 +115,8 @@ void VertexEngine::GLRenderer::EndFrame()
 {
 	if (m_WindowHandle)
 		glfwSwapBuffers(m_WindowHandle->GetWindowHandle());
+
+	ClearStatisticData();
 }
 
 void VertexEngine::GLRenderer::SubmitCamera(const CameraRenderable& _camera)
@@ -168,6 +168,7 @@ void VertexEngine::GLRenderer::UseShader(std::shared_ptr<Shader> _vertex, std::s
 {
 	m_ActiveProgram = CompileProgram(_vertex, _frag);
 	glUseProgram(m_ActiveProgram);
+	SetPassChange();
 }
 
 void VertexEngine::GLRenderer::RenderModelNode(const VertexEngine::ModelNode& node, const glm::mat4& parentTrans, const Renderable& obj)
@@ -202,6 +203,17 @@ void VertexEngine::GLRenderer::RenderModelNode(const VertexEngine::ModelNode& no
 			auto& material =
 				obj.m_Models->materials[sub.materialIndex];
 
+
+			// Check if the material has a override shader. if it does use it.
+			 
+			auto& Shader = material.GetOvverideShader();
+
+			if (PermissionToUseShader(Shader)){
+				UseShader(m_DefaultSkinnedVertexShader, Shader);
+				m_CustomShaderOverride = Shader;
+			}
+
+
 			// Set albedo colour
 			SetVector4f("Colour", material.GetAlbedoColour());
 
@@ -220,6 +232,7 @@ void VertexEngine::GLRenderer::RenderModelNode(const VertexEngine::ModelNode& no
 			}
 
 			glDrawElements(GL_TRIANGLES, sub.indexCount, GL_UNSIGNED_INT, (void*)(sub.indexOffset * sizeof(uint32_t)));
+			BatchesChange();
 		}
 	}
 
@@ -591,6 +604,17 @@ bool VertexEngine::GLRenderer::SetBoneRotationRecursive(ModelNode& _model, const
 		if (SetBoneRotationRecursive(child, _bonename, _rotation))
 			return true;
 	}
+
+	return false;
+}
+
+bool VertexEngine::GLRenderer::PermissionToUseShader(std::shared_ptr<Shader> _shader)
+{
+	if (_shader.get() == nullptr) return false;
+
+	if (m_CustomShaderOverride.get() != nullptr) return true;
+
+	if (_shader.get() != m_CustomShaderOverride.get()) return true;
 
 	return false;
 }

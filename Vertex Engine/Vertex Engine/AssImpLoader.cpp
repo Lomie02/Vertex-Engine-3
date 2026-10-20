@@ -165,14 +165,13 @@ VertexEngine::MeshData VertexEngine::AssImpLoader::ProcessMesh(aiMesh* mesh)
 			<< v.z << '\n';
 	}
 
-
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
 		VertexEngine::Vertex vert{};
 
 		// Assign the positions of each vertice
-		vert.position.x = mesh->mVertices[i].x;
-		vert.position.y = mesh->mVertices[i].y;
-		vert.position.z = mesh->mVertices[i].z;
+		vert.position.x = mesh->mVertices[i].x * m_UnitScale;
+		vert.position.y = mesh->mVertices[i].y * m_UnitScale;
+		vert.position.z = mesh->mVertices[i].z * m_UnitScale;
 
 		// Assign normals
 		if (mesh->HasNormals()) {

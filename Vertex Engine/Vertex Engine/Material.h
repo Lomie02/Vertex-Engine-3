@@ -3,6 +3,8 @@
 #include <memory>
 #include "Texture.h"
 #include "MaterialData.h"
+#include "Shader.h"
+
 namespace VertexEngine {
 
 	class Material : public VertexEngine::Asset {
@@ -47,7 +49,13 @@ namespace VertexEngine {
 		void SetDoubleSided(bool _state) { m_IsDoubleSided = _state; }
 		bool IsDoubleSided() { return m_IsDoubleSided; }
 
+		// Shader Override
+		void SetOverrideShader(std::shared_ptr<Shader> _overrideShader) { m_OverrideShader = _overrideShader; };
+		const std::shared_ptr<Shader>& GetOvverideShader() const { return m_OverrideShader; }
+		
 	private:
+
+		std::shared_ptr<Shader> m_OverrideShader;
 
 		bool m_IsDoubleSided = false;
 		std::string m_Name;
